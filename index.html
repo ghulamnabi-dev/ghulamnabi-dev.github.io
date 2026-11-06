@@ -63,15 +63,15 @@
     <header class="open">
       <h1 class="intro-item" data-intro="1">Ghulam Nabi</h1>
       <p class="statement intro-item" data-intro="2">
-        I build software that has to keep working under real use: ERP modules that more than
-        100 people rely on every day, and a flood-mapping toolkit meant for relief teams.
+        I build software that has to keep working under real use: ERP modules used by more than
+        100 people and, in a team of four, a flood-mapping toolkit meant for relief teams.
       </p>
 
       <dl class="manifest intro-item" data-intro="3" aria-label="Profile at a glance">
         <div><dt>role</dt><dd>Software Engineer · Awatech Technology Solutions, Lahore · since Sep 2025</dd></div>
         <div><dt>degree</dt><dd>BS Computer Science · The University of Lahore · CGPA 3.72/4.00 · completion expected January 2027</dd></div>
         <div><dt>project</dt><dd>Sentinel Flux Core · Sentinel-1 SAR flood mapping · FYP-I completed, FYP-II in progress</dd></div>
-        <div><dt>next</dt><dd>M.Sc. Computer Science in Germany · applications for 2027</dd></div>
+        <div><dt>next</dt><dd>Master's degree in Germany · applying for 2027 intakes</dd></div>
       </dl>
 
       <p class="open-actions intro-item" data-intro="4">
@@ -162,10 +162,10 @@
             <li><code>sarcd detect-flood --event EVENT.yaml</code><span>Writes probability, binary mask and uncertainty rasters.</span></li>
             <li><code>sarcd benchmark-suite --events SUITE.yaml</code><span>Multi-event benchmark: F1, IoU, AP, ROC-AUC, Brier, ECE; gate on held-out macro F1.</span></li>
             <li><code>sarcd fit-probability-calibration</code><span>Fits the calibration mapping; reports Brier score, ECE and reliability bins.</span></li>
-            <li><code>sarcd impact-report</code><span>Intersects flood products with roads, built-up area, facilities and cropland.</span></li>
+            <li><code>sarcd impact-report</code><span>Intersects flood masks with exposure layers: built-up area, transport, facilities and land use.</span></li>
             <li><code>sarcd dashboard-manifest</code><span>Builds the dashboard manifest from real outputs for analyst review in Streamlit + Leafmap.</span></li>
           </ol>
-          <p class="side-note">Commands as listed in Table 9 of the report; sequence as in the operational workflow (Figure 7.1).</p>
+          <p class="side-note">Seven of the nine commands in Table 9, in the order of the operational workflow (Figure 7.1).</p>
         </div>
 
         <p class="case-links">
@@ -185,7 +185,7 @@
             <h4>Society Management System</h4>
             <p>Residents, monthly funds, expense categories, monthly expenses and monthly summaries for a housing
               society, with a dashboard that shows totals and opening and closing balances. The API is ASP.NET Core
-              on .NET 9 with ASP.NET Core Identity and JWT bearer authentication, Entity Framework Core 9 on SQL
+              on .NET 9 with ASP.NET Core Identity issuing JWT bearer tokens at sign-in, Entity Framework Core 9 on SQL
               Server with migrations, repository and service layers, Hangfire background jobs and Swagger. The client
               is Angular 19 with Angular Material, a route guard and an HTTP interceptor that attaches the bearer
               token.</p>
@@ -203,8 +203,9 @@
             <p>Bash automation from the Allied Software Engineers cyber-security internship: a security-monitoring
               scan, a Linux security audit (users, passwords, permissions, network, services) and an incident-triage
               collector. For the APT investigation task: five Sigma detection rules mapped to MITRE ATT&amp;CK
-              techniques, YARA rules for the loader and the ransomware, the same detections as Microsoft Sentinel
-              KQL and Splunk SPL queries, and an indicator list. All of it defensive.</p>
+              techniques, YARA rules for the loader and the ransomware, Microsoft Sentinel KQL and
+              Splunk SPL hunting queries for privilege escalation, lateral movement and data exfiltration, and an
+              indicator list. All of it defensive.</p>
             <p class="links"><a href="https://github.com/gn-4200/Cyber_Security" target="_blank" rel="noopener">Repository</a></p>
           </div>
         </li>
@@ -330,7 +331,7 @@
     </section>
 
     <footer class="colophon">
-      <p>© 2026 Ghulam Nabi. Set in IBM Plex. Plain HTML and CSS, no framework, no tracking.</p>
+      <p>© 2026 Ghulam Nabi. Set in IBM Plex. Plain HTML, CSS and a little JavaScript. No framework, no analytics.</p>
     </footer>
   </main>
 </div>
