@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ghulam Nabi</title>
+  <meta name="description" content="Ghulam Nabi — Software Engineer at Awatech Technology Solutions (ASP.NET Core, Angular) and final-year BS Computer Science student at The University of Lahore. Final-year project: Sentinel Flux Core, a Sentinel-1 SAR flood-mapping toolkit.">
+  <meta property="og:title" content="Ghulam Nabi — Software Engineer">
+  <meta property="og:description" content="Software Engineer (ASP.NET Core, Angular) and final-year Computer Science student. Final-year project: Sentinel Flux Core, a Sentinel-1 SAR flood-mapping toolkit for relief teams.">
+  <meta property="og:type" content="profile">
+  <meta name="theme-color" content="#141619">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Decided before first paint so the opening never flashes: the short
+    // cursor intro runs once per browser session, never with reduced motion.
+    (function () {
+      try {
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var seen = sessionStorage.getItem('introSeen') === '1';
+        if (!reduced && !seen) document.documentElement.setAttribute('data-intro', 'pending');
+      } catch (e) { /* storage blocked: no intro */ }
+    })();
+  </script>
+</head>
+<body>
+
+<a class="skip" href="#work">Skip to content</a>
+
+<div class="page">
+
+  <!-- ===================== RAIL ===================== -->
+  <aside class="rail">
+    <a class="mark" href="#top" aria-label="Ghulam Nabi, top of page">Ghulam Nabi</a>
+    <p class="rail-role">Software Engineer<br><span>Lahore, Pakistan</span></p>
+
+    <nav class="rail-nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <ul class="rail-links">
+      <li><a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></li>
+      <li><a href="https://github.com/gn-4200" target="_blank" rel="noopener">github.com/gn-4200</a></li>
+      <li><a href="https://linkedin.com/in/ghulam-nabi-67b558374" target="_blank" rel="noopener">linkedin.com/in/ghulam-nabi-67b558374</a></li>
+      <li><a href="https://drive.google.com/file/d/1_Im_mRYYUPSJFjvaU_py_SEzo07JjTKG/view" target="_blank" rel="noopener">FYP report (PDF, 81 pp.)</a></li>
+    </ul>
+
+    <p class="rail-foot">Updated 7 Nov 2026</p>
+  </aside>
+
+  <!-- ===================== MAIN ===================== -->
+  <main id="top" class="main">
+
+    <!-- Opening -->
+    <header class="open">
+      <h1 class="intro-item" data-intro="1">Ghulam Nabi</h1>
+      <p class="statement intro-item" data-intro="2">
+        I build software that has to keep working under real use: ERP modules that more than
+        100 people rely on every day, and a flood-mapping toolkit meant for relief teams.
+      </p>
+
+      <dl class="manifest intro-item" data-intro="3" aria-label="Profile at a glance">
+        <div><dt>role</dt><dd>Software Engineer · Awatech Technology Solutions, Lahore · since Sep 2025</dd></div>
+        <div><dt>degree</dt><dd>BS Computer Science · The University of Lahore · CGPA 3.72/4.00 · completion expected January 2027</dd></div>
+        <div><dt>project</dt><dd>Sentinel Flux Core · Sentinel-1 SAR flood mapping · FYP-I completed, FYP-II in progress</dd></div>
+        <div><dt>next</dt><dd>M.Sc. Computer Science in Germany · applications for 2027</dd></div>
+      </dl>
+
+      <p class="open-actions intro-item" data-intro="4">
+        <a class="button" href="https://drive.google.com/file/d/1_Im_mRYYUPSJFjvaU_py_SEzo07JjTKG/view" target="_blank" rel="noopener">Read the project report</a>
+        <a class="textlink" href="#work">See the work</a>
+      </p>
+      <div class="cursor-layer" aria-hidden="true"></div>
+    </header>
+
+    <!-- ===================== WORK ===================== -->
+    <section id="work" class="section" aria-labelledby="work-h">
+      <h2 id="work-h">Work</h2>
+
+      <!-- Case study: Sentinel Flux Core -->
+      <article class="case">
+        <header class="case-head">
+          <p class="eyebrow">Final Year Project · The University of Lahore · team of four · 2026 – present</p>
+          <h3>Sentinel Flux Core: Modular SAR Response Toolkit</h3>
+          <p class="case-sub">A reproducible Python toolkit that maps floods from Sentinel-1 radar imagery and
+            reports their likely impact, built as decision support for relief teams and benchmarked on the
+            Pakistan 2022 floods.</p>
+        </header>
+
+        <div class="case-grid">
+          <div class="case-text">
+            <h4>Problem</h4>
+            <p>During Pakistan's monsoon floods, cloud cover blocks optical satellite imagery exactly when
+              relief teams need it. Published reference flood products cover different footprints, and raw
+              pixel maps are not tied to evidence a decision-maker can act on. Flood mapping is therefore slow
+              and uncertain.</p>
+
+            <h4>Approach</h4>
+            <p>Sentinel-1 scenes (VV/VH) are discovered through the Copernicus Data Space STAC/OData APIs and
+              described in event YAML manifests that carry full provenance: orbit, processor, DEM, CRS and
+              resolution. The detector combines temporal change evidence with optional terrain penalties,
+              permanent-water exclusion and connected-component clean-up; transparent physics baselines stay
+              selectable for comparison. A scikit-learn feature classifier is trained under event holdout and
+              writes flood-probability rasters. Evaluation compares products with Copernicus GFM and CEMS
+              reference masks, holding out whole flood events rather than random tiles so that real
+              generalisation failures become visible. An impact module overlays built-up area, transport,
+              facilities and land use, and a Streamlit/Leafmap dashboard supports human review before any
+              message is approved.</p>
+
+            <h4>My part</h4>
+            <p>Team coordinator and documentation lead. I authored the complete technical documentation
+              (requirements, use-case analysis, design, methodology and evaluation; 81 pages) and designed the
+              Typer/Rich command-line interface that drives the ingestion, validation, detection, benchmarking,
+              calibration, impact-report and dashboard workflows.</p>
+
+            <h4>Limits</h4>
+            <p>The validated path is observational flood mapping, not prediction. Forecasting, data-fusion and
+              severity modules exist in the code base but remain experimental and are kept separate from the
+              operational evidence. Measured accuracy depends on reference quality, SAR preprocessing, valid-mask
+              footprints and how representative the areas of interest are. The system is designed as
+              uncertainty-aware, human-reviewed decision support rather than an automated warning system.</p>
+          </div>
+
+          <aside class="case-side">
+            <h4>Evaluation, as reported</h4>
+            <table class="results">
+              <caption>Macro F1 against reference masks, whole events held out (Tables 13–14 of the report)</caption>
+              <thead>
+                <tr><th scope="col">Benchmark</th><th scope="col" class="num">Macro F1</th><th scope="col" class="num">Worst event</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Clean held-out set, 14 Pakistan 2022 areas</td><td class="num">0.874</td><td class="num">0.803</td></tr>
+                <tr><td>Harder audit set, 17 areas</td><td class="num">0.854</td><td class="num">0.674</td></tr>
+                <tr><td>CEMS-only subset</td><td class="num">0.743</td><td class="num">—</td></tr>
+                <tr><td>UNOSAT / VIIRS comparisons (3)</td><td class="num">0.802</td><td class="num">—</td></tr>
+              </tbody>
+            </table>
+            <p class="side-note">The weakest audit event (EMSR631 AOI01) is reported openly and flagged for a reference and
+              preprocessing audit. The implemented ingestion, validation, detection, benchmark, calibration,
+              impact and dashboard code is covered by an automated test suite: 186 pytest tests passing.</p>
+
+            <h4>Stack</h4>
+            <p class="stack">Python 3.10+ · Typer · Rich · NumPy · SciPy · Rasterio · GeoTIFF/COG · scikit-learn ·
+              PyTorch · PyYAML · Streamlit · Leafmap · pytest · Ruff · Sentinel-1 SAR · Copernicus Data Space ·
+              ESA SNAP GPT · CEMS/GFM reference products</p>
+          </aside>
+        </div>
+
+        <div class="pipeline-wrap">
+          <h4>Operational workflow driven by the <code>sarcd</code> command-line interface</h4>
+          <ol class="pipeline">
+            <li><code>sarcd doctor</code><span>Checks Python 3.10+, rasterio, SNAP GPT, credentials and the data root.</span></li>
+            <li><code>sarcd validate-data --event EVENT.yaml</code><span>Validates the event manifest: paths, CRS, transform, nodata, dates, masks.</span></li>
+            <li><code>sarcd detect-flood --event EVENT.yaml</code><span>Writes probability, binary mask and uncertainty rasters.</span></li>
+            <li><code>sarcd benchmark-suite --events SUITE.yaml</code><span>Multi-event benchmark: F1, IoU, AP, ROC-AUC, Brier, ECE; gate on held-out macro F1.</span></li>
+            <li><code>sarcd fit-probability-calibration</code><span>Fits the calibration mapping; reports Brier score, ECE and reliability bins.</span></li>
+            <li><code>sarcd impact-report</code><span>Intersects flood products with roads, built-up area, facilities and cropland.</span></li>
+            <li><code>sarcd dashboard-manifest</code><span>Builds the dashboard manifest from real outputs for analyst review in Streamlit + Leafmap.</span></li>
+          </ol>
+          <p class="side-note">Commands as listed in Table 9 of the report; sequence as in the operational workflow (Figure 7.1).</p>
+        </div>
+
+        <p class="case-links">
+          <a class="button" href="https://drive.google.com/file/d/1_Im_mRYYUPSJFjvaU_py_SEzo07JjTKG/view" target="_blank" rel="noopener">Full report (PDF, 81 pages)</a>
+        </p>
+      </article>
+
+      <!-- Other work -->
+      <h3 class="sub-h">Other work</h3>
+      <ul class="worklist">
+        <li>
+          <div class="work-meta">
+            <span>2025</span>
+            <span>Full-stack project</span>
+          </div>
+          <div class="work-body">
+            <h4>Society Management System</h4>
+            <p>Residents, monthly funds, expense categories, monthly expenses and monthly summaries for a housing
+              society, with a dashboard that shows totals and opening and closing balances. The API is ASP.NET Core
+              on .NET 9 with ASP.NET Core Identity and JWT bearer authentication, Entity Framework Core 9 on SQL
+              Server with migrations, repository and service layers, Hangfire background jobs and Swagger. The client
+              is Angular 19 with Angular Material, a route guard and an HTTP interceptor that attaches the bearer
+              token.</p>
+            <p class="links"><a href="https://github.com/gn-4200/SocietyManagmentSystem" target="_blank" rel="noopener">API repository</a>
+              <a href="https://github.com/gn-4200/SMS" target="_blank" rel="noopener">Angular client repository</a></p>
+          </div>
+        </li>
+        <li>
+          <div class="work-meta">
+            <span>Jul 2026</span>
+            <span>Internship labs</span>
+          </div>
+          <div class="work-body">
+            <h4>Linux security scripts and APT detection rules</h4>
+            <p>Bash automation from the Allied Software Engineers cyber-security internship: a security-monitoring
+              scan, a Linux security audit (users, passwords, permissions, network, services) and an incident-triage
+              collector. For the APT investigation task: five Sigma detection rules mapped to MITRE ATT&amp;CK
+              techniques, YARA rules for the loader and the ransomware, the same detections as Microsoft Sentinel
+              KQL and Splunk SPL queries, and an indicator list. All of it defensive.</p>
+            <p class="links"><a href="https://github.com/gn-4200/Cyber_Security" target="_blank" rel="noopener">Repository</a></p>
+          </div>
+        </li>
+        <li>
+          <div class="work-meta">
+            <span>Academic</span>
+            <span>Machine learning</span>
+          </div>
+          <div class="work-body">
+            <h4>Digital Wellbeing</h4>
+            <p>Asks how machine learning could help a university notice students in difficulty early and connect
+              them with the support services it already provides. So far a comparison of Linear Regression,
+              Logistic Regression, Decision Tree and Random Forest models on student data.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section id="experience" class="section" aria-labelledby="experience-h">
+      <h2 id="experience-h">Experience</h2>
+      <ol class="rows">
+        <li>
+          <div class="row-when">Sep 2025 – present</div>
+          <div class="row-body">
+            <h3>Software Engineer <span class="org">Awatech Technology Solutions, Lahore</span></h3>
+            <ul>
+              <li>Develop ERP modules end-to-end: REST API endpoints in ASP.NET Core, Angular forms and dashboards, and SQL Server schema migrations.</li>
+              <li>Deliver CRUD features serving 100+ active users; optimise queries and application performance through structured debugging.</li>
+              <li>Maintain front-end dependency health: Angular package upgrades, build stability and the resolution of vulnerable dependencies.</li>
+              <li>Retained after the internship; working alongside final-year studies.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="row-when">Jul – Aug 2026</div>
+          <div class="row-body">
+            <h3>Cyber Security Intern <span class="org">Allied Software Engineers, remote · eight weeks</span></h3>
+            <ul>
+              <li>Network security, vulnerability assessment, security monitoring, threat identification, secure system configuration, access control, basic penetration-testing concepts and incident response.</li>
+              <li>Completion certificate issued August 2026.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="row-when">Jul 2024 – Aug 2025</div>
+          <div class="row-body">
+            <h3>Software Development Intern <span class="org">Awatech Technology Solutions, Lahore</span></h3>
+            <ul>
+              <li>Built CRUD applications with .NET and Angular: API endpoints, data-entry forms, validation and MS SQL Server integration; collaborative Git workflow with pull requests.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="row-when">Sep – Dec 2022</div>
+          <div class="row-body">
+            <h3>SEO Intern <span class="org">Petsaal Technologies, Lahore</span></h3>
+            <ul>
+              <li>On-page, off-page and technical SEO; keyword research; Google Analytics and Search Console; WordPress site optimisation.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== EDUCATION ===================== -->
+    <section id="education" class="section" aria-labelledby="education-h">
+      <h2 id="education-h">Education</h2>
+      <ol class="rows">
+        <li>
+          <div class="row-when">Feb 2023 – Jan 2027<br><span class="soft">expected</span></div>
+          <div class="row-body">
+            <h3>BS Computer Science <span class="org">The University of Lahore</span></h3>
+            <ul>
+              <li>CGPA 3.72/4.00 after 7 of 8 semesters; Dean's Honour List, Fall 2023.</li>
+              <li>Key coursework: Object Oriented Programming (A, 97/100), Data Structures and Algorithms (A-), Artificial Intelligence (A), Computer Networks (A), Database Systems (A-), Introduction to Machine Learning (A-).</li>
+              <li>Final-year project: Sentinel Flux Core, above.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <div class="row-when">2020 – 2022</div>
+          <div class="row-body">
+            <h3>FSc Pre-Medical <span class="org">Aspire College, Okara</span></h3>
+            <ul><li>Higher Secondary School Certificate.</li></ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section id="skills" class="section" aria-labelledby="skills-h">
+      <h2 id="skills-h">Skills</h2>
+      <dl class="skills">
+        <div><dt>Languages</dt><dd>C#, C++, Python, SQL, TypeScript</dd></div>
+        <div><dt>Web</dt><dd>.NET / ASP.NET Core, Angular, REST APIs</dd></div>
+        <div><dt>Data</dt><dd>MS SQL Server, schema migrations, NumPy, Rasterio</dd></div>
+        <div><dt>Machine learning</dt><dd>scikit-learn, PyTorch</dd></div>
+        <div><dt>Tools</dt><dd>Git / GitHub, Linux</dd></div>
+        <div><dt>Spoken</dt><dd>Urdu (native) · English (medium of instruction throughout school and university) · German (A1)</dd></div>
+      </dl>
+    </section>
+
+    <!-- ===================== CERTIFICATES ===================== -->
+    <section id="certificates" class="section" aria-labelledby="certificates-h">
+      <h2 id="certificates-h">Certificates and honours</h2>
+      <ol class="rows compact">
+        <li><div class="row-when">Aug 2026</div><div class="row-body"><h3>Cyber Security Internship Completion Certificate <span class="org">Allied Software Engineers</span></h3></div></li>
+        <li><div class="row-when">Jul 2025</div><div class="row-body"><h3>Crash Course on Python <span class="org">Google via Coursera</span></h3></div></li>
+        <li><div class="row-when">2024 – 25</div><div class="row-body"><h3>Leadership Program <span class="org">UOL Student Guild, The University of Lahore</span></h3></div></li>
+        <li><div class="row-when">Fall 2023</div><div class="row-body"><h3>Dean's Honour List <span class="org">Faculty of Information Technology, The University of Lahore</span></h3></div></li>
+      </ol>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact" class="section" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p class="contact-lede">For anything about software engineering, applied machine learning or
+        disaster-response tooling, e-mail is the quickest way to reach me.</p>
+      <p class="contact-mail"><a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></p>
+      <p class="links"><a href="https://github.com/gn-4200" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/ghulam-nabi-67b558374" target="_blank" rel="noopener">LinkedIn</a></p>
+    </section>
+
+    <footer class="colophon">
+      <p>© 2026 Ghulam Nabi. Set in IBM Plex. Plain HTML and CSS, no framework, no tracking.</p>
+    </footer>
+  </main>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
