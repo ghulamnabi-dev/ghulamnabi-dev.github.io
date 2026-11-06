@@ -6,6 +6,8 @@ One-page personal site. Plain HTML, CSS and JavaScript, no build step.
 - `styles.css` — layout and typography (single dark theme, print stylesheet)
 - `script.js` — section index in the rail, and the short cursor intro on the opening
 - `favicon.svg` — tab icon
+- `img/og.png` — link-preview image (Open Graph / Twitter card), `img/*.png` — project screenshots
+- `robots.txt`, `sitemap.xml` — search-engine hints
 - `sentinel-flux-core-report.pdf` — the final-year project report (81 pages), with student ID numbers and student e-mails redacted
 - `.nojekyll` — tells GitHub Pages to serve the files as they are
 
