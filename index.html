@@ -16,15 +16,14 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ghulam Nabi","jobTitle":"Software Engineer","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"url":"https://ghulamnabi-dev.github.io/","sameAs":["https://github.com/ghulamnabi-dev","https://www.linkedin.com/in/ghulam-nabi-67b558374"]}</script>
 <meta name="theme-color" content="#0b0b0c">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/build.css">
 <script>
-/* Decided before first paint: the short cursor intro runs once per session, never with reduced motion.
-   The timeout shows the page even if the main script never loads. */
 (function (d) {
   d.classList.add('js');
   try {
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('introSeen') !== '1') {
-      d.setAttribute('data-intro', 'pending');
-      setTimeout(function () { d.removeAttribute('data-intro'); }, 4500);
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('built') !== '1') {
+      d.classList.add('build');
+      setTimeout(function () { if (!window.__buildAlive) d.classList.remove('build'); }, 3000);
     }
   } catch (e) {}
 })(document.documentElement);
@@ -82,7 +81,7 @@
 
 
   <div id="work">
-    <div class="wrap head rv">
+    <div class="wrap head">
       <h2>Three systems, each built <em>end to end.</em></h2>
       <span class="head__n" aria-hidden="true">01 — 03</span>
       <p>Each one is mine from the database to the last screen, with tests, a README that explains the decisions, and a walkthrough you can watch in a few minutes.</p>
@@ -104,8 +103,9 @@
             <ul>
               <li>The builder explains itself</li>
               <li>Stock is a ledger, not a number</li>
-              <li>One back-office, many shops</li>
+              <li>Ten admin screens on one AG Grid wrapper</li>
             </ul>
+            <details class="hood"><summary>Under the hood</summary><ul><li><b>AG Grid on ten admin screens</b> through one wrapper: search, filters, bulk actions, CSV export, saved column layouts</li><li><b>Shared <code>core/</code> library</b> sessions, CSRF, validation and checkout, used by the storefront and the admin</li><li><b>Row locks at checkout</b> <code>SELECT … FOR UPDATE</code> in one transaction, so it cannot oversell</li><li><b>Audit log</b> every admin write stored with a before and after diff</li><li><b>Pure rule functions</b> compatibility, shipping and discounts shared by every surface</li></ul></details>
             <p class="card__stack">PHP 8, MariaDB, plain JavaScript, AG Grid, GitHub Actions</p>
             <div class="links">
               <a class="btn btn--go" href="work/techzone/">Read the case study</a>
@@ -133,6 +133,7 @@
               <li>Each account sees only its own data</li>
               <li>Tested at both ends</li>
             </ul>
+            <details class="hood"><summary>Under the hood</summary><ul><li><b>Generic Repository and Unit of Work</b> several repositories commit together or not at all</li><li><b>Hand-written JWT</b> HS256 tokens, no ASP.NET Identity</li><li><b>RFC 7807 errors</b> one exception handler for every failure path</li><li><b>WebApplicationFactory tests</b> the real API on in-memory SQLite</li><li><b>vCard 3.0 reader and writer</b> no library</li></ul></details>
             <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
             <div class="links">
               <a class="btn btn--go" href="work/phonebook/">Read the case study</a>
@@ -160,6 +161,7 @@
               <li>Admins change, viewers read</li>
               <li>Statements a household can follow</li>
             </ul>
+            <details class="hood"><summary>Under the hood</summary><ul><li><b>Controllers, services, repositories</b> every dependency behind an interface</li><li><b>Identity and JWT roles</b> <code>[Authorize(Roles)]</code> on every write</li><li><b>Hangfire</b> the scheduled job that opens each month</li><li><b>Signals and standalone components</b> Angular 19, lazy routes</li><li><b>A 60-line SVG chart</b> no charting dependency, about 114 kB gzipped</li></ul></details>
             <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQL Server, Hangfire, Angular 19, Material 3, Docker</p>
             <div class="links">
               <a class="btn btn--go" href="work/mohalla/">Read the case study</a>
@@ -172,7 +174,7 @@
     </div>
   </div>
 
-  <section class="flood rv" aria-labelledby="sf-title">
+  <section class="flood" aria-labelledby="sf-title">
     <div class="wrap flood__grid">
       <div>
         <p class="flood__kind">Final-year project, with a team of four. 2026.</p>
@@ -198,12 +200,12 @@
   </section>
 
   <section aria-labelledby="also-title">
-    <div class="wrap head rv">
+    <div class="wrap head">
       <h2 id="also-title">Also</h2>
     </div>
     <div class="wrap">
       <ul class="rows">
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">2026<br>Design stage</div>
           <div>
             <h3>Digital Well-being <small>a mental-health check-in for my university</small></h3>
@@ -213,7 +215,7 @@
           </div>
           <div class="row__aside">Python, scikit-learn, XGBoost, RAPIDS cuML</div>
         </li>
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">2026<br>Working on</div>
           <div>
             <h3>Shotwise <small>a pipeline for AI story series</small></h3>
@@ -222,7 +224,7 @@
           </div>
           <div class="row__aside"><a href="https://github.com/ghulamnabi-dev/shotwise">View the code</a><br>Python, Typer, FastAPI, ComfyUI</div>
         </li>
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">2026<br>Internship</div>
           <div>
             <h3>Detection rules and Linux security scripts</h3>
@@ -235,12 +237,12 @@
   </section>
 
   <section id="experience" aria-labelledby="exp-title">
-    <div class="wrap head rv">
+    <div class="wrap head">
       <h2 id="exp-title">Experience</h2>
     </div>
     <div class="wrap">
       <ul class="rows">
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">Sep 2025 to now</div>
           <div>
             <h3>Software engineer <small>Awatech Technology Solutions, Lahore</small></h3>
@@ -248,7 +250,7 @@
           </div>
           <div class="row__aside">.NET, Angular, SQL Server</div>
         </li>
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">Jul to Aug 2026</div>
           <div>
             <h3>Cyber security intern <small>Allied Software Engineers, remote</small></h3>
@@ -256,7 +258,7 @@
           </div>
           <div class="row__aside">Completion certificate</div>
         </li>
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">Jul 2024 to Aug 2025</div>
           <div>
             <h3>Software development intern <small>Awatech Technology Solutions, Lahore</small></h3>
@@ -264,7 +266,7 @@
           </div>
           <div class="row__aside">.NET, Angular</div>
         </li>
-        <li class="row rv">
+        <li class="row">
           <div class="row__when">Sep to Dec 2022</div>
           <div>
             <h3>SEO intern <small>Petsaal Technologies, Lahore</small></h3>
@@ -275,7 +277,7 @@
       </ul>
     </div>
 
-    <div class="wrap two rv">
+    <div class="wrap two">
       <div>
         <h3>Education</h3>
         <ul class="list">
@@ -297,23 +299,27 @@
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
-    <div class="wrap">
-      <h2 id="contact-title">Get in <em>touch.</em></h2>
-      <p>For a role, a project, or a question about any of this work, e-mail is the quickest way to reach me. I’m in Lahore, five hours ahead of UTC.</p>
-      <a class="mail" href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a>
-      <div class="links">
-        <button class="btn" type="button" data-copy="ghulamnabi7885@gmail.com">Copy the address</button>
-        <a href="https://github.com/ghulamnabi-dev">GitHub</a>
-        <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
+    <div class="wrap contact__grid">
+      <div>
+        <p class="contact__kind">Contact</p>
+        <h2 id="contact-title">Get in <em>touch.</em></h2>
+        <p>For a role, a project, or a question about any of this work, e-mail is the quickest way to reach me. I’m in Lahore, five hours ahead of UTC.</p>
       </div>
-      <footer class="foot">
-        <span>© 2026 Ghulam Nabi</span>
-        <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
-      </footer>
+      <ul class="ways">
+        <li style="--w:#d2a52a"><a href="mailto:ghulamnabi7885@gmail.com"><span>E-mail</span><b>ghulamnabi7885@gmail.com</b><i aria-hidden="true">↗</i></a><button type="button" data-copy="ghulamnabi7885@gmail.com">Copy</button></li>
+        <li style="--w:#7a73d6"><a href="https://github.com/ghulamnabi-dev"><span>GitHub</span><b>ghulamnabi-dev</b><i aria-hidden="true">↗</i></a></li>
+        <li style="--w:#3fb488"><a href="https://www.linkedin.com/in/ghulam-nabi-67b558374"><span>LinkedIn</span><b>ghulam-nabi</b><i aria-hidden="true">↗</i></a></li>
+      </ul>
     </div>
+    <footer class="wrap foot">
+      <span>© 2026 Ghulam Nabi</span>
+      <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
+    </footer>
   </section>
 </main>
 
 <script src="js/home.js" defer></script>
+<script src="js/build.js" defer></script>
+<script src="js/zoom.js" defer></script>
 </body>
 </html>

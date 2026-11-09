@@ -4,6 +4,8 @@ Run from the site root: python3 tools/build_cases.py"""
 import html
 import os
 
+import tech_notes
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMAIL = 'ghulamnabi7885@gmail.com'
 
@@ -200,6 +202,7 @@ TEMPLATE = '''<!doctype html>
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../css/site.css">
+<link rel="stylesheet" href="../../css/case.css">
 </head>
 <body>
 <a class="skip" href="#case">Skip to the case study</a>
@@ -248,10 +251,12 @@ TEMPLATE = '''<!doctype html>
 <footer class="foot">
   <div class="wrap">
     <span>© 2026 Ghulam Nabi. <a href="mailto:{email}">{email}</a></span>
-    <span>Hand-written HTML and CSS. The fonts are hosted here and nothing tracks you.</span>
+    <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
   </div>
 </footer>
 <script src="../../js/site.js" defer></script>
+<script src="../../js/case.js" defer></script>
+<script src="../../js/zoom.js" defer></script>
 </body>
 </html>
 '''
@@ -259,8 +264,10 @@ TEMPLATE = '''<!doctype html>
 for slug, p in PROJECTS.items():
     nav = '\n'.join(f'        <a href="../{s}/"{" aria-current=\"page\"" if s == slug else ""}>{PROJECTS[s]["name"]}</a>' for s in ORDER)
     facts = '\n'.join(f'        <div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in p['facts'])
+    secs = list(p['sections'])
+    secs.insert(len(secs) - 1, ('Under the hood', tech_notes.section(slug)))   # before "What I'd do differently"
     sections = '\n'.join(f'    <section aria-labelledby="s{i}"><h2 id="s{i}">{t}</h2><div class="prose">{body.strip()}</div></section>'
-                         for i, (t, body) in enumerate(p['sections']))
+                         for i, (t, body) in enumerate(secs))
     nxt = PROJECTS[p['next']]
     out = TEMPLATE.format(title=html.escape(p['title']), description=html.escape(p['description']), name=p['name'], slug=slug, key=p['key'],
                           nav=nav, lede=p['lede'], facts=facts, poster=p['poster'], youtube=p['youtube'], length=p['length'],

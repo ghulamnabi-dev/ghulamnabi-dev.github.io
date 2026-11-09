@@ -14,6 +14,7 @@
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../css/site.css">
+<link rel="stylesheet" href="../../css/case.css">
 </head>
 <body>
 <a class="skip" href="#case">Skip to the case study</a>
@@ -83,7 +84,8 @@
 <li>A_back_dated_payment_creates_the_missing_ledger_row</li>
 <li>Resident_statement_totals_the_history</li>
 </ul></div></section>
-    <section aria-labelledby="s3"><h2 id="s3">What I’d do differently</h2><div class="prose"><p>Mohalla records the current state of each payment but not who changed it and when. After building TechZone’s activity log, I would add the same audit trail here: in a society’s accounts, “who edited this?” matters as much as the number.</p>
+    <section aria-labelledby="s3"><h2 id="s3">Under the hood</h2><div class="prose"><div class="tech"><p>The technical choices, one at a time. Open any of them.</p><details open><summary><span>Layered API</span><small>Controllers, services, repositories</small></summary><p>Controllers call services, and services call repositories, with every dependency behind an interface. Controllers never touch EF Core.</p></details><details><summary><span>Roles from the token to the button</span><small>Identity, JWT</small></summary><p>ASP.NET Core Identity with a role claim in the token. <code>[Authorize(Roles = …)]</code> sits on every write, and a structural <code>*appAdminOnly</code> directive hides the same controls in the interface.</p></details><details><summary><span>Scheduled logic that heals itself</span><small>Hangfire</small></summary><p>A Hangfire job opens each month’s ledger row. If a back-dated entry arrives first, the row is created on demand.</p></details><details><summary><span>Errors land on the right field</span><small>RFC 7807</small></summary><p>The API returns RFC 7807 <code>ValidationProblemDetails</code>, and the client puts each message on the matching form field.</p></details><details><summary><span>Modern Angular</span><small>Angular 19</small></summary><p>Standalone components, signals, the new control flow, functional guards and interceptors, and lazy routes. The chart is 60 lines of SVG instead of a charting dependency, and the initial bundle is about 114 kB gzipped.</p></details><details><summary><span>Designed to be tested</span><small>SQLite in tests, CI</small></summary><p>The database provider and the background server are configurable, so the real app boots on SQLite inside the tests. Both suites run on every push, followed by a Docker build of both images.</p></details><details><summary><span>A design system as tokens</span><small>CSS</small></summary><p>One accent, flat surfaces and dense tables. Light and dark come from the same stylesheet.</p></details><p class="tech__all"><button type="button" data-all>Open all</button></p></div></div></section>
+    <section aria-labelledby="s4"><h2 id="s4">What I’d do differently</h2><div class="prose"><p>Mohalla records the current state of each payment but not who changed it and when. After building TechZone’s activity log, I would add the same audit trail here: in a society’s accounts, “who edited this?” matters as much as the number.</p>
 <p>SQL Server makes it harder to host a free demo, so I would make the database provider switchable for deployment as well as for tests, and add browser tests for the main flows.</p></div></section>
   </article>
 </main>
@@ -95,9 +97,11 @@
 <footer class="foot">
   <div class="wrap">
     <span>© 2026 Ghulam Nabi. <a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></span>
-    <span>Hand-written HTML and CSS. The fonts are hosted here and nothing tracks you.</span>
+    <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
   </div>
 </footer>
 <script src="../../js/site.js" defer></script>
+<script src="../../js/case.js" defer></script>
+<script src="../../js/zoom.js" defer></script>
 </body>
 </html>
