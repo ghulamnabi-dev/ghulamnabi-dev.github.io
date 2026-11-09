@@ -8,8 +8,8 @@
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="TechZone: case study">
 <meta property="og:description" content="How TechZone works: a storefront built around today’s rates, a PC builder that checks compatibility on the server, and a back-office with order timelines, a stock ledger and scoped partner sellers. PHP 8 and MariaDB, no framework.">
-<meta property="og:image" content="https://gn-4200.github.io/img/og-techzone.png">
-<meta property="og:url" content="https://gn-4200.github.io/work/techzone/">
+<meta property="og:image" content="https://ghulamnabi-dev.github.io/img/og-techzone.png">
+<meta property="og:url" content="https://ghulamnabi-dev.github.io/work/techzone/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -37,7 +37,7 @@
         <div><dt>My part</dt><dd>Everything: design, database, code and tests</dd></div>
         <div><dt>Built</dt><dd>2025 to 2026</dd></div>
         <div><dt>Stack</dt><dd>PHP 8, MariaDB, plain JavaScript, AG Grid</dd></div>
-        <div><dt>Code</dt><dd><a href="https://github.com/gn-4200/TechZone">gn-4200/TechZone</a></dd></div>
+        <div><dt>Code</dt><dd><a href="https://github.com/ghulamnabi-dev/TechZone">ghulamnabi-dev/TechZone</a></dd></div>
       </dl>
     </div>
   </div>
@@ -82,7 +82,7 @@
 <p>The admin has four roles: owner, manager, staff and seller. A seller signs in to the same back-office but every query is scoped to their own products and to their lines on shared orders. Another shop’s order is a 404, not a page with the buttons hidden.</p>
 <figure class="shot"><img src="../../img/techzone/28-seller-portal.webp" alt="TechZone seller portal showing only the seller’s own items on an order" loading="lazy" decoding="async"><figcaption>A seller’s view of an order that also contains another shop’s items: only their own lines are shown.</figcaption></figure>
 <h3>Security written by hand, and written down</h3>
-<p>Prepared statements everywhere with emulation switched off; one CSRF token per session compared in constant time; session IDs renewed at every sign-in; sign-in throttling per IP and per session; the same message for an unknown e-mail and a wrong password; uploads checked by their content, not their name. Each of these, and the known gaps, is listed file by file in the project’s <a href="https://github.com/gn-4200/TechZone/blob/main/docs/SECURITY.md">security notes</a>.</p></div></section>
+<p>Prepared statements everywhere with emulation switched off; one CSRF token per session compared in constant time; session IDs renewed at every sign-in; sign-in throttling per IP and per session; the same message for an unknown e-mail and a wrong password; uploads checked by their content, not their name. Each of these, and the known gaps, is listed file by file in the project’s <a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">security notes</a>.</p></div></section>
     <section aria-labelledby="s3"><h2 id="s3">What I’d do differently</h2><div class="prose"><p>The automated checks are end to end: on every push, a CI job boots the real stack, seeds it and calls the real endpoints, including the security checks. There are no unit tests for the PHP functions themselves, and the builder rules are exactly the kind of code that should have them. That is the first thing I would add, followed by browser tests for checkout and the order flow.</p>
 <p>For a real shop I would build on a framework such as Laravel. Writing sessions, CSRF and routing myself taught me what a framework does and why, which was the point, but I would not ask a client to maintain my versions of them.</p>
 <p>Payments are a placeholder, the prices are demo data, and the content security policy is still in report-only mode until the last inline scripts move into files.</p></div></section>

@@ -1,6 +1,6 @@
-# gn-4200.github.io
+# ghulamnabi-dev.github.io
 
-The portfolio of Ghulam Nabi, software engineer in Lahore: **https://gn-4200.github.io**
+The portfolio of Ghulam Nabi, software engineer in Lahore: **https://ghulamnabi-dev.github.io**
 
 Three projects, each with a case study and a walkthrough: TechZone (PHP 8, MariaDB), PhoneBook (ASP.NET Core 9, Angular 19) and Mohalla (ASP.NET Core 9, Angular 19, SQL Server).
 

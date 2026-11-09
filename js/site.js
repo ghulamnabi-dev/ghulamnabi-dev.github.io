@@ -1,4 +1,4 @@
-/* gn-4200.github.io: three small behaviours, no dependencies.
+/* ghulamnabi-dev.github.io: three small behaviours, no dependencies.
  * 1. The hero "bench" plays the three products' loops in turn; the tabs show progress and switch on click.
  * 2. Loops elsewhere play only while on screen (and never by themselves under reduced motion).
  * 3. Walkthroughs load YouTube (privacy-enhanced, youtube-nocookie.com) only when someone presses play.

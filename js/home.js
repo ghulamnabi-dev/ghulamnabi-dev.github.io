@@ -1,4 +1,4 @@
-/* gn-4200.github.io home page. No dependencies.
+/* ghulamnabi-dev.github.io home page. No dependencies.
  * 1. Cursor intro: three cursors in the projects' colours place the opening (once per session).
  * 2. The hero "bench" plays the three products' loops in turn.
  * 3. Loops play only while on screen; walkthroughs load YouTube (no-cookie) only on request.
