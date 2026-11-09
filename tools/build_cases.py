@@ -191,7 +191,7 @@ TEMPLATE = '''<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{description}">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <meta property="og:title" content="{name}: case study">
 <meta property="og:description" content="{description}">
 <meta property="og:image" content="https://gn-4200.github.io/img/og-{slug}.png">
