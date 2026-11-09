@@ -5,7 +5,7 @@ import html
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EMAIL = 'ghulamnabi.dev@gmail.com'
+EMAIL = 'ghulamnabi7885@gmail.com'
 
 
 def fig(src, caption, alt, cls='shot'):
