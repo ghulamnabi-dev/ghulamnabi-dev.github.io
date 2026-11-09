@@ -11,17 +11,16 @@
   var AGENTS = [{ n: 'Layout', c: '#5b8fd0' }, { n: 'Type', c: '#d2a52a' }, { n: 'Colour', c: '#3fb488' }];
   var building = root.classList.contains('build');
 
-  /* tool chrome in the top bar */
-  var bar = $('.top .wrap'), nav = $('.top nav');
-  var file = document.createElement('div'); file.className = 'b-file';
-  file.innerHTML = '<span>portfolio / home</span><span class="b-chip' + (building ? '' : ' done') + '">' + (building ? 'Building' : 'Published') + '</span>';
-  bar.insertBefore(file, nav);
-  var team = document.createElement('span'); team.className = 'b-team';
-  team.innerHTML = AGENTS.map(function (a) { return '<i style="--c:' + a.c + '" title="' + a.n + '">' + a.n[0] + '</i>'; }).join('');
+  /* top bar: a "Building" note while the cursors work, and a way to watch it again */
+  var bar = $('.top .wrap'), nav = $('.top nav'), chip = null;
+  if (building) {
+    var file = document.createElement('div'); file.className = 'b-file';
+    file.innerHTML = '<span class="b-chip">Building</span>';
+    bar.insertBefore(file, nav); chip = file.firstChild;
+  }
   var replay = document.createElement('button'); replay.type = 'button'; replay.className = 'b-replay'; replay.textContent = 'Replay build';
   replay.addEventListener('click', function () { try { sessionStorage.removeItem('built'); } catch (e) {} window.scrollTo(0, 0); location.reload(); });
-  nav.insertBefore(team, nav.firstChild); nav.appendChild(replay);
-  var chip = $('.b-chip');
+  nav.appendChild(replay);
   if (!building) return;
 
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -120,7 +119,7 @@
     $$('.hero .it').forEach(function (el) { el.classList.add('b-on'); clean(el); });
     evs.forEach(function (e) { window.removeEventListener(e, bail); });
     skip = false; ag.forEach(function (a) { a.box.classList.remove('on'); rest(a); });
-    chip.textContent = 'Published'; chip.classList.add('done');
+    chip.classList.add('gone'); setTimeout(function () { chip.parentNode.remove(); }, 450);
     try { sessionStorage.setItem('built', '1'); } catch (e) {}
   }
 
