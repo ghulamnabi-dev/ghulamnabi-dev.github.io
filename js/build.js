@@ -18,7 +18,7 @@
     file.innerHTML = '<span class="b-chip">Building</span>';
     bar.insertBefore(file, nav); chip = file.firstChild;
   }
-  var replay = document.createElement('button'); replay.type = 'button'; replay.className = 'b-replay'; replay.textContent = 'Replay build';
+  var replay = document.createElement('button'); replay.type = 'button'; replay.className = 'b-replay'; replay.innerHTML = 'Replay<span> build</span>';
   replay.addEventListener('click', function () { try { sessionStorage.removeItem('built'); } catch (e) {} window.scrollTo(0, 0); location.reload(); });
   nav.appendChild(replay);
   if (!building) return;
@@ -112,7 +112,7 @@
     await sleep(350);
     await build(T, h1, 'type', 'Name');
     await Promise.all([
-      (async function () { await build(T, $('.lede'), 'wipe', 'Statement'); await build(T, $('.facts'), 'wipe', 'Facts'); })(),
+      (async function () { await build(T, $('.lede'), 'wipe', 'Statement'); await build(T, $('.hero .fold') || $('.facts'), 'wipe', 'Facts'); })(),
       (async function () { await sleep(120); await build(L, $('.bench'), 'drop', 'Preview'); })(),
       (async function () { await sleep(700); await build(C, $('.hero .links'), 'drop', 'Actions'); })()
     ]);

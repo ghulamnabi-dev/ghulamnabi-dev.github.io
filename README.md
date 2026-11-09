@@ -13,6 +13,7 @@ Plain HTML, CSS and a little JavaScript, served by GitHub Pages. No framework an
 - `css/home.css` + `css/build.css`, `js/home.js` + `js/build.js`: the home page. `build` holds the opening where three cursors assemble the page, and the current sizes and colours.
 - `css/site.css` + `css/case.css`, `js/site.js` + `js/case.js`: the case studies, with the contents rail and reading progress.
 - `js/zoom.js`: click a screenshot or recording to see it full size.
+- `js/fold.js`: on phones, longer detail sits behind a small button, so each block shows the essentials first.
 - `tools/tech_notes.py`: the "Under the hood" notes that the generator adds to each case study.
 - `media/`: short silent loops (WebM and MP4, with poster images) recorded from the running apps.
 - `fonts/`: Schibsted Grotesk and Source Serif 4, hosted here rather than loaded from Google.
