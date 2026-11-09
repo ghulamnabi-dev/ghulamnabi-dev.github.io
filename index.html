@@ -80,12 +80,6 @@
     </div>
   </section>
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__run">
-      <span>Stock is a ledger, not a number</span><span>Imports are all or nothing</span><span>The ledger closes itself</span><span>Parts that don’t fit say why</span><span>Each account sees only its own data</span><span>Admins change, viewers read</span>
-      <span aria-hidden="true">Stock is a ledger, not a number</span><span aria-hidden="true">Imports are all or nothing</span><span aria-hidden="true">The ledger closes itself</span><span aria-hidden="true">Parts that don’t fit say why</span><span aria-hidden="true">Each account sees only its own data</span><span aria-hidden="true">Admins change, viewers read</span>
-    </div>
-  </div>
 
   <div id="work">
     <div class="wrap head rv">
@@ -108,9 +102,9 @@
           <div>
             <p class="card__lede">A storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office where every order carries its own history.</p>
             <ul>
-              <li><strong>The builder explains itself</strong><span>Socket, memory type, case size, cooler height and power are checked on the server. Parts that don’t fit are listed with the reason.</span></li>
-              <li><strong>Stock is a ledger, not a number</strong><span>Every change to stock is a row with a reason and a person, so any count can be explained.</span></li>
-              <li><strong>One back-office, many shops</strong><span>Partner sellers use the same admin and see only their own products and orders. The queries enforce it, not just the menus.</span></li>
+              <li>The builder explains itself</li>
+              <li>Stock is a ledger, not a number</li>
+              <li>One back-office, many shops</li>
             </ul>
             <p class="card__stack">PHP 8, MariaDB, plain JavaScript, AG Grid, GitHub Actions</p>
             <div class="links">
@@ -135,9 +129,9 @@
           <div>
             <p class="card__lede">Contacts with several numbers each, groups, favourites, search by any part of a number, and vCard import and export.</p>
             <ul>
-              <li><strong>Imports are all or nothing</strong><span>A vCard file is imported in one transaction through a unit of work. One bad card and nothing is written, and every problem comes back with its card number.</span></li>
-              <li><strong>Each account sees only its own data</strong><span>Every query is scoped to the signed-in user, and an integration test tries to read and change someone else’s contact.</span></li>
-              <li><strong>Tested at both ends</strong><span>36 API tests, unit and integration over real HTTP, and 109 client specs run on every push.</span></li>
+              <li>Imports are all or nothing</li>
+              <li>Each account sees only its own data</li>
+              <li>Tested at both ends</li>
             </ul>
             <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
             <div class="links">
@@ -162,9 +156,9 @@
           <div>
             <p class="card__lede">Residents, monthly contributions, expenses, and a ledger that closes each month by itself and carries the balance forward.</p>
             <ul>
-              <li><strong>The ledger closes itself</strong><span>A scheduled job opens each month on the 1st and rolls the balance forward, across the year boundary too. A back-dated payment creates its month if it is missing.</span></li>
-              <li><strong>Admins change, viewers read</strong><span>The role travels in the sign-in token. The API refuses writes from viewers, and the interface hides every control they can’t use.</span></li>
-              <li><strong>Statements a household can follow</strong><span>Each resident’s page shows what was due, paid and short, month by month, with a running balance.</span></li>
+              <li>The ledger closes itself</li>
+              <li>Admins change, viewers read</li>
+              <li>Statements a household can follow</li>
             </ul>
             <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQL Server, Hangfire, Angular 19, Material 3, Docker</p>
             <div class="links">
@@ -178,25 +172,37 @@
     </div>
   </div>
 
+  <section class="flood rv" aria-labelledby="sf-title">
+    <div class="wrap flood__grid">
+      <div>
+        <p class="flood__kind">Final-year project, with a team of four. 2026.</p>
+        <h2 id="sf-title">Sentinel Flux Core</h2>
+        <p class="flood__lede">A Python toolkit that maps floods from Sentinel-1 radar imagery, which sees through the monsoon clouds that blind optical satellites, and reports what the water is likely to reach.</p>
+        <p>Benchmarked on the Pakistan 2022 floods, holding out whole events rather than random tiles. I coordinated the team, wrote the 81-page report and designed the command-line tool that runs the pipeline from data checks to the review dashboard.</p>
+        <div class="nums">
+          <div><b>0.874</b><span>macro F1 on held-out flood events</span></div>
+          <div><b>186</b><span>automated tests passing</span></div>
+        </div>
+        <div class="links"><a class="btn btn--go" href="sentinel-flux-core-report.pdf">Read the report</a><span class="flood__meta">PDF, 81 pages, 4 MB</span></div>
+      </div>
+      <figure class="radar" data-radar>
+        <canvas width="640" height="420" role="img" aria-label="Illustration: a river in a radar image before a flood, after it, and the area that changed"></canvas>
+        <div class="radar__bar" role="group" aria-label="Choose a view">
+          <button type="button" aria-pressed="true">Before</button>
+          <button type="button" aria-pressed="false">After</button>
+          <button type="button" aria-pressed="false">What changed</button>
+        </div>
+        <figcaption>An illustration drawn in your browser, not project data. In radar imagery open water reads dark, so a flood shows up as land that went dark between two passes.</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section aria-labelledby="also-title">
     <div class="wrap head rv">
-      <h2 id="also-title">Also, <em>beyond the web.</em></h2>
+      <h2 id="also-title">Also</h2>
     </div>
     <div class="wrap">
       <ul class="rows">
-        <li class="row rv">
-          <div class="row__when">2026<br>Final-year project</div>
-          <div>
-            <h3>Sentinel Flux Core <small>with a team of four</small></h3>
-            <p>A Python toolkit that maps floods from Sentinel-1 radar imagery, which sees through the monsoon clouds that blind optical satellites, and reports what the water is likely to reach. Benchmarked on the Pakistan 2022 floods, holding out whole events rather than random tiles.</p>
-            <p>I coordinated the team, wrote the 81-page report and designed the command-line tool that runs the pipeline from data checks to the review dashboard.</p>
-            <div class="nums">
-              <div><b>0.874</b><span>macro F1 on held-out flood events</span></div>
-              <div><b>186</b><span>automated tests passing</span></div>
-            </div>
-          </div>
-          <div class="row__aside"><a href="sentinel-flux-core-report.pdf">Read the report</a><br>PDF, 81 pages, 4 MB</div>
-        </li>
         <li class="row rv">
           <div class="row__when">2026<br>Internship</div>
           <div>

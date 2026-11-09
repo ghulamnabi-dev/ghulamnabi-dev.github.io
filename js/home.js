@@ -53,8 +53,14 @@
         }, 120 + n * 340);
       });
       later(function () {
-        curs.forEach(function (c, i) { c.style.setProperty('--x', (W * (.25 + .25 * i)) + 'px'); c.style.setProperty('--y', (H + 60) + 'px'); });
-        later(finish, 420);
+        /* each cursor comes to rest on its own project's tab */
+        var tabs = $$('.bench__tab');
+        curs.forEach(function (c, i) {
+          var r = tabs[i] ? tabs[i].getBoundingClientRect() : null, ok = r && r.top < H - 30;
+          c.style.setProperty('--x', (ok ? r.left + Math.min(r.width - 90, 130) : W * (.25 + .25 * i)) + 'px');
+          c.style.setProperty('--y', (ok ? r.top + 2 : H + 60) + 'px');
+        });
+        later(finish, 800);
       }, 120 + items.length * 340 + 420);
     });
   })();
@@ -70,6 +76,7 @@
       var tab = tabs[current], clip = tab.getAttribute('data-clip');
       tabs.forEach(function (t, n) { t.setAttribute('aria-selected', n === current ? 'true' : 'false'); t.style.removeProperty('--progress'); });
       bench.setAttribute('data-project', tab.getAttribute('data-project'));
+      root.style.setProperty('--dot', { tz: '#ffd400', pb: '#7d74ff', mo: '#3ddc97' }[tab.getAttribute('data-project')]);
       video.setAttribute('aria-label', tab.getAttribute('data-label'));
       video.poster = clip + '-poster.jpg';
       video.innerHTML = '<source src="' + clip + '.webm" type="video/webm"><source src="' + clip + '.mp4" type="video/mp4">';
@@ -135,22 +142,36 @@
     $$('.rv').forEach(function (el) { seen.observe(el); });
   } else $$('.rv').forEach(function (el) { el.classList.add('in'); });
 
-  /* 4c. pointer: dot grid in the hero, tilt on the project recordings */
-  if (fine && !reduce) {
-    var hero = document.querySelector('.hero');
-    if (hero) hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect();
-      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px'); hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-    $$('.card figure').forEach(function (fig) {
-      fig.addEventListener('pointermove', function (e) {
-        var r = fig.getBoundingClientRect();
-        fig.style.setProperty('--ry', (((e.clientX - r.left) / r.width - .5) * 5).toFixed(2) + 'deg');
-        fig.style.setProperty('--rx', ((.5 - (e.clientY - r.top) / r.height) * 4).toFixed(2) + 'deg');
-      });
-      fig.addEventListener('pointerleave', function () { fig.style.removeProperty('--rx'); fig.style.removeProperty('--ry'); });
-    });
-  }
+  /* 4c. radar illustration for the flood project: speckled backscatter, a river, and the land that went dark */
+  (function () {
+    var fig = document.querySelector('[data-radar]'); if (!fig) return;
+    var cv = fig.querySelector('canvas'), ctx = cv.getContext('2d'); if (!ctx) return;
+    var W = cv.width, H = cv.height, btns = $$('button', fig), seed = 7, auto = !reduce, mode = 0;
+    var rnd = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    var frames = [0, 1, 2].map(function () { return ctx.createImageData(W, H); });
+    var put = function (f, i, r, g, b) { f.data[i] = r; f.data[i + 1] = g; f.data[i + 2] = b; f.data[i + 3] = 255; };
+    for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) {
+      var yc = H * (.5 + .17 * Math.sin(x * .011 + .6) + .06 * Math.sin(x * .034)), d = Math.abs(y - yc);
+      var river = d < 5 + 2 * Math.sin(x * .05);
+      var reach = 16 + 46 * (.5 + .5 * Math.sin(x * .017 + 1.3)) + 14 * Math.sin(x * .061 + y * .04) + 7 * Math.sin(x * .21 + y * .17) * Math.sin(y * .29 - x * .05) + 5 * rnd();
+      var flood = d < reach && (y > yc || d < reach * .45);
+      var u = x * .93 + y * .37, v = y * .93 - x * .37, cu = Math.floor(u / (38 + 22 * Math.sin(Math.floor(v / 61) * 1.9))), cv2 = Math.floor(v / 61);
+      var field = .47 + .17 * Math.sin(cu * 12.9898 + cv2 * 78.233) * Math.cos(cu * 4.1 - cv2 * 2.3) + .05 * Math.sin(x * .09) * Math.sin(y * .07);
+      var sp = .45 - .5 * Math.log(1 - rnd() * .86), i = 4 * (y * W + x);
+      var gb = Math.min(255, (river ? .05 : field) * sp * 300), ga = Math.min(255, (river || flood ? .05 : field) * sp * 300);
+      put(frames[0], i, gb, gb, gb); put(frames[1], i, ga, ga, ga);
+      if (flood && !river) put(frames[2], i, 61 + ga, 190 + ga * .3, 151); else put(frames[2], i, ga * .5, ga * .5, ga * .5);
+    }
+    var show = function (m) {
+      mode = m; ctx.putImageData(frames[m], 0, 0);
+      btns.forEach(function (b, n) { b.setAttribute('aria-pressed', n === m ? 'true' : 'false'); });
+    };
+    btns.forEach(function (b, n) { b.addEventListener('click', function () { auto = false; show(n); }); });
+    show(reduce ? 2 : 0);
+    var on = !io;
+    if (io) new IntersectionObserver(function (es) { on = es[0].isIntersecting; }, { threshold: .4 }).observe(cv);
+    setInterval(function () { if (auto && on) show((mode + 1) % 3); }, 2200);
+  })();
 
   /* 4d. scroll progress, Lahore clock, copy address */
   var bar = document.querySelector('.progress'), top = document.querySelector('.top'), tick = false, lastY = 0;
