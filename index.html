@@ -1,350 +1,264 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Ghulam Nabi</title>
-  <meta name="description" content="Ghulam Nabi — Software Engineer at Awatech Technology Solutions (ASP.NET Core, Angular) and final-year BS Computer Science student at The University of Lahore. Final-year project: Sentinel Flux Core, a Sentinel-1 SAR flood-mapping toolkit.">
-  <meta property="og:title" content="Ghulam Nabi — Software Engineer">
-  <meta property="og:description" content="Software Engineer (ASP.NET Core, Angular) and final-year Computer Science student. Final-year project: Sentinel Flux Core, a Sentinel-1 SAR flood-mapping toolkit for relief teams.">
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://gn-4200.github.io/">
-  <meta property="og:image" content="https://gn-4200.github.io/img/og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://gn-4200.github.io/">
-  <meta name="theme-color" content="#141619">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script>
-    // Decided before first paint so the opening never flashes: the short
-    // cursor intro runs once per browser session, never with reduced motion.
-    (function () {
-      try {
-        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var seen = sessionStorage.getItem('introSeen') === '1';
-        if (!reduced && !seen) document.documentElement.setAttribute('data-intro', 'pending');
-      } catch (e) { /* storage blocked: no intro */ }
-    })();
-  </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghulam Nabi, software engineer</title>
+<meta name="description" content="Ghulam Nabi builds complete web systems in .NET, Angular and PHP: the API, the interface, the tests. Three projects with walkthroughs and case studies.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Ghulam Nabi, software engineer">
+<meta property="og:description" content="Three systems built end to end, with walkthroughs and case studies: TechZone, PhoneBook and Mohalla.">
+<meta property="og:image" content="https://gn-4200.github.io/img/og.png">
+<meta property="og:url" content="https://gn-4200.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ghulam Nabi","jobTitle":"Software Engineer","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"url":"https://gn-4200.github.io/","sameAs":["https://github.com/gn-4200","https://www.linkedin.com/in/ghulam-nabi-67b558374"]}</script>
 </head>
 <body>
+<a class="skip" href="#work">Skip to the work</a>
 
-<a class="skip" href="#work">Skip to content</a>
-
-<div class="page">
-
-  <!-- ===================== RAIL ===================== -->
-  <aside class="rail">
-    <a class="mark" href="#top" aria-label="Ghulam Nabi, top of page">Ghulam Nabi</a>
-    <p class="rail-role">Software Engineer<br><span>Lahore, Pakistan</span></p>
-
-    <nav class="rail-nav" aria-label="Sections">
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="./" aria-label="Ghulam Nabi, home"><span class="mark__glyph" aria-hidden="true">GN</span><span class="mark__name">Ghulam Nabi</span></a>
+    <nav aria-label="Sections">
       <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#certificates">Certificates</a>
+      <a class="opt" href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <ul class="rail-links">
-      <li><a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></li>
-      <li><a href="https://github.com/gn-4200" target="_blank" rel="noopener">github.com/gn-4200</a></li>
-      <li><a href="https://linkedin.com/in/ghulam-nabi-67b558374" target="_blank" rel="noopener">linkedin.com/in/ghulam-nabi-67b558374</a></li>
-      <li><a href="sentinel-flux-core-report.pdf" target="_blank" rel="noopener">FYP report (PDF, 81 pp.)</a></li>
-    </ul>
-
-    <p class="rail-foot">Updated 7 Nov 2026</p>
-  </aside>
-
-  <!-- ===================== MAIN ===================== -->
-  <main id="top" class="main">
-
-    <!-- Opening -->
-    <header class="open">
-      <h1 class="intro-item" data-intro="1">Ghulam Nabi</h1>
-      <p class="statement intro-item" data-intro="2">
-        I build software that has to keep working under real use: ERP modules used by more than
-        100 people and, in a team of four, a flood-mapping toolkit meant for relief teams.
-      </p>
-
-      <dl class="manifest intro-item" data-intro="3" aria-label="Profile at a glance">
-        <div><dt>role</dt><dd>Software Engineer · Awatech Technology Solutions, Lahore · since Sep 2025</dd></div>
-        <div><dt>degree</dt><dd>BS Computer Science · The University of Lahore · CGPA 3.72/4.00 · completion expected January 2027</dd></div>
-        <div><dt>project</dt><dd>Sentinel Flux Core · Sentinel-1 SAR flood mapping · FYP-I completed, FYP-II in progress</dd></div>
-        <div><dt>next</dt><dd>Master's degree in Germany · applying for 2027 intakes</dd></div>
-      </dl>
-
-      <p class="open-actions intro-item" data-intro="4">
-        <a class="button" href="sentinel-flux-core-report.pdf" target="_blank" rel="noopener">Read the project report</a>
-        <a class="textlink" href="#work">See the work</a>
-      </p>
-      <div class="cursor-layer" aria-hidden="true"></div>
-    </header>
-
-    <!-- ===================== WORK ===================== -->
-    <section id="work" class="section" aria-labelledby="work-h">
-      <h2 id="work-h">Work</h2>
-
-      <!-- Case study: Sentinel Flux Core -->
-      <article class="case">
-        <header class="case-head">
-          <p class="eyebrow">Final Year Project · The University of Lahore · team of four · 2026 – present</p>
-          <h3>Sentinel Flux Core: Modular SAR Response Toolkit</h3>
-          <p class="case-sub">A reproducible Python toolkit that maps floods from Sentinel-1 radar imagery and
-            reports their likely impact, built as decision support for relief teams and benchmarked on the
-            Pakistan 2022 floods.</p>
-        </header>
-
-        <div class="case-grid">
-          <div class="case-text">
-            <h4>Problem</h4>
-            <p>During Pakistan's monsoon floods, cloud cover blocks optical satellite imagery exactly when
-              relief teams need it. Published reference flood products cover different footprints, and raw
-              pixel maps are not tied to evidence a decision-maker can act on. Flood mapping is therefore slow
-              and uncertain.</p>
-
-            <h4>Approach</h4>
-            <p>Sentinel-1 scenes (VV/VH) are discovered through the Copernicus Data Space STAC/OData APIs and
-              described in event YAML manifests that carry full provenance: orbit, processor, DEM, CRS and
-              resolution. The detector combines temporal change evidence with optional terrain penalties,
-              permanent-water exclusion and connected-component clean-up; transparent physics baselines stay
-              selectable for comparison. A scikit-learn feature classifier is trained under event holdout and
-              writes flood-probability rasters. Evaluation compares products with Copernicus GFM and CEMS
-              reference masks, holding out whole flood events rather than random tiles so that real
-              generalisation failures become visible. An impact module overlays built-up area, transport,
-              facilities and land use, and a Streamlit/Leafmap dashboard supports human review before any
-              message is approved.</p>
-
-            <h4>My part</h4>
-            <p>Team coordinator and documentation lead. I authored the complete technical documentation
-              (requirements, use-case analysis, design, methodology and evaluation; 81 pages) and designed the
-              Typer/Rich command-line interface that drives the ingestion, validation, detection, benchmarking,
-              calibration, impact-report and dashboard workflows.</p>
-
-            <h4>Limits</h4>
-            <p>The validated path is observational flood mapping, not prediction. Forecasting, data-fusion and
-              severity modules exist in the code base but remain experimental and are kept separate from the
-              operational evidence. Measured accuracy depends on reference quality, SAR preprocessing, valid-mask
-              footprints and how representative the areas of interest are. The system is designed as
-              uncertainty-aware, human-reviewed decision support rather than an automated warning system.</p>
-          </div>
-
-          <aside class="case-side">
-            <h4>Evaluation, as reported</h4>
-            <table class="results">
-              <caption>Macro F1 against reference masks, whole events held out (Tables 13–14 of the report)</caption>
-              <thead>
-                <tr><th scope="col">Benchmark</th><th scope="col" class="num">Macro F1</th><th scope="col" class="num">Worst event</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Clean held-out set, 14 Pakistan 2022 areas</td><td class="num">0.874</td><td class="num">0.803</td></tr>
-                <tr><td>Harder audit set, 17 areas</td><td class="num">0.854</td><td class="num">0.674</td></tr>
-                <tr><td>CEMS-only subset</td><td class="num">0.743</td><td class="num">—</td></tr>
-                <tr><td>UNOSAT / VIIRS comparisons (3)</td><td class="num">0.802</td><td class="num">—</td></tr>
-              </tbody>
-            </table>
-            <p class="side-note">The weakest audit event (EMSR631 AOI01) is reported openly and flagged for a reference and
-              preprocessing audit. The implemented ingestion, validation, detection, benchmark, calibration,
-              impact and dashboard code is covered by an automated test suite: 186 pytest tests passing.</p>
-
-            <h4>Stack</h4>
-            <p class="stack">Python 3.10+ · Typer · Rich · NumPy · SciPy · Rasterio · GeoTIFF/COG · scikit-learn ·
-              PyTorch · PyYAML · Streamlit · Leafmap · pytest · Ruff · Sentinel-1 SAR · Copernicus Data Space ·
-              ESA SNAP GPT · CEMS/GFM reference products</p>
-          </aside>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-title"><span>Ghulam</span> <span>Nabi</span></h1>
+        <p class="hero__lede">I build complete web systems: the API, the interface, the tests, and the unglamorous parts that keep records right when real people use them. Mostly in .NET and Angular.</p>
+        <dl class="facts">
+          <dt>Now</dt>
+          <dd><strong>Software engineer at Awatech Technology Solutions</strong>, Lahore, building ERP modules that more than 100 people use every day.</dd>
+          <dt>Studying</dt>
+          <dd><strong>BS Computer Science</strong>, University of Lahore. CGPA 3.72, finishing in January 2027.</dd>
+          <dt>Next</dt>
+          <dd>A master’s degree in Germany, from 2027.</dd>
+        </dl>
+        <div class="links">
+          <a class="btn" href="#work">See the work</a>
+          <a href="mailto:ghulamnabi.dev@gmail.com">E-mail</a>
+          <a href="https://github.com/gn-4200">GitHub</a>
+          <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
         </div>
+      </div>
 
-        <div class="pipeline-wrap">
-          <h4>Operational workflow driven by the <code>sarcd</code> command-line interface</h4>
-          <ol class="pipeline">
-            <li><code>sarcd doctor</code><span>Checks Python 3.10+, rasterio, SNAP GPT, credentials and the data root.</span></li>
-            <li><code>sarcd validate-data --event EVENT.yaml</code><span>Validates the event manifest: paths, CRS, transform, nodata, dates, masks.</span></li>
-            <li><code>sarcd detect-flood --event EVENT.yaml</code><span>Writes probability, binary mask and uncertainty rasters.</span></li>
-            <li><code>sarcd benchmark-suite --events SUITE.yaml</code><span>Multi-event benchmark: F1, IoU, AP, ROC-AUC, Brier, ECE; gate on held-out macro F1.</span></li>
-            <li><code>sarcd fit-probability-calibration</code><span>Fits the calibration mapping; reports Brier score, ECE and reliability bins.</span></li>
-            <li><code>sarcd impact-report</code><span>Intersects flood masks with exposure layers: built-up area, transport, facilities and land use.</span></li>
-            <li><code>sarcd dashboard-manifest</code><span>Builds the dashboard manifest from real outputs for analyst review in Streamlit + Leafmap.</span></li>
-          </ol>
-          <p class="side-note">Seven of the nine commands in Table 9, in the order of the operational workflow (Figure 7.1).</p>
+      <figure class="bench" data-bench data-project="tz">
+        <div class="bench__frame">
+          <video muted playsinline preload="metadata" aria-label="TechZone: the PC builder lists the boards that don’t fit, with the reason"></video>
         </div>
+        <div class="bench__bar" role="tablist" aria-label="Choose a project to preview">
+          <button class="bench__tab" role="tab" aria-selected="true" data-project="tz" data-clip="media/tz-loop-builder" data-label="TechZone: the PC builder lists the boards that don’t fit, with the reason">TechZone<small>Parts that don’t fit say why</small></button>
+          <button class="bench__tab" role="tab" aria-selected="false" data-project="pb" data-clip="media/pb-loop-import" data-label="PhoneBook: a vCard file with errors is refused as a whole, with every problem listed">PhoneBook<small>Imports are all or nothing</small></button>
+          <button class="bench__tab" role="tab" aria-selected="false" data-project="mo" data-clip="media/mo-loop-statement" data-label="Mohalla: a resident’s statement, then recording a payment">Mohalla<small>A household’s statement</small></button>
+        </div>
+      </figure>
+    </div>
+  </section>
 
-        <p class="case-links">
-          <a class="button" href="sentinel-flux-core-report.pdf" target="_blank" rel="noopener">Full report (PDF, 81 pages)</a>
-        </p>
-      </article>
+  <div id="work">
+    <div class="wrap head">
+      <h2>Three systems, each built end to end.</h2>
+      <p>Each one is mine from the database to the last screen, with tests, a README that explains the decisions, and a walkthrough you can watch in a few minutes.</p>
+    </div>
 
-      <!-- Other work -->
-      <h3 class="sub-h">Other work</h3>
-      <ul class="worklist">
-        <li>
-          <div class="work-meta">
-            <span>2025</span>
-            <span>Full-stack project</span>
+    <section class="band band--tz" aria-labelledby="tz-title">
+      <div class="wrap">
+        <figure class="band__media" id="tz-player">
+          <video data-loop muted loop playsinline preload="none" poster="media/tz-loop-order-poster.jpg" aria-label="TechZone back-office: an order is confirmed, paid, fulfilled and shipped">
+            <source src="media/tz-loop-order.webm" type="video/webm"><source src="media/tz-loop-order.mp4" type="video/mp4">
+          </video>
+          <figcaption>An order moves from confirmed to shipped. Each step lands on its timeline with who did it.</figcaption>
+        </figure>
+        <div>
+          <p class="band__kind">PC-parts marketplace for Lahore. PHP 8 and MariaDB, no framework.</p>
+          <h3 id="tz-title"><span class="band__mark" aria-hidden="true"></span>TechZone</h3>
+          <p class="band__lede">A storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office where every order carries its own history.</p>
+          <ul>
+            <li><strong>The builder explains itself</strong><span>Socket, memory type, case size, cooler height and power are checked on the server. Parts that don’t fit are listed with the reason.</span></li>
+            <li><strong>Stock is a ledger, not a number</strong><span>Every change to stock is a row with a reason and a person, so any count can be explained.</span></li>
+            <li><strong>One back-office, many shops</strong><span>Partner sellers use the same admin and see only their own products and orders. The queries enforce it, not just the menus.</span></li>
+          </ul>
+          <p class="band__stack">PHP 8, MariaDB, plain JavaScript, AG Grid, GitHub Actions</p>
+          <div class="band__links">
+            <a class="btn" href="work/techzone/">Read the case study</a>
+            <button class="play" type="button" data-youtube="zRxEUyW1uIs" data-target="tz-player" data-title="TechZone walkthrough">Watch the walkthrough (2:48)</button>
+            <a href="https://github.com/gn-4200/TechZone">View the code</a>
           </div>
-          <div class="work-body">
-            <h4>Society Management System</h4>
-            <a class="shot" href="https://github.com/gn-4200/SMS" target="_blank" rel="noopener">
-              <img src="img/society-management-system.png" width="1200" height="750" loading="lazy" alt="Society Management System dashboard: KPI cards, a 12-month collected-versus-spent chart and recent activity, dark theme">
-            </a>
-            <p>Residents, monthly funds, expense categories, monthly expenses and monthly summaries for a housing
-              society, with a dashboard that shows totals and opening and closing balances. The API is ASP.NET Core
-              on .NET 9 with ASP.NET Core Identity issuing JWT bearer tokens at sign-in, Entity Framework Core 9 on SQL
-              Server with migrations, repository and service layers, Hangfire background jobs and Swagger. The client
-              is Angular 19 with Angular Material, a route guard and an HTTP interceptor that attaches the bearer
-              token.</p>
-            <p class="links"><a href="https://github.com/gn-4200/SocietyManagmentSystem" target="_blank" rel="noopener">API repository</a>
-              <a href="https://github.com/gn-4200/SMS" target="_blank" rel="noopener">Angular client repository</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--pb" aria-labelledby="pb-title">
+      <div class="wrap">
+        <figure class="band__media" id="pb-player">
+          <video data-loop muted loop playsinline preload="none" poster="media/pb-loop-search-poster.jpg" aria-label="PhoneBook: typing part of a number narrows the list and opens a contact">
+            <source src="media/pb-loop-search.webm" type="video/webm"><source src="media/pb-loop-search.mp4" type="video/mp4">
+          </video>
+          <figcaption>Typing “+92 30” finds every number that contains it, however it was written.</figcaption>
+        </figure>
+        <div>
+          <p class="band__kind">Contacts app. ASP.NET Core 9 API and Angular 19 client.</p>
+          <h3 id="pb-title"><span class="band__mark" aria-hidden="true"></span>PhoneBook</h3>
+          <p class="band__lede">Contacts with several numbers each, groups, favourites, search by any part of a number, and vCard import and export.</p>
+          <ul>
+            <li><strong>Imports are all or nothing</strong><span>A vCard file is imported in one transaction through a unit of work. One bad card and nothing is written, and every problem comes back with its card number.</span></li>
+            <li><strong>Each account sees only its own data</strong><span>Every query is scoped to the signed-in user, and an integration test tries to read and change someone else’s contact.</span></li>
+            <li><strong>Tested at both ends</strong><span>36 API tests, unit and integration over real HTTP, and 109 client specs run on every push.</span></li>
+          </ul>
+          <p class="band__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
+          <div class="band__links">
+            <a class="btn" href="work/phonebook/">Read the case study</a>
+            <button class="play" type="button" data-youtube="OrchwyS9jfs" data-target="pb-player" data-title="PhoneBook walkthrough">Watch the walkthrough (1:25)</button>
+            <a href="https://github.com/gn-4200/PhoneBook">View the code</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--mo" aria-labelledby="mo-title">
+      <div class="wrap">
+        <figure class="band__media" id="mo-player">
+          <video data-loop muted loop playsinline preload="none" poster="media/mo-loop-ledger-poster.jpg" aria-label="Mohalla: the monthly ledger, then the dashboard in dark mode">
+            <source src="media/mo-loop-ledger.webm" type="video/webm"><source src="media/mo-loop-ledger.mp4" type="video/mp4">
+          </video>
+          <figcaption>The monthly ledger: each month opens with the last month’s closing balance.</figcaption>
+        </figure>
+        <div>
+          <p class="band__kind">Finances for a housing society. ASP.NET Core 9 and Angular 19.</p>
+          <h3 id="mo-title"><span class="band__mark" aria-hidden="true"></span>Mohalla</h3>
+          <p class="band__lede">Residents, monthly contributions, expenses, and a ledger that closes each month by itself and carries the balance forward.</p>
+          <ul>
+            <li><strong>The ledger closes itself</strong><span>A scheduled job opens each month on the 1st and rolls the balance forward, across the year boundary too. A back-dated payment creates its month if it is missing.</span></li>
+            <li><strong>Admins change, viewers read</strong><span>The role travels in the sign-in token. The API refuses writes from viewers, and the interface hides every control they can’t use.</span></li>
+            <li><strong>Statements a household can follow</strong><span>Each resident’s page shows what was due, paid and short, month by month, with a running balance.</span></li>
+          </ul>
+          <p class="band__stack">C#, ASP.NET Core 9, EF Core, SQL Server, Hangfire, Angular 19, Material 3, Docker</p>
+          <div class="band__links">
+            <a class="btn" href="work/mohalla/">Read the case study</a>
+            <button class="play" type="button" data-youtube="zd3m_JkKpFA" data-target="mo-player" data-title="Mohalla walkthrough">Watch the walkthrough (0:36)</button>
+            <a href="https://github.com/gn-4200/mohalla">View the code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section aria-labelledby="also-title">
+    <div class="wrap head">
+      <h2 id="also-title">Also</h2>
+    </div>
+    <div class="wrap">
+      <ul class="rows">
+        <li class="row">
+          <div class="row__when">2026<br>Final-year project</div>
+          <div>
+            <h3>Sentinel Flux Core <small>with a team of four</small></h3>
+            <p>A Python toolkit that maps floods from Sentinel-1 radar imagery, which sees through the monsoon clouds that blind optical satellites, and reports what the water is likely to reach. Benchmarked on the Pakistan 2022 floods, holding out whole events rather than random tiles.</p>
+            <p>I coordinated the team, wrote the 81-page report and designed the command-line tool that runs the pipeline from data checks to the review dashboard.</p>
+            <div class="figure"><b>0.874</b><b>186</b><span>macro F1 on held-out flood events</span><span>automated tests passing</span></div>
+          </div>
+          <div class="row__aside"><a href="sentinel-flux-core-report.pdf">Read the report</a><br>PDF, 81 pages, 4 MB</div>
         </li>
-        <li>
-          <div class="work-meta">
-            <span>Jul 2026</span>
-            <span>Internship labs</span>
+        <li class="row">
+          <div class="row__when">2026<br>Internship</div>
+          <div>
+            <h3>Detection rules and Linux security scripts</h3>
+            <p>From an eight-week cyber-security internship: Sigma rules mapped to MITRE ATT&amp;CK, YARA rules, hunting queries for Microsoft Sentinel and Splunk, and Bash scripts for a security audit and incident triage. All of it defensive.</p>
           </div>
-          <div class="work-body">
-            <h4>Linux security scripts and APT detection rules</h4>
-            <p>Bash automation from the Allied Software Engineers cyber-security internship: a security-monitoring
-              scan, a Linux security audit (users, passwords, permissions, network, services) and an incident-triage
-              collector. For the APT investigation task: five Sigma detection rules mapped to MITRE ATT&amp;CK
-              techniques, YARA rules for the loader and the ransomware, Microsoft Sentinel KQL and
-              Splunk SPL hunting queries for privilege escalation, lateral movement and data exfiltration, and an
-              indicator list. All of it defensive.</p>
-            <p class="links"><a href="https://github.com/gn-4200/Cyber_Security" target="_blank" rel="noopener">Repository</a></p>
-          </div>
-        </li>
-        <li>
-          <div class="work-meta">
-            <span>Academic</span>
-            <span>Machine learning</span>
-          </div>
-          <div class="work-body">
-            <h4>Digital Wellbeing</h4>
-            <p>Asks how machine learning could help a university notice students in difficulty early and connect
-              them with the support services it already provides. So far a comparison of Linear Regression,
-              Logistic Regression, Decision Tree and Random Forest models on student data.</p>
-          </div>
+          <div class="row__aside"><a href="https://github.com/gn-4200/Cyber_Security">View the code</a></div>
         </li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===================== EXPERIENCE ===================== -->
-    <section id="experience" class="section" aria-labelledby="experience-h">
-      <h2 id="experience-h">Experience</h2>
-      <ol class="rows">
-        <li>
-          <div class="row-when">Sep 2025 – present</div>
-          <div class="row-body">
-            <h3>Software Engineer <span class="org">Awatech Technology Solutions, Lahore</span></h3>
-            <ul>
-              <li>Develop ERP modules end-to-end: REST API endpoints in ASP.NET Core, Angular forms and dashboards, and SQL Server schema migrations.</li>
-              <li>Deliver CRUD features serving 100+ active users; optimise queries and application performance through structured debugging.</li>
-              <li>Maintain front-end dependency health: Angular package upgrades, build stability and the resolution of vulnerable dependencies.</li>
-              <li>Retained after the internship; working alongside final-year studies.</li>
-            </ul>
+  <section id="experience" aria-labelledby="exp-title">
+    <div class="wrap head">
+      <h2 id="exp-title">Experience</h2>
+    </div>
+    <div class="wrap">
+      <ul class="rows">
+        <li class="row">
+          <div class="row__when">Sep 2025 to now</div>
+          <div>
+            <h3>Software engineer <small>Awatech Technology Solutions, Lahore</small></h3>
+            <p>ERP modules from end to end: ASP.NET Core endpoints, Angular forms and dashboards, and SQL Server migrations, for more than 100 daily users. I also keep the front-end dependencies healthy. Kept on after my internship, alongside my final year.</p>
           </div>
+          <div class="row__aside">.NET, Angular, SQL Server</div>
         </li>
-        <li>
-          <div class="row-when">Jul – Aug 2026</div>
-          <div class="row-body">
-            <h3>Cyber Security Intern <span class="org">Allied Software Engineers, remote · eight weeks</span></h3>
-            <ul>
-              <li>Network security, vulnerability assessment, security monitoring, threat identification, secure system configuration, access control, basic penetration-testing concepts and incident response.</li>
-              <li>Completion certificate issued August 2026.</li>
-            </ul>
+        <li class="row">
+          <div class="row__when">Jul to Aug 2026</div>
+          <div>
+            <h3>Cyber security intern <small>Allied Software Engineers, remote</small></h3>
+            <p>Eight weeks of vulnerability assessment, security monitoring, secure configuration and incident response.</p>
           </div>
+          <div class="row__aside">Completion certificate</div>
         </li>
-        <li>
-          <div class="row-when">Jul 2024 – Aug 2025</div>
-          <div class="row-body">
-            <h3>Software Development Intern <span class="org">Awatech Technology Solutions, Lahore</span></h3>
-            <ul>
-              <li>Built CRUD applications with .NET and Angular: API endpoints, data-entry forms, validation and MS SQL Server integration; collaborative Git workflow with pull requests.</li>
-            </ul>
+        <li class="row">
+          <div class="row__when">Jul 2024 to Aug 2025</div>
+          <div>
+            <h3>Software development intern <small>Awatech Technology Solutions, Lahore</small></h3>
+            <p>CRUD applications in .NET and Angular: API endpoints, data-entry forms and validation on SQL Server, through pull requests and code review.</p>
           </div>
+          <div class="row__aside">.NET, Angular</div>
         </li>
-        <li>
-          <div class="row-when">Sep – Dec 2022</div>
-          <div class="row-body">
-            <h3>SEO Intern <span class="org">Petsaal Technologies, Lahore</span></h3>
-            <ul>
-              <li>On-page, off-page and technical SEO; keyword research; Google Analytics and Search Console; WordPress site optimisation.</li>
-            </ul>
+        <li class="row">
+          <div class="row__when">Sep to Dec 2022</div>
+          <div>
+            <h3>SEO intern <small>Petsaal Technologies, Lahore</small></h3>
+            <p>Technical and on-page SEO, Google Analytics and Search Console, WordPress performance.</p>
           </div>
+          <div class="row__aside"></div>
         </li>
-      </ol>
-    </section>
+      </ul>
+    </div>
 
-    <!-- ===================== EDUCATION ===================== -->
-    <section id="education" class="section" aria-labelledby="education-h">
-      <h2 id="education-h">Education</h2>
-      <ol class="rows">
-        <li>
-          <div class="row-when">Feb 2023 – Jan 2027<br><span class="soft">expected</span></div>
-          <div class="row-body">
-            <h3>BS Computer Science <span class="org">The University of Lahore</span></h3>
-            <ul>
-              <li>CGPA 3.72/4.00 after 7 of 8 semesters; Dean's Honour List, Fall 2023.</li>
-              <li>Key coursework: Object Oriented Programming (A, 97/100), Data Structures and Algorithms (A-), Artificial Intelligence (A), Computer Networks (A), Database Systems (A-), Introduction to Machine Learning (A-).</li>
-              <li>Final-year project: Sentinel Flux Core, above.</li>
-            </ul>
-          </div>
-        </li>
-        <li>
-          <div class="row-when">2020 – 2022</div>
-          <div class="row-body">
-            <h3>FSc Pre-Medical <span class="org">Aspire College, Okara</span></h3>
-            <ul><li>Higher Secondary School Certificate.</li></ul>
-          </div>
-        </li>
-      </ol>
-    </section>
+    <div class="wrap head">
+      <h2>Education and languages</h2>
+    </div>
+    <div class="wrap two">
+      <ul class="list">
+        <li><span>2023 to 2027</span><span><strong>BS Computer Science</strong>, The University of Lahore. CGPA 3.72 after seven of eight semesters. Dean’s Honour List, Fall 2023.</span></li>
+        <li><span>2020 to 2022</span><span><strong>FSc Pre-Medical</strong>, Aspire College, Okara.</span></li>
+        <li><span>2025</span><span><strong>Crash Course on Python</strong>, Google, on Coursera.</span></li>
+        <li><span>2024 to 2025</span><span><strong>Leadership Program</strong>, UOL Student Guild.</span></li>
+      </ul>
+      <ul class="list">
+        <li><span>Urdu</span><span>Native.</span></li>
+        <li><span>English</span><span>Fluent. My language of study through school and university.</span></li>
+        <li><span>German</span><span>Beginner (A1), and learning.</span></li>
+      </ul>
+    </div>
+  </section>
 
-    <!-- ===================== SKILLS ===================== -->
-    <section id="skills" class="section" aria-labelledby="skills-h">
-      <h2 id="skills-h">Skills</h2>
-      <dl class="skills">
-        <div><dt>Languages</dt><dd>C#, C++, Python, SQL, TypeScript</dd></div>
-        <div><dt>Web</dt><dd>.NET / ASP.NET Core, Angular, REST APIs</dd></div>
-        <div><dt>Data</dt><dd>MS SQL Server, schema migrations, NumPy, Rasterio</dd></div>
-        <div><dt>Machine learning</dt><dd>scikit-learn, PyTorch</dd></div>
-        <div><dt>Tools</dt><dd>Git / GitHub, Linux</dd></div>
-        <div><dt>Spoken</dt><dd>Urdu (native) · English (medium of instruction throughout school and university) · German (A1)</dd></div>
-      </dl>
-    </section>
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 id="contact-title">Get in touch</h2>
+      <p>For a role, a project, or a question about any of this work, e-mail is the quickest way to reach me. I’m in Lahore, five hours ahead of UTC.</p>
+      <a class="contact__mail" href="mailto:ghulamnabi.dev@gmail.com">ghulamnabi.dev@gmail.com</a>
+      <div class="links">
+        <a href="https://github.com/gn-4200">GitHub</a>
+        <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <!-- ===================== CERTIFICATES ===================== -->
-    <section id="certificates" class="section" aria-labelledby="certificates-h">
-      <h2 id="certificates-h">Certificates and honours</h2>
-      <ol class="rows compact">
-        <li><div class="row-when">Aug 2026</div><div class="row-body"><h3>Cyber Security Internship Completion Certificate <span class="org">Allied Software Engineers</span></h3></div></li>
-        <li><div class="row-when">Jul 2025</div><div class="row-body"><h3>Crash Course on Python <span class="org">Google via Coursera</span></h3></div></li>
-        <li><div class="row-when">2024 – 25</div><div class="row-body"><h3>Leadership Program <span class="org">UOL Student Guild, The University of Lahore</span></h3></div></li>
-        <li><div class="row-when">Fall 2023</div><div class="row-body"><h3>Dean's Honour List <span class="org">Faculty of Information Technology, The University of Lahore</span></h3></div></li>
-      </ol>
-    </section>
-
-    <!-- ===================== CONTACT ===================== -->
-    <section id="contact" class="section" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <p class="contact-lede">For anything about software engineering, applied machine learning or
-        disaster-response tooling, e-mail is the quickest way to reach me.</p>
-      <p class="contact-mail"><a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></p>
-      <p class="links"><a href="https://github.com/gn-4200" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/ghulam-nabi-67b558374" target="_blank" rel="noopener">LinkedIn</a></p>
-    </section>
-
-    <footer class="colophon">
-      <p>© 2026 Ghulam Nabi. Set in IBM Plex. Plain HTML, CSS and a little JavaScript. No framework, no analytics.</p>
-    </footer>
-  </main>
-</div>
-
-<script src="script.js" defer></script>
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Ghulam Nabi</span>
+    <span>Hand-written HTML and CSS. The fonts are hosted here and nothing tracks you.</span>
+  </div>
+</footer>
+<script src="js/site.js" defer></script>
 </body>
 </html>

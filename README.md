@@ -1,26 +1,17 @@
-# Ghulam Nabi — portfolio
+# gn-4200.github.io
 
-One-page personal site. Plain HTML, CSS and JavaScript, no build step.
+The portfolio of Ghulam Nabi, software engineer in Lahore: **https://gn-4200.github.io**
 
-- `index.html` — all content (keep every fact identical to the CV)
-- `styles.css` — layout and typography (single dark theme, print stylesheet)
-- `script.js` — section index in the rail, and the short cursor intro on the opening
-- `favicon.svg` — tab icon
-- `img/og.png` — link-preview image (Open Graph / Twitter card), `img/*.png` — project screenshots
-- `robots.txt`, `sitemap.xml` — search-engine hints
-- `sentinel-flux-core-report.pdf` — the final-year project report (81 pages), with student ID numbers and student e-mails redacted
-- `.nojekyll` — tells GitHub Pages to serve the files as they are
+Three projects, each with a case study and a walkthrough: TechZone (PHP 8, MariaDB), PhoneBook (ASP.NET Core 9, Angular 19) and Mohalla (ASP.NET Core 9, Angular 19, SQL Server).
 
-## Hosting
+## How it's built
 
-GitHub Pages user site: this repository is `gn-4200.github.io`, so GitHub publishes
-the `main` branch root automatically at https://gn-4200.github.io/ a minute or two
-after each push. No Pages settings are needed.
+Plain HTML, CSS and a little JavaScript, served by GitHub Pages. No framework and no build step for the pages themselves.
 
-## Local preview
+- `index.html`: the home page.
+- `work/<project>/index.html`: the case studies, generated from one template by `tools/build_cases.py` (run it from the repository root after editing a case study).
+- `css/site.css`, `js/site.js`: all the styling and behaviour.
+- `media/`: short silent loops (WebM and MP4, with poster images) recorded from the running apps.
+- `fonts/`: Schibsted Grotesk and Source Serif 4, hosted here rather than loaded from Google.
 
-```bash
-python -m http.server 8765
-```
-
-Then open http://localhost:8765/ .
+Walkthrough videos are on YouTube (unlisted) and load through the privacy-enhanced `youtube-nocookie.com` player only when someone presses play. The site sets no cookies and has no analytics.

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhoneBook, ASP.NET Core and Angular: case study by Ghulam Nabi</title>
+<meta name="description" content="How PhoneBook works: a repository and unit of work with explicit transactions, all-or-nothing vCard import, per-user data isolation and tests that boot the real API. ASP.NET Core 9 and Angular 19.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="PhoneBook: case study">
+<meta property="og:description" content="How PhoneBook works: a repository and unit of work with explicit transactions, all-or-nothing vCard import, per-user data isolation and tests that boot the real API. ASP.NET Core 9 and Angular 19.">
+<meta property="og:image" content="https://gn-4200.github.io/img/og-phonebook.png">
+<meta property="og:url" content="https://gn-4200.github.io/work/phonebook/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../css/site.css">
+</head>
+<body>
+<a class="skip" href="#case">Skip to the case study</a>
+<header class="case-top band--pb">
+  <div class="top">
+    <div class="wrap">
+      <a class="mark" href="../../" aria-label="Ghulam Nabi, home"><span class="mark__glyph" aria-hidden="true">GN</span><span class="mark__name">Ghulam Nabi</span></a>
+      <nav aria-label="Projects">
+        <a href="../techzone/">TechZone</a>
+        <a href="../phonebook/" aria-current="page">PhoneBook</a>
+        <a href="../mohalla/">Mohalla</a>
+      </nav>
+    </div>
+  </div>
+  <div class="case-hero">
+    <div class="wrap">
+      <a class="case-back" href="../../#work">All work</a>
+      <h1><span class="band__mark" aria-hidden="true"></span>PhoneBook</h1>
+      <p class="lede">A contacts app used as a small, honest test of the patterns a business system needs: transactions, data that belongs to one user, a real file format, and tests that boot the real API.</p>
+      <dl class="case-facts">
+        <div><dt>My part</dt><dd>Everything: API, client, tests and CI</dd></div>
+        <div><dt>Built</dt><dd>2026</dd></div>
+        <div><dt>Stack</dt><dd>ASP.NET Core 9, EF Core, Angular 19</dd></div>
+        <div><dt>Code</dt><dd><a href="https://github.com/gn-4200/PhoneBook">gn-4200/PhoneBook</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<main id="case">
+  <div class="watch band--pb">
+    <div class="watch__box" id="player">
+      <img src="../../media/pb-loop-import-poster.jpg" alt="" loading="eager">
+      <button class="watch__go" type="button" data-youtube="OrchwyS9jfs" data-target="player" data-title="PhoneBook walkthrough">
+        <span class="watch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+        <span><strong>Watch the walkthrough</strong><span>1:25, recorded from the running app</span></span>
+      </button>
+    </div>
+    <p class="watch__note">The video plays from YouTube’s privacy-enhanced player and loads only when you press play.</p>
+  </div>
+
+  <article class="article case-wrap">
+    <section aria-labelledby="s0"><h2 id="s0">The brief</h2><div class="prose"><p>A phone book is usually a beginner’s exercise. I rebuilt mine to practise what business software needs and small projects usually skip: one operation that touches several tables and either fully happens or doesn’t, data that must never leak between accounts, a standard file format that arrives full of mistakes, and tests that prove all of it over real HTTP.</p></div></section>
+    <section aria-labelledby="s1"><h2 id="s1">What it does</h2><div class="prose"><figure class="shot"><img src="../../img/phonebook/cover.webp" alt="PhoneBook with a contact list and a contact’s details" loading="lazy" decoding="async"><figcaption>Contacts on the left, the selected person on the right, with groups and the record beside the details.</figcaption></figure>
+<ul>
+<li>Each contact can have several numbers with labels, an e-mail, notes, groups and a favourite star.</li>
+<li>Search matches names, companies, e-mails and any part of a number, however it was typed.</li>
+<li>vCard 3.0 import and export: everything, one group, a selection, or a single contact.</li>
+<li>Accounts with sign-in; each account sees only its own contacts and groups.</li>
+</ul></div></section>
+    <section aria-labelledby="s2"><h2 id="s2">Decisions</h2><div class="prose"><h3>Repositories stage changes; the unit of work commits them</h3>
+<p>A repository in this project can add, remove and query, but it can never save. Saving, and opening or committing a transaction, belong to the unit of work, which holds every repository over one database context. A service that touches contacts, phones and groups therefore commits them together or not at all.</p>
+<pre><code>// a repository only stages
+void Add(T entity);
+void Remove(T entity);
+IQueryable&lt;T&gt; Query();
+
+// the unit of work is the only way to persist
+Task&lt;int&gt; SaveChangesAsync(CancellationToken ct = default);
+Task BeginTransactionAsync(CancellationToken ct = default);
+Task CommitAsync(CancellationToken ct = default);
+Task RollbackAsync(CancellationToken ct = default);</code></pre>
+<h3>An import is all or nothing</h3>
+<p>A vCard file from a phone is rarely clean. The import writes contacts in batches of 50 inside one explicit transaction and keeps validating after the first problem, so it can report every bad card at once. Then it rolls back. Either the whole file is imported, or nothing is and the person knows exactly what to fix.</p>
+<figure class="shot"><video data-loop muted loop playsinline preload="none" poster="../../media/pb-loop-import-poster.jpg" aria-label="PhoneBook import dialog listing every invalid card, with nothing imported"><source src="../../media/pb-loop-import.webm" type="video/webm"><source src="../../media/pb-loop-import.mp4" type="video/mp4"></video><figcaption>A file with three bad cards: nothing is imported, and each problem names the card it came from.</figcaption></figure>
+<h3>Someone else’s contact is a 404, not a 403</h3>
+<p>Every query is scoped to the signed-in user. Asking for another account’s contact returns “not found” rather than “forbidden”, so the API never confirms that an id exists. A contact also cannot be put into another user’s group. Both rules have integration tests that sign in as two different people and try.</p>
+<h3>Search follows how people type numbers</h3>
+<p>The same number is stored as <code>+92 300 1234567</code> and typed as <code>0300-1234567</code>. Search compares digits rather than text and understands the local trunk prefix, so either form finds the contact.</p>
+<figure class="shot"><img src="../../img/phonebook/2-search.webp" alt="PhoneBook search results for +92 30" loading="lazy" decoding="async"><figcaption>Searching “+92 30” finds every number that contains those digits, whatever the formatting.</figcaption></figure>
+<h3>The tests boot the real API</h3>
+<p>The database provider is a configuration switch, so the integration tests start the actual application on in-memory SQLite and talk to it over HTTP: sign-up and sign-in, validation errors, other users’ data, search, paging, export and import. With the unit tests for the vCard reader and the unit of work, that is 36 tests on the server and 109 specs on the client, run on every push along with a Docker build.</p>
+<ul class="tests">
+<li>A_user_cannot_see_or_change_another_users_contact</li>
+<li>Import_is_all_or_nothing_when_a_card_is_invalid</li>
+<li>Search_with_local_trunk_prefix_finds_internationally_stored_number</li>
+<li>Login_with_wrong_password_or_unknown_email_is_401_with_the_same_message</li>
+</ul>
+<h3>An interface that stays out of the way</h3>
+<p>The client is Angular 19 with signals and Angular Material, laid out as a list and a detail pane. The detail pane uses a container query to move groups and the record beside the details when there is room, and avatars use five tones drawn from the accent colour so a long list reads as one palette. Dark mode is designed, not inverted.</p>
+<figure class="shot shot--pair"><img src="../../img/phonebook/6-dark.webp" alt="PhoneBook in dark mode" loading="lazy" decoding="async"><img src="../../img/phonebook/5b-mobile-detail.webp" alt="PhoneBook contact detail on a phone" loading="lazy" decoding="async"><figcaption>Dark mode on a desktop, and a contact on a phone.</figcaption></figure></div></section>
+    <section aria-labelledby="s3"><h2 id="s3">What I’d do differently</h2><div class="prose"><p>The client specs test components and services in isolation; the next step is a few browser tests that walk through sign-in, editing and import against the real API. I would also add contact photos, and put a demo online so it can be tried without cloning the code.</p></div></section>
+  </article>
+</main>
+
+<a class="next band--mo" href="../mohalla/">
+  <span class="wrap" style="display:block"><span class="next__label">Next project</span><strong>Mohalla</strong></span>
+</a>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Ghulam Nabi. <a href="mailto:ghulamnabi.dev@gmail.com">ghulamnabi.dev@gmail.com</a></span>
+    <span>Hand-written HTML and CSS. The fonts are hosted here and nothing tracks you.</span>
+  </div>
+</footer>
+<script src="../../js/site.js" defer></script>
+</body>
+</html>

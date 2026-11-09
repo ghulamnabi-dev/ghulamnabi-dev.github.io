@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TechZone, a PC-parts marketplace: case study by Ghulam Nabi</title>
+<meta name="description" content="How TechZone works: a storefront built around today’s rates, a PC builder that checks compatibility on the server, and a back-office with order timelines, a stock ledger and scoped partner sellers. PHP 8 and MariaDB, no framework.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="TechZone: case study">
+<meta property="og:description" content="How TechZone works: a storefront built around today’s rates, a PC builder that checks compatibility on the server, and a back-office with order timelines, a stock ledger and scoped partner sellers. PHP 8 and MariaDB, no framework.">
+<meta property="og:image" content="https://gn-4200.github.io/img/og-techzone.png">
+<meta property="og:url" content="https://gn-4200.github.io/work/techzone/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../css/site.css">
+</head>
+<body>
+<a class="skip" href="#case">Skip to the case study</a>
+<header class="case-top band--tz">
+  <div class="top">
+    <div class="wrap">
+      <a class="mark" href="../../" aria-label="Ghulam Nabi, home"><span class="mark__glyph" aria-hidden="true">GN</span><span class="mark__name">Ghulam Nabi</span></a>
+      <nav aria-label="Projects">
+        <a href="../techzone/" aria-current="page">TechZone</a>
+        <a href="../phonebook/">PhoneBook</a>
+        <a href="../mohalla/">Mohalla</a>
+      </nav>
+    </div>
+  </div>
+  <div class="case-hero">
+    <div class="wrap">
+      <a class="case-back" href="../../#work">All work</a>
+      <h1><span class="band__mark" aria-hidden="true"></span>TechZone</h1>
+      <p class="lede">A PC-parts marketplace for Lahore: a storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office a real shop could run.</p>
+      <dl class="case-facts">
+        <div><dt>My part</dt><dd>Everything: design, database, code and tests</dd></div>
+        <div><dt>Built</dt><dd>2025 to 2026</dd></div>
+        <div><dt>Stack</dt><dd>PHP 8, MariaDB, plain JavaScript, AG Grid</dd></div>
+        <div><dt>Code</dt><dd><a href="https://github.com/gn-4200/TechZone">gn-4200/TechZone</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<main id="case">
+  <div class="watch band--tz">
+    <div class="watch__box" id="player">
+      <img src="../../media/tz-loop-rates-poster.jpg" alt="" loading="eager">
+      <button class="watch__go" type="button" data-youtube="zRxEUyW1uIs" data-target="player" data-title="TechZone walkthrough">
+        <span class="watch__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+        <span><strong>Watch the walkthrough</strong><span>2:48, recorded from the running app</span></span>
+      </button>
+    </div>
+    <p class="watch__note">The video plays from YouTube’s privacy-enhanced player and loads only when you press play.</p>
+  </div>
+
+  <article class="article case-wrap">
+    <section aria-labelledby="s0"><h2 id="s0">The brief</h2><div class="prose"><p>In Lahore, PC parts are bought in markets like Hafeez Centre and Hall Road, where prices move every week and the first question is always “aaj ka rate kya hai?”, what does it cost today. Building a PC adds a second problem: a processor, board, memory, case and power supply have to fit each other, and the mistakes are expensive.</p>
+<p>TechZone is my answer to both, built as if a real shop were going to use it: the day’s rate is the headline, the builder will not let you pair parts that don’t fit, and the back-office covers what staff actually do all day, from confirming an order to explaining why the stock count is what it is.</p>
+<p>I wrote it without a framework on purpose. I wanted to understand the parts a framework normally hides: sessions, CSRF protection, transactions, permissions. Everything security-related lives in one shared <code>core/</code> library that both the storefront and the admin use, so a fix lands once.</p></div></section>
+    <section aria-labelledby="s1"><h2 id="s1">What it does</h2><div class="prose"><figure class="shot"><img src="../../img/techzone/07-catalogue.webp" alt="TechZone processor catalogue with product photos and filters" loading="lazy" decoding="async"><figcaption>The processor catalogue, with filters for socket and core count and the week’s price drops marked.</figcaption></figure>
+<ul>
+<li><strong>Storefront.</strong> Today’s rates with a 12-week history for every part, a catalogue with filters per category (socket, cores, video memory and so on), comparison, wishlist, back-in-stock alerts, and checkout with cash on delivery.</li>
+<li><strong>PC builder.</strong> Pick a processor and every list after it shows only the parts that fit, with the estimated power draw and the total at today’s prices.</li>
+<li><strong>Back-office.</strong> Orders with a full timeline, a stock ledger, products with their specifications, discounts, shipping zones, staff roles and an activity log of every change.</li>
+<li><strong>Marketplace.</strong> Partner shops apply to sell, get their own scoped view of the same back-office, and receive weekly payout statements.</li>
+</ul></div></section>
+    <section aria-labelledby="s2"><h2 id="s2">Decisions</h2><div class="prose"><h3>Compatibility rules are plain functions on the server</h3>
+<p>The builder checks socket, memory type, motherboard size, graphics card length, cooler height and power, using each product’s specifications. The rules are pure functions in <code>core/builder.php</code>, used the same way by the storefront, its API and the admin, so there is one definition of “fits”.</p>
+<p>A part that doesn’t fit isn’t silently hidden. The picker can list it with the reason, which turns a rejection into something a customer can learn from.</p>
+<figure class="shot"><video data-loop muted loop playsinline preload="none" poster="../../media/tz-loop-builder-poster.jpg" aria-label="TechZone PC builder: the motherboard picker lists compatible boards and, below, incompatible ones with reasons"><source src="../../media/tz-loop-builder.webm" type="video/webm"><source src="../../media/tz-loop-builder.mp4" type="video/mp4"></video><figcaption>With a Ryzen 5 7600 chosen, the motherboard picker lists the AM5 boards, and below them the boards that don’t fit and why.</figcaption></figure>
+<p>The rules are only as good as the data, so the product editor has a Specifications card with the fields each part type needs. The values the builder compares are fixed choices, and a part cannot go live without them.</p>
+<figure class="shot"><video data-loop muted loop playsinline preload="none" poster="../../media/tz-loop-specs-poster.jpg" aria-label="TechZone admin: clearing a required specification shows an error under the field"><source src="../../media/tz-loop-specs.webm" type="video/webm"><source src="../../media/tz-loop-specs.mp4" type="video/mp4"></video><figcaption>Clearing a graphics card’s length on a live product is refused: the builder needs it to check the case.</figcaption></figure>
+<h3>Checkout cannot sell what isn’t there</h3>
+<p>Placing an order runs in one transaction. The product rows are locked in a fixed order, every line is re-priced from the database rather than trusted from the cart, and stock is reduced with a guarded update that fails if there isn’t enough. Anything that goes wrong rolls the whole order back.</p>
+<p>To check it, I fired 12 checkouts at the same moment for a product with 3 units in stock. Exactly 3 orders went through and the stock ended at 0.</p>
+<h3>Stock is a ledger, and orders have a timeline</h3>
+<p>Stock never changes by editing a number. Every change is an adjustment row with a reason (received, sold, returned, damaged, correction) and the person who made it, and the seed and the migration both check that the adjustments add up to the stock on hand. Every step of an order is an event, and every change in the admin is written to an activity log with the old and new values.</p>
+<figure class="shot"><img src="../../img/techzone/21-admin-order.webp" alt="TechZone admin order page with payment, shipping and a timeline" loading="lazy" decoding="async"><figcaption>An order page: items, payment, shipping with the courier and tracking number, and the timeline of every step.</figcaption></figure>
+<h3>Partner sellers are limited by the queries, not the menus</h3>
+<p>The admin has four roles: owner, manager, staff and seller. A seller signs in to the same back-office but every query is scoped to their own products and to their lines on shared orders. Another shop’s order is a 404, not a page with the buttons hidden.</p>
+<figure class="shot"><img src="../../img/techzone/28-seller-portal.webp" alt="TechZone seller portal showing only the seller’s own items on an order" loading="lazy" decoding="async"><figcaption>A seller’s view of an order that also contains another shop’s items: only their own lines are shown.</figcaption></figure>
+<h3>Security written by hand, and written down</h3>
+<p>Prepared statements everywhere with emulation switched off; one CSRF token per session compared in constant time; session IDs renewed at every sign-in; sign-in throttling per IP and per session; the same message for an unknown e-mail and a wrong password; uploads checked by their content, not their name. Each of these, and the known gaps, is listed file by file in the project’s <a href="https://github.com/gn-4200/TechZone/blob/main/docs/SECURITY.md">security notes</a>.</p></div></section>
+    <section aria-labelledby="s3"><h2 id="s3">What I’d do differently</h2><div class="prose"><p>The automated checks are end to end: on every push, a CI job boots the real stack, seeds it and calls the real endpoints, including the security checks. There are no unit tests for the PHP functions themselves, and the builder rules are exactly the kind of code that should have them. That is the first thing I would add, followed by browser tests for checkout and the order flow.</p>
+<p>For a real shop I would build on a framework such as Laravel. Writing sessions, CSRF and routing myself taught me what a framework does and why, which was the point, but I would not ask a client to maintain my versions of them.</p>
+<p>Payments are a placeholder, the prices are demo data, and the content security policy is still in report-only mode until the last inline scripts move into files.</p></div></section>
+  </article>
+</main>
+
+<a class="next band--pb" href="../phonebook/">
+  <span class="wrap" style="display:block"><span class="next__label">Next project</span><strong>PhoneBook</strong></span>
+</a>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Ghulam Nabi. <a href="mailto:ghulamnabi.dev@gmail.com">ghulamnabi.dev@gmail.com</a></span>
+    <span>Hand-written HTML and CSS. The fonts are hosted here and nothing tracks you.</span>
+  </div>
+</footer>
+<script src="../../js/site.js" defer></script>
+</body>
+</html>
