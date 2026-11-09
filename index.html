@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ghulam Nabi, software engineer</title>
 <meta name="description" content="Ghulam Nabi builds complete web systems in .NET, Angular and PHP: the API, the interface, the tests. Three projects with walkthroughs and case studies.">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 <meta property="og:title" content="Ghulam Nabi, software engineer">
 <meta property="og:description" content="Three systems built end to end, with walkthroughs and case studies: TechZone, PhoneBook and Mohalla.">
 <meta property="og:image" content="https://gn-4200.github.io/img/og.png">
@@ -13,18 +13,34 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ghulam Nabi","jobTitle":"Software Engineer","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"url":"https://gn-4200.github.io/","sameAs":["https://github.com/gn-4200","https://www.linkedin.com/in/ghulam-nabi-67b558374"]}</script>
+<meta name="theme-color" content="#0b0b0c">
+<link rel="stylesheet" href="css/home.css">
+<script>
+/* Decided before first paint: the short cursor intro runs once per session, never with reduced motion.
+   The timeout shows the page even if the main script never loads. */
+(function (d) {
+  d.classList.add('js');
+  try {
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('introSeen') !== '1') {
+      d.setAttribute('data-intro', 'pending');
+      setTimeout(function () { d.removeAttribute('data-intro'); }, 4500);
+    }
+  } catch (e) {}
+})(document.documentElement);
+</script>
 </head>
 <body>
 <a class="skip" href="#work">Skip to the work</a>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="top">
   <div class="wrap">
-    <a class="mark" href="./" aria-label="Ghulam Nabi, home"><span class="mark__glyph" aria-hidden="true">GN</span><span class="mark__name">Ghulam Nabi</span></a>
+    <a class="mark" href="./" aria-label="Ghulam Nabi, home"><b aria-hidden="true">GN</b><span>Ghulam Nabi</span></a>
     <nav aria-label="Sections">
+      <span class="clock" data-clock>Lahore, UTC+5</span>
       <a href="#work">Work</a>
-      <a class="opt" href="#experience">Experience</a>
+      <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -33,143 +49,155 @@
 <main>
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap">
-      <div>
-        <h1 id="hero-title"><span>Ghulam</span> <span>Nabi</span></h1>
-        <p class="hero__lede">I build complete web systems: the API, the interface, the tests, and the unglamorous parts that keep records right when real people use them. Mostly in .NET and Angular.</p>
-        <dl class="facts">
-          <dt>Now</dt>
-          <dd><strong>Software engineer at Awatech Technology Solutions</strong>, Lahore, building ERP modules used by more than 100 people.</dd>
-          <dt>Studying</dt>
-          <dd><strong>BS Computer Science</strong>, University of Lahore. CGPA 3.72, finishing in January 2027.</dd>
-          <dt>Next</dt>
-          <dd>A master’s degree in Germany, from 2027.</dd>
-        </dl>
-        <div class="links">
-          <a class="btn" href="#work">See the work</a>
-          <a href="mailto:ghulamnabi7885@gmail.com">E-mail</a>
-          <a href="https://github.com/gn-4200">GitHub</a>
-          <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
+      <h1 id="hero-title" class="it"><span>Ghulam</span> <span>Nabi<i aria-hidden="true">.</i></span></h1>
+      <div class="hero__grid">
+        <div>
+          <p class="lede it">I build complete web systems: the API, the interface, the tests, and the <em>unglamorous parts that keep records right</em> when real people use them. Mostly in .NET and Angular.</p>
+          <dl class="facts it">
+            <div><dt>Now</dt><dd><strong>Software engineer at Awatech Technology Solutions</strong>, Lahore, building ERP modules used by more than 100 people.</dd></div>
+            <div><dt>Studying</dt><dd><strong>BS Computer Science</strong>, University of Lahore. CGPA 3.72, finishing in January 2027.</dd></div>
+            <div><dt>Next</dt><dd>A master’s degree in Germany, from 2027.</dd></div>
+          </dl>
+          <div class="links it">
+            <a class="btn" href="#work">See the work</a>
+            <a href="mailto:ghulamnabi7885@gmail.com">E-mail</a>
+            <a href="https://github.com/gn-4200">GitHub</a>
+            <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
+          </div>
         </div>
-      </div>
 
-      <figure class="bench" data-bench data-project="tz">
-        <div class="bench__frame">
-          <video muted playsinline preload="metadata" aria-label="TechZone: the PC builder lists the boards that don’t fit, with the reason"></video>
-        </div>
-        <div class="bench__bar" role="tablist" aria-label="Choose a project to preview">
-          <button class="bench__tab" role="tab" aria-selected="true" data-project="tz" data-clip="media/tz-loop-builder" data-label="TechZone: the PC builder lists the boards that don’t fit, with the reason">TechZone<small>Parts that don’t fit say why</small></button>
-          <button class="bench__tab" role="tab" aria-selected="false" data-project="pb" data-clip="media/pb-loop-import" data-label="PhoneBook: a vCard file with errors is refused as a whole, with every problem listed">PhoneBook<small>Imports are all or nothing</small></button>
-          <button class="bench__tab" role="tab" aria-selected="false" data-project="mo" data-clip="media/mo-loop-statement" data-label="Mohalla: a resident’s statement, then recording a payment">Mohalla<small>A household’s statement</small></button>
-        </div>
-      </figure>
+        <figure class="bench it" data-bench data-project="tz">
+          <div class="bench__frame">
+            <video muted playsinline preload="metadata" poster="media/tz-loop-builder-poster.jpg" aria-label="TechZone: the PC builder lists the boards that don’t fit, with the reason"></video>
+          </div>
+          <div class="bench__bar" role="tablist" aria-label="Choose a project to preview">
+            <button class="bench__tab" role="tab" aria-selected="true" data-project="tz" data-clip="media/tz-loop-builder" data-label="TechZone: the PC builder lists the boards that don’t fit, with the reason">TechZone<small>Parts that don’t fit say why</small></button>
+            <button class="bench__tab" role="tab" aria-selected="false" data-project="pb" data-clip="media/pb-loop-import" data-label="PhoneBook: a vCard file with errors is refused as a whole, with every problem listed">PhoneBook<small>Imports are all or nothing</small></button>
+            <button class="bench__tab" role="tab" aria-selected="false" data-project="mo" data-clip="media/mo-loop-statement" data-label="Mohalla: a resident’s statement, then recording a payment">Mohalla<small>A household’s statement</small></button>
+          </div>
+        </figure>
+      </div>
     </div>
   </section>
 
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__run">
+      <span>Stock is a ledger, not a number</span><span>Imports are all or nothing</span><span>The ledger closes itself</span><span>Parts that don’t fit say why</span><span>Each account sees only its own data</span><span>Admins change, viewers read</span>
+      <span aria-hidden="true">Stock is a ledger, not a number</span><span aria-hidden="true">Imports are all or nothing</span><span aria-hidden="true">The ledger closes itself</span><span aria-hidden="true">Parts that don’t fit say why</span><span aria-hidden="true">Each account sees only its own data</span><span aria-hidden="true">Admins change, viewers read</span>
+    </div>
+  </div>
+
   <div id="work">
-    <div class="wrap head">
-      <h2>Three systems, each built end to end.</h2>
+    <div class="wrap head rv">
+      <h2>Three systems, each built <em>end to end.</em></h2>
+      <span class="head__n" aria-hidden="true">01 — 03</span>
       <p>Each one is mine from the database to the last screen, with tests, a README that explains the decisions, and a walkthrough you can watch in a few minutes.</p>
     </div>
 
-    <section class="band band--tz" aria-labelledby="tz-title">
-      <div class="wrap">
-        <figure class="band__media" id="tz-player">
-          <video data-loop muted loop playsinline preload="none" poster="media/tz-loop-order-poster.jpg" aria-label="TechZone back-office: an order is confirmed, paid, fulfilled and shipped">
-            <source src="media/tz-loop-order.webm" type="video/webm"><source src="media/tz-loop-order.mp4" type="video/mp4">
-          </video>
-          <figcaption>An order moves from confirmed to shipped. Each step lands on its timeline with who did it.</figcaption>
-        </figure>
-        <div>
-          <p class="band__kind">PC-parts marketplace for Lahore. PHP 8 and MariaDB, no framework.</p>
-          <h3 id="tz-title"><span class="band__mark" aria-hidden="true"></span>TechZone</h3>
-          <p class="band__lede">A storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office where every order carries its own history.</p>
-          <ul>
-            <li><strong>The builder explains itself</strong><span>Socket, memory type, case size, cooler height and power are checked on the server. Parts that don’t fit are listed with the reason.</span></li>
-            <li><strong>Stock is a ledger, not a number</strong><span>Every change to stock is a row with a reason and a person, so any count can be explained.</span></li>
-            <li><strong>One back-office, many shops</strong><span>Partner sellers use the same admin and see only their own products and orders. The queries enforce it, not just the menus.</span></li>
-          </ul>
-          <p class="band__stack">PHP 8, MariaDB, plain JavaScript, AG Grid, GitHub Actions</p>
-          <div class="band__links">
-            <a class="btn" href="work/techzone/">Read the case study</a>
-            <button class="play" type="button" data-youtube="zRxEUyW1uIs" data-target="tz-player" data-title="TechZone walkthrough">Watch the walkthrough (2:48)</button>
-            <a href="https://github.com/gn-4200/TechZone">View the code</a>
+    <div class="wrap stack">
+      <section class="card card--tz" aria-labelledby="tz-title">
+        <div class="card__top"><span>01</span><span>PC-parts marketplace for Lahore. PHP 8 and MariaDB, no framework.</span></div>
+        <h3 id="tz-title">TechZone</h3>
+        <div class="card__grid">
+          <figure id="tz-player">
+            <video data-loop muted loop playsinline preload="none" poster="media/tz-loop-order-poster.jpg" aria-label="TechZone back-office: an order is confirmed, paid, fulfilled and shipped">
+              <source src="media/tz-loop-order.webm" type="video/webm"><source src="media/tz-loop-order.mp4" type="video/mp4">
+            </video>
+            <figcaption>An order moves from confirmed to shipped. Each step lands on its timeline with who did it.</figcaption>
+          </figure>
+          <div>
+            <p class="card__lede">A storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office where every order carries its own history.</p>
+            <ul>
+              <li><strong>The builder explains itself</strong><span>Socket, memory type, case size, cooler height and power are checked on the server. Parts that don’t fit are listed with the reason.</span></li>
+              <li><strong>Stock is a ledger, not a number</strong><span>Every change to stock is a row with a reason and a person, so any count can be explained.</span></li>
+              <li><strong>One back-office, many shops</strong><span>Partner sellers use the same admin and see only their own products and orders. The queries enforce it, not just the menus.</span></li>
+            </ul>
+            <p class="card__stack">PHP 8, MariaDB, plain JavaScript, AG Grid, GitHub Actions</p>
+            <div class="links">
+              <a class="btn btn--go" href="work/techzone/">Read the case study</a>
+              <button class="play" type="button" data-youtube="zRxEUyW1uIs" data-target="tz-player" data-title="TechZone walkthrough">Watch the walkthrough (2:48)</button>
+              <a href="https://github.com/gn-4200/TechZone">View the code</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="band band--pb" aria-labelledby="pb-title">
-      <div class="wrap">
-        <figure class="band__media" id="pb-player">
-          <video data-loop muted loop playsinline preload="none" poster="media/pb-loop-search-poster.jpg" aria-label="PhoneBook: typing part of a number narrows the list and opens a contact">
-            <source src="media/pb-loop-search.webm" type="video/webm"><source src="media/pb-loop-search.mp4" type="video/mp4">
-          </video>
-          <figcaption>Typing “+92 30” finds every number that contains it, however it was written.</figcaption>
-        </figure>
-        <div>
-          <p class="band__kind">Contacts app. ASP.NET Core 9 API and Angular 19 client.</p>
-          <h3 id="pb-title"><span class="band__mark" aria-hidden="true"></span>PhoneBook</h3>
-          <p class="band__lede">Contacts with several numbers each, groups, favourites, search by any part of a number, and vCard import and export.</p>
-          <ul>
-            <li><strong>Imports are all or nothing</strong><span>A vCard file is imported in one transaction through a unit of work. One bad card and nothing is written, and every problem comes back with its card number.</span></li>
-            <li><strong>Each account sees only its own data</strong><span>Every query is scoped to the signed-in user, and an integration test tries to read and change someone else’s contact.</span></li>
-            <li><strong>Tested at both ends</strong><span>36 API tests, unit and integration over real HTTP, and 109 client specs run on every push.</span></li>
-          </ul>
-          <p class="band__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
-          <div class="band__links">
-            <a class="btn" href="work/phonebook/">Read the case study</a>
-            <button class="play" type="button" data-youtube="OrchwyS9jfs" data-target="pb-player" data-title="PhoneBook walkthrough">Watch the walkthrough (1:25)</button>
-            <a href="https://github.com/gn-4200/PhoneBook">View the code</a>
+      <section class="card card--pb" aria-labelledby="pb-title">
+        <div class="card__top"><span>02</span><span>Contacts app. ASP.NET Core 9 API and Angular 19 client.</span></div>
+        <h3 id="pb-title">PhoneBook</h3>
+        <div class="card__grid">
+          <figure id="pb-player">
+            <video data-loop muted loop playsinline preload="none" poster="media/pb-loop-search-poster.jpg" aria-label="PhoneBook: typing part of a number narrows the list and opens a contact">
+              <source src="media/pb-loop-search.webm" type="video/webm"><source src="media/pb-loop-search.mp4" type="video/mp4">
+            </video>
+            <figcaption>Typing “+92 30” finds every number that contains it, however it was written.</figcaption>
+          </figure>
+          <div>
+            <p class="card__lede">Contacts with several numbers each, groups, favourites, search by any part of a number, and vCard import and export.</p>
+            <ul>
+              <li><strong>Imports are all or nothing</strong><span>A vCard file is imported in one transaction through a unit of work. One bad card and nothing is written, and every problem comes back with its card number.</span></li>
+              <li><strong>Each account sees only its own data</strong><span>Every query is scoped to the signed-in user, and an integration test tries to read and change someone else’s contact.</span></li>
+              <li><strong>Tested at both ends</strong><span>36 API tests, unit and integration over real HTTP, and 109 client specs run on every push.</span></li>
+            </ul>
+            <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
+            <div class="links">
+              <a class="btn btn--go" href="work/phonebook/">Read the case study</a>
+              <button class="play" type="button" data-youtube="OrchwyS9jfs" data-target="pb-player" data-title="PhoneBook walkthrough">Watch the walkthrough (1:25)</button>
+              <a href="https://github.com/gn-4200/PhoneBook">View the code</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="band band--mo" aria-labelledby="mo-title">
-      <div class="wrap">
-        <figure class="band__media" id="mo-player">
-          <video data-loop muted loop playsinline preload="none" poster="media/mo-loop-ledger-poster.jpg" aria-label="Mohalla: the monthly ledger, then the dashboard in dark mode">
-            <source src="media/mo-loop-ledger.webm" type="video/webm"><source src="media/mo-loop-ledger.mp4" type="video/mp4">
-          </video>
-          <figcaption>The monthly ledger: each month opens with the last month’s closing balance.</figcaption>
-        </figure>
-        <div>
-          <p class="band__kind">Finances for a housing society. ASP.NET Core 9 and Angular 19.</p>
-          <h3 id="mo-title"><span class="band__mark" aria-hidden="true"></span>Mohalla</h3>
-          <p class="band__lede">Residents, monthly contributions, expenses, and a ledger that closes each month by itself and carries the balance forward.</p>
-          <ul>
-            <li><strong>The ledger closes itself</strong><span>A scheduled job opens each month on the 1st and rolls the balance forward, across the year boundary too. A back-dated payment creates its month if it is missing.</span></li>
-            <li><strong>Admins change, viewers read</strong><span>The role travels in the sign-in token. The API refuses writes from viewers, and the interface hides every control they can’t use.</span></li>
-            <li><strong>Statements a household can follow</strong><span>Each resident’s page shows what was due, paid and short, month by month, with a running balance.</span></li>
-          </ul>
-          <p class="band__stack">C#, ASP.NET Core 9, EF Core, SQL Server, Hangfire, Angular 19, Material 3, Docker</p>
-          <div class="band__links">
-            <a class="btn" href="work/mohalla/">Read the case study</a>
-            <button class="play" type="button" data-youtube="zd3m_JkKpFA" data-target="mo-player" data-title="Mohalla walkthrough">Watch the walkthrough (0:36)</button>
-            <a href="https://github.com/gn-4200/mohalla">View the code</a>
+      <section class="card card--mo" aria-labelledby="mo-title">
+        <div class="card__top"><span>03</span><span>Finances for a housing society. ASP.NET Core 9 and Angular 19.</span></div>
+        <h3 id="mo-title">Mohalla</h3>
+        <div class="card__grid">
+          <figure id="mo-player">
+            <video data-loop muted loop playsinline preload="none" poster="media/mo-loop-ledger-poster.jpg" aria-label="Mohalla: the monthly ledger, then the dashboard in dark mode">
+              <source src="media/mo-loop-ledger.webm" type="video/webm"><source src="media/mo-loop-ledger.mp4" type="video/mp4">
+            </video>
+            <figcaption>The monthly ledger: each month opens with the last month’s closing balance.</figcaption>
+          </figure>
+          <div>
+            <p class="card__lede">Residents, monthly contributions, expenses, and a ledger that closes each month by itself and carries the balance forward.</p>
+            <ul>
+              <li><strong>The ledger closes itself</strong><span>A scheduled job opens each month on the 1st and rolls the balance forward, across the year boundary too. A back-dated payment creates its month if it is missing.</span></li>
+              <li><strong>Admins change, viewers read</strong><span>The role travels in the sign-in token. The API refuses writes from viewers, and the interface hides every control they can’t use.</span></li>
+              <li><strong>Statements a household can follow</strong><span>Each resident’s page shows what was due, paid and short, month by month, with a running balance.</span></li>
+            </ul>
+            <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQL Server, Hangfire, Angular 19, Material 3, Docker</p>
+            <div class="links">
+              <a class="btn btn--go" href="work/mohalla/">Read the case study</a>
+              <button class="play" type="button" data-youtube="zd3m_JkKpFA" data-target="mo-player" data-title="Mohalla walkthrough">Watch the walkthrough (0:36)</button>
+              <a href="https://github.com/gn-4200/mohalla">View the code</a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
 
   <section aria-labelledby="also-title">
-    <div class="wrap head">
-      <h2 id="also-title">Also</h2>
+    <div class="wrap head rv">
+      <h2 id="also-title">Also, <em>beyond the web.</em></h2>
     </div>
     <div class="wrap">
       <ul class="rows">
-        <li class="row">
+        <li class="row rv">
           <div class="row__when">2026<br>Final-year project</div>
           <div>
             <h3>Sentinel Flux Core <small>with a team of four</small></h3>
             <p>A Python toolkit that maps floods from Sentinel-1 radar imagery, which sees through the monsoon clouds that blind optical satellites, and reports what the water is likely to reach. Benchmarked on the Pakistan 2022 floods, holding out whole events rather than random tiles.</p>
             <p>I coordinated the team, wrote the 81-page report and designed the command-line tool that runs the pipeline from data checks to the review dashboard.</p>
-            <div class="figure"><b>0.874</b><b>186</b><span>macro F1 on held-out flood events</span><span>automated tests passing</span></div>
+            <div class="nums">
+              <div><b>0.874</b><span>macro F1 on held-out flood events</span></div>
+              <div><b>186</b><span>automated tests passing</span></div>
+            </div>
           </div>
           <div class="row__aside"><a href="sentinel-flux-core-report.pdf">Read the report</a><br>PDF, 81 pages, 4 MB</div>
         </li>
-        <li class="row">
+        <li class="row rv">
           <div class="row__when">2026<br>Internship</div>
           <div>
             <h3>Detection rules and Linux security scripts</h3>
@@ -182,12 +210,12 @@
   </section>
 
   <section id="experience" aria-labelledby="exp-title">
-    <div class="wrap head">
+    <div class="wrap head rv">
       <h2 id="exp-title">Experience</h2>
     </div>
     <div class="wrap">
       <ul class="rows">
-        <li class="row">
+        <li class="row rv">
           <div class="row__when">Sep 2025 to now</div>
           <div>
             <h3>Software engineer <small>Awatech Technology Solutions, Lahore</small></h3>
@@ -195,7 +223,7 @@
           </div>
           <div class="row__aside">.NET, Angular, SQL Server</div>
         </li>
-        <li class="row">
+        <li class="row rv">
           <div class="row__when">Jul to Aug 2026</div>
           <div>
             <h3>Cyber security intern <small>Allied Software Engineers, remote</small></h3>
@@ -203,7 +231,7 @@
           </div>
           <div class="row__aside">Completion certificate</div>
         </li>
-        <li class="row">
+        <li class="row rv">
           <div class="row__when">Jul 2024 to Aug 2025</div>
           <div>
             <h3>Software development intern <small>Awatech Technology Solutions, Lahore</small></h3>
@@ -211,7 +239,7 @@
           </div>
           <div class="row__aside">.NET, Angular</div>
         </li>
-        <li class="row">
+        <li class="row rv">
           <div class="row__when">Sep to Dec 2022</div>
           <div>
             <h3>SEO intern <small>Petsaal Technologies, Lahore</small></h3>
@@ -222,43 +250,45 @@
       </ul>
     </div>
 
-    <div class="wrap head">
-      <h2>Education and languages</h2>
-    </div>
-    <div class="wrap two">
-      <ul class="list">
-        <li><span>2023 to 2027</span><span><strong>BS Computer Science</strong>, The University of Lahore. CGPA 3.72 after seven of eight semesters. Dean’s Honour List, Fall 2023.</span></li>
-        <li><span>2020 to 2022</span><span><strong>FSc Pre-Medical</strong>, Aspire College, Okara.</span></li>
-        <li><span>2025</span><span><strong>Crash Course on Python</strong>, Google, on Coursera.</span></li>
-        <li><span>2024 to 2025</span><span><strong>Leadership Program</strong>, UOL Student Guild.</span></li>
-      </ul>
-      <ul class="list">
-        <li><span>Urdu</span><span>Native.</span></li>
-        <li><span>English</span><span>Fluent. My language of study through school and university.</span></li>
-        <li><span>German</span><span>Beginner (A1), and learning.</span></li>
-      </ul>
+    <div class="wrap two rv">
+      <div>
+        <h3>Education</h3>
+        <ul class="list">
+          <li><span>2023 to 2027</span><span><strong>BS Computer Science</strong>, The University of Lahore. CGPA 3.72 after seven of eight semesters. Dean’s Honour List, Fall 2023.</span></li>
+          <li><span>2020 to 2022</span><span><strong>FSc Pre-Medical</strong>, Aspire College, Okara.</span></li>
+          <li><span>2025</span><span><strong>Crash Course on Python</strong>, Google, on Coursera.</span></li>
+          <li><span>2024 to 2025</span><span><strong>Leadership Program</strong>, UOL Student Guild.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Languages</h3>
+        <ul class="list">
+          <li><span>Urdu</span><span>Native.</span></li>
+          <li><span>English</span><span>Fluent. My language of study through school and university.</span></li>
+          <li><span>German</span><span>Beginner (A1), and learning.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
-      <h2 id="contact-title">Get in touch</h2>
+      <h2 id="contact-title">Get in <em>touch.</em></h2>
       <p>For a role, a project, or a question about any of this work, e-mail is the quickest way to reach me. I’m in Lahore, five hours ahead of UTC.</p>
-      <a class="contact__mail" href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a>
+      <a class="mail" href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a>
       <div class="links">
+        <button class="btn" type="button" data-copy="ghulamnabi7885@gmail.com">Copy the address</button>
         <a href="https://github.com/gn-4200">GitHub</a>
         <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
       </div>
+      <footer class="foot">
+        <span>© 2026 Ghulam Nabi</span>
+        <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
+      </footer>
     </div>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <span>© 2026 Ghulam Nabi</span>
-    <span>Hand-written HTML and CSS. The fonts are hosted here and nothing tracks you.</span>
-  </div>
-</footer>
-<script src="js/site.js" defer></script>
+<script src="js/home.js" defer></script>
 </body>
 </html>
