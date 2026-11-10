@@ -120,6 +120,3 @@ body { position: relative; }
   .two { padding-top: 36px; }
   .contact { margin-top: 56px; padding-top: 48px; }
 }
-
-/* the phone number: looser, so its groups stay readable */
-.ways a[href^="tel:"] b { letter-spacing: -.01em; word-spacing: .14em; font-variant-numeric: tabular-nums; white-space: nowrap; }
