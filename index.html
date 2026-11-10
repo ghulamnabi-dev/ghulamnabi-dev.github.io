@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ghulam Nabi, secure software and computer science</title>
-<meta name="description" content="Ghulam Nabi is a final-year computer science student at The University of Lahore and a software engineer, with interests in software security, applied cryptography and trustworthy systems.">
+<title>Ghulam Nabi, computer science</title>
+<meta name="description" content="Ghulam Nabi is a final-year computer science student at The University of Lahore and a software engineer, with interests in software engineering, security and machine learning.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Ghulam Nabi, secure software and computer science">
-<meta property="og:description" content="Security work, two research studies and four software systems, each with what was tested and what is still open.">
+<meta property="og:title" content="Ghulam Nabi, computer science">
+<meta property="og:description" content="Four software systems, two research studies and security work, each with what was tested and what is still open.">
 <meta property="og:url" content="https://ghulamnabi-dev.github.io/">
 <link rel="canonical" href="https://ghulamnabi-dev.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -23,9 +23,9 @@
     <a class="mark" href="#top">Ghulam Nabi<i aria-hidden="true">.</i></a>
     <nav aria-label="Sections">
       <a href="#about">About</a>
-      <a href="#security">Security</a>
       <a href="#research">Research</a>
       <a href="#work">Projects</a>
+      <a href="#security">Security</a>
       <a href="#record">Education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -36,15 +36,15 @@
 
   <section class="lead" id="top">
     <div class="wrap">
-      <p class="kicker">Computer science · Secure software · Lahore, Pakistan</p>
+      <p class="kicker">Computer science · Software engineering · Lahore, Pakistan</p>
       <h1>Ghulam Nabi<i aria-hidden="true">.</i></h1>
-      <p class="thesis">I build software that people rely on, and I work on making it safe to rely on. My interests are software security, applied cryptography, and systems whose results can be trusted.</p>
+      <p class="thesis">I build software that people rely on, and I care about getting it right: tested, secure, and honest about its limits. My interests are software engineering, security, and machine learning.</p>
       <dl class="facts">
         <div><dt>Studying</dt><dd><strong>BS Computer Science</strong>, The University of Lahore, final year</dd></div>
         <div><dt>CGPA</dt><dd><strong>3.72</strong> of 4.00, Dean’s Honour List</dd></div>
         <div><dt>Working</dt><dd><strong>Software engineer</strong>, Awatech Technology Solutions, since 2025</dd></div>
       </dl>
-      <p class="actions"><a class="btn" href="#security">See my security work</a><a class="btn btn--line" href="mailto:ghulamnabi7885@gmail.com">E-mail me</a></p>
+      <p class="actions"><a class="btn" href="#work">See my work</a><a class="btn btn--line" href="ghulam-nabi-cv.pdf">CV (PDF)</a><a class="btn btn--line" href="mailto:ghulamnabi7885@gmail.com">E-mail me</a></p>
     </div>
   </section>
 
@@ -53,9 +53,9 @@
       <h2 id="about-title">About and motivation</h2>
       <div class="prose">
         <p>I came to computer science on purpose, not by default. I studied pre-medical at college, spent a few months working with technology before university, and found that building things suited me. I have not doubted the choice since.</p>
-        <p>Security is where my interest has settled. At work, part of my job is tracking and fixing vulnerable dependencies in a system that more than 100 people use. In my own projects, sign-in, sessions and access control are written out in plain code with no framework, so that I can see what a framework hides. An eight-week internship then showed me how attacks on such software are detected.</p>
-        <p>Cryptography is the part I most want to study properly. So far I have only used it: password hashing, tokens authenticated with HMAC, random values compared in constant time. I do not yet know why these are secure, and that is what I want to learn.</p>
-        <p>Two other projects taught me about trust in a wider sense. One maps floods from satellite radar, and one is a mental-health check-in for students at my university. In both, the algorithm was the smaller part of the work. What mattered was careful testing, honest reporting of where it fails, and a person who stays in charge of the decision.</p>
+        <p>Most of my time goes into building software. For two years I have worked on business software that more than 100 people use every day, in ASP.NET Core and Angular. Outside work I built three complete systems of my own, each around something it must not get wrong: a checkout that cannot oversell, an import that never half-finishes, a ledger nobody types by hand.</p>
+        <p>Security grew out of that work. Part of my job is tracking and fixing vulnerable dependencies, and an eight-week internship showed me how attacks on software are detected. I have used cryptography without yet understanding why it is secure, and I want to study it properly.</p>
+        <p>Two research projects taught me about trust in a wider sense. One maps floods from satellite radar, and one is a mental-health check-in for students at my university. In both, the algorithm was the smaller part of the work. What mattered was careful testing, honest reporting of where it fails, and a person who stays in charge of the decision.</p>
         <p>I can build and ship complete systems. What I want now is depth: to understand the methods behind them well enough to design them, not only to apply them.</p>
       </div>
     </div>
@@ -65,64 +65,10 @@
     <div class="wrap">
       <h2 id="interests-title">Research interests</h2>
       <ol class="three">
-        <li><h3>Software and application security</h3><p>Sign-in, access control and the ordinary mistakes that leak data. Systems that stay correct while someone is trying to break them.</p></li>
-        <li><h3>Applied cryptography</h3><p>How hashing, signatures and key exchange protect real systems, and how they fail when used wrongly. I have used hashing and message authentication in my projects, and want to study the theory.</p></li>
-        <li><h3>Trustworthy systems</h3><p>Testing a system on what it has never seen, and keeping a person in charge of the decisions that matter.</p></li>
+        <li><h3>Software engineering</h3><p>Systems that stay correct under load and over time: transactions, concurrency, testing against the real thing.</p></li>
+        <li><h3>Security and cryptography</h3><p>Sign-in, access control and the ordinary mistakes that leak data. I have used hashing and message authentication, and want to study the theory.</p></li>
+        <li><h3>Machine learning</h3><p>Testing a model on what it has never seen, and keeping a person in charge of the decisions that matter.</p></li>
       </ol>
-    </div>
-  </section>
-
-  <section id="security" aria-labelledby="security-title">
-    <div class="wrap">
-      <h2 id="security-title">Security work</h2>
-      <p class="intro">What I have done in security so far, and where each claim can be checked.</p>
-      <p class="check made"><b>How this work was made</b> The first versions of these projects date from 2025 and early 2026. In November 2026 I rebuilt them with an AI coding assistant (Claude), and most of the security work described below dates from that rebuild. The commit history in each repository shows it.</p>
-
-      <article class="proof">
-        <h3>A web shop secured without a framework</h3>
-        <p>TechZone has its own sign-in, sessions, request-forgery protection and access control, with no framework in between, so each part can be read. It uses only standard, well-tested building blocks. Nothing cryptographic is invented.</p>
-        <ul>
-          <li>Passwords are hashed with bcrypt, and upgraded at sign-in when the settings change.</li>
-          <li>A failed sign-in gives the same message whether or not the account exists.</li>
-          <li>Each session gets one random 256-bit anti-forgery token, compared in constant time.</li>
-          <li>The session ID is renewed at every sign-in, uploads are checked by their content, and every query uses prepared statements.</li>
-        </ul>
-        <p class="check"><b>Checked on every push</b> A state-changing request from another origin is rejected, the API never returns a password field, a failed sign-in gives the same message for any account, and 12 simultaneous checkouts for 3 units produce exactly 3 orders.</p>
-        <p class="check check--open"><b>Found in review, not fixed yet</b> Sign-up still says when an e-mail is already registered. A sign-in for an unknown e-mail does more hashing work than one for a known e-mail, so the timing can differ. A successful sign-in clears the failed-attempt counter for that network address, so the lockout can be sidestepped.</p>
-        <p class="links"><a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">Security notes, file by file</a><a href="work/techzone/">Case study</a></p>
-      </article>
-
-      <article class="proof">
-        <h3>Access control, tested from the other account</h3>
-        <p>In PhoneBook the tests sign in as two different people and try to read each other’s data. Another account’s record returns “not found”, never “forbidden”, so the system does not even confirm that the record exists.</p>
-        <ul>
-          <li>Sign-in tokens are authenticated with HMAC-SHA256. The server accepts that algorithm only, and checks the issuer, the audience and the expiry.</li>
-          <li>The server refuses to start if the signing secret is missing or shorter than 32 characters.</li>
-          <li>In Mohalla a viewer who tries to change the accounts is refused by the server, not only by a hidden button.</li>
-        </ul>
-        <p class="links"><a href="work/phonebook/">PhoneBook case study</a><a href="work/mohalla/">Mohalla case study</a></p>
-      </article>
-
-      <article class="proof">
-        <h3>Detection rules from a security internship</h3>
-        <p>Eight weeks on the defensive side at Allied Software Engineers. I wrote detection rules for a written lab scenario. They have not been run against real logs or malware samples.</p>
-        <ul>
-          <li>Five Sigma rules mapped to MITRE ATT&amp;CK: a phishing macro, credential dumping, persistence, shadow-copy deletion and log clearing.</li>
-          <li>Two YARA rules, and the same detections as queries for Microsoft Sentinel and Splunk.</li>
-          <li>Bash scripts for a Linux security audit and for incident triage.</li>
-        </ul>
-        <p class="links"><a href="https://github.com/ghulamnabi-dev/Cyber_Security">Code</a></p>
-      </article>
-
-      <article class="proof proof--plain">
-        <h3>What I have not done yet</h3>
-        <ul>
-          <li>I have not studied cryptography formally. My university course in Information Security is in progress this semester.</li>
-          <li>I have not found a vulnerability in someone else’s software, and I have no capture-the-flag record.</li>
-          <li>I have not run a security scanner or a penetration test against my own projects.</li>
-          <li>My own projects have known gaps. Each case study lists them.</li>
-        </ul>
-      </article>
     </div>
   </section>
 
@@ -219,8 +165,8 @@
           <a class="thumb" href="work/techzone/" tabindex="-1" aria-hidden="true"><img src="img/techzone/03-builder.webp" width="1600" height="1264" alt=""></a>
           <div>
             <h3>TechZone <small>A PC-parts marketplace</small></h3>
-            <p class="q">Can one seller read another shop’s order?</p>
-            <p>It should not. Every query is limited to the seller’s own products and their own lines of a shared order, and another shop’s order returns “not found”. There is no automated test for this yet. Checkout does have one: on every push, a test sends 12 checkouts at once for 3 units and requires exactly 3 orders.</p>
+            <p class="q">What happens when twelve people buy the last three units?</p>
+            <p>Exactly three orders are placed. Checkout runs in one transaction on locked rows, and on every push a test sends 12 checkouts at once for 3 units and requires exactly 3 orders. The shop also has a PC builder that only offers parts that fit, and each seller’s queries are limited to their own orders, which no automated test covers yet.</p>
             <p class="links"><a href="work/techzone/">Case study</a><a href="https://github.com/ghulamnabi-dev/TechZone">Code</a><span>PHP, MariaDB, JavaScript</span></p>
           </div>
         </li>
@@ -228,8 +174,8 @@
           <a class="thumb" href="work/phonebook/" tabindex="-1" aria-hidden="true"><img src="img/phonebook/cover.webp" width="1600" height="1000" alt=""></a>
           <div>
             <h3>PhoneBook <small>A contacts system with accounts</small></h3>
-            <p class="q">Can one account find out that another account’s contact exists?</p>
-            <p>No. Asking for someone else’s contact returns “not found”, and tests sign in as two people to prove it. Imports are all or nothing, so a bad file never leaves half its contents behind.</p>
+            <p class="q">What happens when an import file is half bad?</p>
+            <p>Nothing is saved. Imports are all or nothing, so a bad file never leaves half its contents behind. Each account sees only its own contacts, and tests sign in as two people to prove it.</p>
             <p class="links"><a href="work/phonebook/">Case study</a><a href="https://github.com/ghulamnabi-dev/PhoneBook">Code</a><span>C#, ASP.NET Core, Angular</span></p>
           </div>
         </li>
@@ -237,8 +183,8 @@
           <a class="thumb" href="work/mohalla/" tabindex="-1" aria-hidden="true"><img src="img/mohalla/02-dashboard.webp" width="1440" height="900" alt=""></a>
           <div>
             <h3>Mohalla <small>Finances for a housing society</small></h3>
-            <p class="q">Who is allowed to change the accounts?</p>
-            <p>Only admins, and the server decides, not the screen. A viewer’s attempt to write is refused. The monthly ledger is generated, so nobody types a balance.</p>
+            <p class="q">Who types the monthly balance?</p>
+            <p>Nobody. The monthly ledger is generated by a scheduled job and carries the balance forward. Only admins can change the accounts, and the server decides, not the screen.</p>
             <p class="links"><a href="work/mohalla/">Case study</a><a href="https://github.com/ghulamnabi-dev/mohalla">Code</a><span>C#, ASP.NET Core, Angular</span></p>
           </div>
         </li>
@@ -252,6 +198,60 @@
           </div>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <section id="security" aria-labelledby="security-title">
+    <div class="wrap">
+      <h2 id="security-title">Security work</h2>
+      <p class="intro">What I have done in security so far, and where each claim can be checked.</p>
+      <p class="check made"><b>How this work was made</b> The first versions of these projects date from 2025 and early 2026. In November 2026 I rebuilt them with an AI coding assistant (Claude), and most of the security work described below dates from that rebuild. The commit history in each repository shows it.</p>
+
+      <article class="proof">
+        <h3>A web shop secured without a framework</h3>
+        <p>TechZone has its own sign-in, sessions, request-forgery protection and access control, with no framework in between, so each part can be read. It uses only standard, well-tested building blocks. Nothing cryptographic is invented.</p>
+        <ul>
+          <li>Passwords are hashed with bcrypt, and upgraded at sign-in when the settings change.</li>
+          <li>A failed sign-in gives the same message whether or not the account exists.</li>
+          <li>Each session gets one random 256-bit anti-forgery token, compared in constant time.</li>
+          <li>The session ID is renewed at every sign-in, uploads are checked by their content, and every query uses prepared statements.</li>
+        </ul>
+        <p class="check"><b>Checked on every push</b> A state-changing request from another origin is rejected, the API never returns a password field, a failed sign-in gives the same message for any account, and 12 simultaneous checkouts for 3 units produce exactly 3 orders.</p>
+        <p class="check check--open"><b>Found in review, not fixed yet</b> Sign-up still says when an e-mail is already registered. A sign-in for an unknown e-mail does more hashing work than one for a known e-mail, so the timing can differ. A successful sign-in clears the failed-attempt counter for that network address, so the lockout can be sidestepped.</p>
+        <p class="links"><a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">Security notes, file by file</a><a href="work/techzone/">Case study</a></p>
+      </article>
+
+      <article class="proof">
+        <h3>Access control, tested from the other account</h3>
+        <p>In PhoneBook the tests sign in as two different people and try to read each other’s data. Another account’s record returns “not found”, never “forbidden”, so the system does not even confirm that the record exists.</p>
+        <ul>
+          <li>Sign-in tokens are authenticated with HMAC-SHA256. The server accepts that algorithm only, and checks the issuer, the audience and the expiry.</li>
+          <li>The server refuses to start if the signing secret is missing or shorter than 32 characters.</li>
+          <li>In Mohalla a viewer who tries to change the accounts is refused by the server, not only by a hidden button.</li>
+        </ul>
+        <p class="links"><a href="work/phonebook/">PhoneBook case study</a><a href="work/mohalla/">Mohalla case study</a></p>
+      </article>
+
+      <article class="proof">
+        <h3>Detection rules from a security internship</h3>
+        <p>Eight weeks on the defensive side at Allied Software Engineers. I wrote detection rules for a written lab scenario. They have not been run against real logs or malware samples.</p>
+        <ul>
+          <li>Five Sigma rules mapped to MITRE ATT&amp;CK: a phishing macro, credential dumping, persistence, shadow-copy deletion and log clearing.</li>
+          <li>Two YARA rules, and the same detections as queries for Microsoft Sentinel and Splunk.</li>
+          <li>Bash scripts for a Linux security audit and for incident triage.</li>
+        </ul>
+        <p class="links"><a href="https://github.com/ghulamnabi-dev/Cyber_Security">Code</a></p>
+      </article>
+
+      <article class="proof proof--plain">
+        <h3>What I have not done yet</h3>
+        <ul>
+          <li>I have not studied cryptography formally. My university course in Information Security is in progress this semester.</li>
+          <li>I have not found a vulnerability in someone else’s software, and I have no capture-the-flag record.</li>
+          <li>I have not run a security scanner or a penetration test against my own projects.</li>
+          <li>My own projects have known gaps. Each case study lists them.</li>
+        </ul>
+      </article>
     </div>
   </section>
 
@@ -280,6 +280,7 @@
       <p class="intro">If my work is relevant to yours, I would be glad to hear from you. E-mail is the quickest way to reach me.</p>
       <ul class="ways">
         <li><span>E-mail</span><a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></li>
+        <li><span>CV</span><a href="ghulam-nabi-cv.pdf">Download (PDF, two pages)</a></li>
         <li><span>GitHub</span><a href="https://github.com/ghulamnabi-dev">ghulamnabi-dev</a></li>
         <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">ghulam-nabi</a></li>
       </ul>
