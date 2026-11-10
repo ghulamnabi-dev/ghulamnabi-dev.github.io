@@ -88,7 +88,7 @@
           <li>Each session gets one random 256-bit anti-forgery token, compared in constant time.</li>
           <li>The session ID is renewed at every sign-in, uploads are checked by their content, and every query uses prepared statements.</li>
         </ul>
-        <p class="check"><b>Checked on every push</b> A forged cross-site request is rejected, the API never returns a password field, and a failed sign-in gives the same message for any account.</p>
+        <p class="check"><b>Checked on every push</b> A forged cross-site request is rejected, the API never returns a password field, a failed sign-in gives the same message for any account, and 12 simultaneous checkouts for 3 units produce exactly 3 orders.</p>
         <p class="links"><a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">Security notes, file by file</a><a href="work/techzone/">Case study</a></p>
       </article>
 
@@ -217,7 +217,7 @@
           <div>
             <h3>TechZone <small>A PC-parts marketplace</small></h3>
             <p class="q">Can one seller read another shop’s order?</p>
-            <p>No. Every query is limited to the seller’s own products and their own lines of a shared order, and another shop’s order returns “not found”. Checkout also survives a rush: in a manual test, 12 checkouts at once for 3 units produced exactly 3 orders.</p>
+            <p>No. Every query is limited to the seller’s own products and their own lines of a shared order, and another shop’s order returns “not found”. Checkout also survives a rush: on every push, a test sends 12 checkouts at once for 3 units and requires exactly 3 orders.</p>
             <p class="links"><a href="work/techzone/">Case study</a><a href="https://github.com/ghulamnabi-dev/TechZone">Code</a><span>PHP, MariaDB, JavaScript</span></p>
           </div>
         </li>
