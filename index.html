@@ -3,324 +3,268 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ghulam Nabi, software engineer</title>
-<meta name="description" content="Ghulam Nabi builds complete web systems in .NET, Angular and PHP: the API, the interface, the tests. Three projects with walkthroughs and case studies.">
-<meta name="color-scheme" content="dark">
-<meta property="og:title" content="Ghulam Nabi, software engineer">
-<meta property="og:description" content="Three systems built end to end, with walkthroughs and case studies: TechZone, PhoneBook and Mohalla.">
-<meta property="og:image" content="https://ghulamnabi-dev.github.io/img/og.png">
+<title>Ghulam Nabi, computer science</title>
+<meta name="description" content="Ghulam Nabi is a final-year computer science student at The University of Lahore and a software engineer. Research on flood mapping from satellite radar, a mental-health screening study, and four software systems.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Ghulam Nabi, computer science">
+<meta property="og:description" content="Research on flood mapping from satellite radar, a mental-health screening study, and four software systems built end to end.">
 <meta property="og:url" content="https://ghulamnabi-dev.github.io/">
-<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ghulamnabi-dev.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preload" href="fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ghulam Nabi","jobTitle":"Software Engineer","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"url":"https://ghulamnabi-dev.github.io/","sameAs":["https://github.com/ghulamnabi-dev","https://www.linkedin.com/in/ghulam-nabi-67b558374"]}</script>
-<meta name="theme-color" content="#0b0b0c">
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/build.css">
-<script>
-(function (d) {
-  d.classList.add('js');
-  try {
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && sessionStorage.getItem('built') !== '1') {
-      d.classList.add('build');
-      setTimeout(function () { if (!window.__buildAlive) d.classList.remove('build'); }, 3000);
-    }
-  } catch (e) {}
-})(document.documentElement);
-</script>
+<link rel="preload" href="fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ghulam Nabi","alumniOf":"The University of Lahore","address":{"@type":"PostalAddress","addressLocality":"Lahore","addressCountry":"PK"},"url":"https://ghulamnabi-dev.github.io/","sameAs":["https://github.com/ghulamnabi-dev","https://www.linkedin.com/in/ghulam-nabi-67b558374"]}</script>
+<link rel="stylesheet" href="css/academic.css">
 </head>
 <body>
-<a class="skip" href="#work">Skip to the work</a>
-<div class="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
-  <div class="wrap">
-    <a class="mark" href="./" aria-label="Ghulam Nabi, home"><b aria-hidden="true">GN</b><span>Ghulam Nabi</span></a>
+  <div class="wrap top__in">
+    <a class="mark" href="#top">Ghulam Nabi<i aria-hidden="true">.</i></a>
     <nav aria-label="Sections">
-      <span class="clock" data-clock>Lahore, UTC+5</span>
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#work">Projects</a>
+      <a href="#offer">What I bring</a>
+      <a href="#record">Education</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap">
-      <h1 id="hero-title" class="it"><span>Ghulam</span> <span>Nabi<i aria-hidden="true">.</i></span></h1>
-      <div class="hero__grid">
-        <div>
-          <p class="lede it">I build complete web systems: the API, the interface, the tests, and the <em>unglamorous parts that keep records right</em> when real people use them. Mostly in .NET and Angular.</p>
-          <dl class="facts it">
-            <div><dt>Now</dt><dd><strong>Software engineer at Awatech Technology Solutions</strong>, Lahore, building ERP modules used by more than 100 people.</dd></div>
-            <div><dt>Studying</dt><dd><strong>BS Computer Science</strong>, University of Lahore. CGPA 3.72, finishing in January 2027.</dd></div>
-            <div><dt>Next</dt><dd>A master’s degree in Germany, from 2027.</dd></div>
-          </dl>
-          <div class="links it">
-            <a class="btn" href="#work">See the work</a>
-            <a href="mailto:ghulamnabi7885@gmail.com">E-mail</a>
-            <a href="https://github.com/ghulamnabi-dev">GitHub</a>
-            <a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">LinkedIn</a>
-          </div>
-        </div>
+<main id="main">
 
-        <figure class="bench it" data-bench data-project="tz">
-          <div class="bench__frame">
-            <video muted playsinline preload="metadata" poster="media/tz-loop-builder-poster.jpg" aria-label="TechZone: the PC builder lists the boards that don’t fit, with the reason"></video>
-          </div>
-          <div class="bench__bar" role="tablist" aria-label="Choose a project to preview">
-            <button class="bench__tab" role="tab" aria-selected="true" data-project="tz" data-clip="media/tz-loop-builder" data-label="TechZone: the PC builder lists the boards that don’t fit, with the reason">TechZone<small>Parts that don’t fit say why</small></button>
-            <button class="bench__tab" role="tab" aria-selected="false" data-project="pb" data-clip="media/pb-loop-import" data-label="PhoneBook: a vCard file with errors is refused as a whole, with every problem listed">PhoneBook<small>Imports are all or nothing</small></button>
-            <button class="bench__tab" role="tab" aria-selected="false" data-project="mo" data-clip="media/mo-loop-statement" data-label="Mohalla: a resident’s statement, then recording a payment">Mohalla<small>A household’s statement</small></button>
-          </div>
-        </figure>
+  <section class="lead" id="top">
+    <div class="wrap">
+      <p class="kicker">Computer science · Lahore, Pakistan</p>
+      <h1>Ghulam Nabi<i aria-hidden="true">.</i></h1>
+      <p class="thesis">I build software that people rely on, and I study how to tell whether it can be trusted. My final-year research maps floods from satellite radar and tests the result on floods the model has never seen.</p>
+      <dl class="facts">
+        <div><dt>Studying</dt><dd><strong>BS Computer Science</strong>, The University of Lahore, final year</dd></div>
+        <div><dt>CGPA</dt><dd><strong>3.72</strong> of 4.00, Dean’s Honour List</dd></div>
+        <div><dt>Working</dt><dd><strong>Software engineer</strong>, Awatech Technology Solutions, since 2025</dd></div>
+      </dl>
+      <p class="actions"><a class="btn" href="#research">See my research</a><a class="btn btn--line" href="mailto:ghulamnabi7885@gmail.com">E-mail me</a></p>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <h2 id="about-title">About and motivation</h2>
+      <div class="prose">
+        <p>I came to computer science on purpose, not by default. I studied pre-medical at college, spent a few months working with technology before university, and found that building things suited me. I have not doubted the choice since.</p>
+        <p>Two events shaped what I care about. In 2022 monsoon floods devastated large parts of my country, and cloud hid the ground from satellites exactly when relief teams needed to see it. That became my final-year project. In 2025 a student at my university died, and I started asking why so few students use the help that exists. That became a study of its own.</p>
+        <p>Both taught me the same lesson. The algorithm is the smaller part of the work. What separates a demo from a tool is careful evaluation, honest reporting of where it fails, and a person who stays in charge of the decision.</p>
+        <blockquote>A model is only as good as the evaluation around it.</blockquote>
+        <p>I can build and ship complete systems. What I want now is depth: to understand the methods behind them well enough to design them, not only to apply them.</p>
       </div>
     </div>
   </section>
 
-
-  <div id="work">
-    <div class="wrap head">
-      <h2>Three systems, each built <em>end to end.</em></h2>
-      <span class="head__n" aria-hidden="true">01 — 03</span>
-      <p>Each one is mine from the database to the last screen, with tests, a README that explains the decisions, and a walkthrough you can watch in a few minutes.</p>
-    </div>
-
-    <div class="wrap stack">
-      <section class="card card--tz" aria-labelledby="tz-title">
-        <div class="card__top"><span>01</span><span>PC-parts marketplace for Lahore. PHP 8 and MariaDB, no framework.</span></div>
-        <h3 id="tz-title">TechZone</h3>
-        <div class="card__grid">
-          <figure id="tz-player">
-            <video data-loop muted loop playsinline preload="none" poster="media/tz-loop-order-poster.jpg" aria-label="TechZone back-office: an order is confirmed, paid, fulfilled and shipped">
-              <source src="media/tz-loop-order.webm" type="video/webm"><source src="media/tz-loop-order.mp4" type="video/mp4">
-            </video>
-            <figcaption>An order moves from confirmed to shipped. Each step lands on its timeline with who did it.</figcaption>
-          </figure>
-          <div>
-            <p class="card__lede">A storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office where every order carries its own history.</p>
-            <ul>
-              <li>The builder explains itself</li>
-              <li>Stock is a ledger, not a number</li>
-              <li>Ten admin screens on one AG Grid wrapper</li>
-            </ul>
-            <details class="hood"><summary>Under the hood</summary><ul><li><b>AG Grid on ten admin screens</b> through one wrapper: search, filters, bulk actions, CSV export, saved column layouts</li><li><b>Shared <code>core/</code> library</b> sessions, CSRF, validation and checkout, used by the storefront and the admin</li><li><b>Row locks at checkout</b> <code>SELECT … FOR UPDATE</code> in one transaction, so it cannot oversell</li><li><b>Audit log</b> every admin write stored with a before and after diff</li><li><b>Pure rule functions</b> compatibility, shipping and discounts shared by every surface</li></ul></details>
-            <p class="card__stack">PHP 8, MariaDB, plain JavaScript, AG Grid, GitHub Actions</p>
-            <div class="links">
-              <a class="btn btn--go" href="work/techzone/">Read the case study</a>
-              <button class="play" type="button" data-youtube="zRxEUyW1uIs" data-target="tz-player" data-title="TechZone walkthrough">Watch the walkthrough (2:48)</button>
-              <a href="https://github.com/ghulamnabi-dev/TechZone">View the code</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card card--pb" aria-labelledby="pb-title">
-        <div class="card__top"><span>02</span><span>Contacts app. ASP.NET Core 9 API and Angular 19 client.</span></div>
-        <h3 id="pb-title">PhoneBook</h3>
-        <div class="card__grid">
-          <figure id="pb-player">
-            <video data-loop muted loop playsinline preload="none" poster="media/pb-loop-search-poster.jpg" aria-label="PhoneBook: typing part of a number narrows the list and opens a contact">
-              <source src="media/pb-loop-search.webm" type="video/webm"><source src="media/pb-loop-search.mp4" type="video/mp4">
-            </video>
-            <figcaption>Typing “+92 30” finds every number that contains it, however it was written.</figcaption>
-          </figure>
-          <div>
-            <p class="card__lede">Contacts with several numbers each, groups, favourites, search by any part of a number, and vCard import and export.</p>
-            <ul>
-              <li>Imports are all or nothing</li>
-              <li>Each account sees only its own data</li>
-              <li>Tested at both ends</li>
-            </ul>
-            <details class="hood"><summary>Under the hood</summary><ul><li><b>Generic Repository and Unit of Work</b> several repositories commit together or not at all</li><li><b>Hand-written JWT</b> HS256 tokens, no ASP.NET Identity</li><li><b>RFC 7807 errors</b> one exception handler for every failure path</li><li><b>WebApplicationFactory tests</b> the real API on in-memory SQLite</li><li><b>vCard 3.0 reader and writer</b> no library</li></ul></details>
-            <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
-            <div class="links">
-              <a class="btn btn--go" href="work/phonebook/">Read the case study</a>
-              <button class="play" type="button" data-youtube="OrchwyS9jfs" data-target="pb-player" data-title="PhoneBook walkthrough">Watch the walkthrough (1:25)</button>
-              <a href="https://github.com/ghulamnabi-dev/PhoneBook">View the code</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card card--mo" aria-labelledby="mo-title">
-        <div class="card__top"><span>03</span><span>Finances for a housing society. ASP.NET Core 9 and Angular 19.</span></div>
-        <h3 id="mo-title">Mohalla</h3>
-        <div class="card__grid">
-          <figure id="mo-player">
-            <video data-loop muted loop playsinline preload="none" poster="media/mo-loop-ledger-poster.jpg" aria-label="Mohalla: the monthly ledger, then the dashboard in dark mode">
-              <source src="media/mo-loop-ledger.webm" type="video/webm"><source src="media/mo-loop-ledger.mp4" type="video/mp4">
-            </video>
-            <figcaption>The monthly ledger: each month opens with the last month’s closing balance.</figcaption>
-          </figure>
-          <div>
-            <p class="card__lede">Residents, monthly contributions, expenses, and a ledger that closes each month by itself and carries the balance forward.</p>
-            <ul>
-              <li>The ledger closes itself</li>
-              <li>Admins change, viewers read</li>
-              <li>Statements a household can follow</li>
-            </ul>
-            <details class="hood"><summary>Under the hood</summary><ul><li><b>Controllers, services, repositories</b> every dependency behind an interface</li><li><b>Identity and JWT roles</b> <code>[Authorize(Roles)]</code> on every write</li><li><b>Hangfire</b> the scheduled job that opens each month</li><li><b>Signals and standalone components</b> Angular 19, lazy routes</li><li><b>A 60-line SVG chart</b> no charting dependency, about 114 kB gzipped</li></ul></details>
-            <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQL Server, Hangfire, Angular 19, Material 3, Docker</p>
-            <div class="links">
-              <a class="btn btn--go" href="work/mohalla/">Read the case study</a>
-              <button class="play" type="button" data-youtube="zd3m_JkKpFA" data-target="mo-player" data-title="Mohalla walkthrough">Watch the walkthrough (0:36)</button>
-              <a href="https://github.com/ghulamnabi-dev/mohalla">View the code</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <section class="flood" aria-labelledby="sf-title">
-    <div class="wrap flood__grid">
-      <div>
-        <p class="flood__kind">Final-year project, with a team of four. 2026.</p>
-        <h2 id="sf-title">Sentinel Flux Core</h2>
-        <p class="flood__lede">A Python toolkit that maps floods from Sentinel-1 radar imagery, which sees through the monsoon clouds that blind optical satellites, and reports what the water is likely to reach.</p>
-        <p>Benchmarked on the Pakistan 2022 floods, holding out whole events rather than random tiles. I coordinated the team, wrote the 81-page report and designed the command-line tool that runs the pipeline from data checks to the review dashboard.</p>
-        <div class="nums">
-          <div><b>0.874</b><span>macro F1 on held-out flood events</span></div>
-          <div><b>186</b><span>automated tests passing</span></div>
-        </div>
-        <div class="links"><a class="btn btn--go" href="sentinel-flux-core-report.pdf">Read the report</a><span class="flood__meta">PDF, 81 pages, 4 MB</span></div>
-      </div>
-      <figure class="radar" data-radar>
-        <canvas width="640" height="420" role="img" aria-label="Illustration: a river in a radar image before a flood, after it, and the area that changed"></canvas>
-        <div class="radar__bar" role="group" aria-label="Choose a view">
-          <button type="button" aria-pressed="true">Before</button>
-          <button type="button" aria-pressed="false">After</button>
-          <button type="button" aria-pressed="false">What changed</button>
-        </div>
-        <figcaption>An illustration drawn in your browser, not project data. In radar imagery open water reads dark, so a flood shows up as land that went dark between two passes.</figcaption>
-      </figure>
+  <section id="interests" aria-labelledby="interests-title">
+    <div class="wrap">
+      <h2 id="interests-title">Research interests</h2>
+      <ol class="three">
+        <li><h3>Trustworthy machine learning</h3><p>Testing models on data they have never seen, and measuring how sure they are, not only how often they are right.</p></li>
+        <li><h3>Decision-support systems</h3><p>Tools that help a person decide and show their evidence, with the person still in charge.</p></li>
+        <li><h3>Secure, reliable software</h3><p>Systems that keep people’s records correct and private, even when something goes wrong.</p></li>
+      </ol>
     </div>
   </section>
 
-  <section aria-labelledby="also-title">
-    <div class="wrap head">
-      <h2 id="also-title">Also</h2>
-    </div>
+  <section id="research" aria-labelledby="research-title">
     <div class="wrap">
-      <ul class="rows">
-        <li class="row">
-          <div class="row__when">2026<br>Design stage</div>
-          <div>
-            <h3>Digital Well-being <small>a mental-health check-in for my university</small></h3>
-            <p>In December 2025 a student at my university died, in what was reported as a suicide. The university responded by setting up a well-being society where students can talk to teachers and a psychiatrist. I noticed that almost nobody goes. Walking into that office is a public act, and for many students that is the hardest part.</p>
-            <p>So I led the design of a first step that needs no office: a private check-in a student opens on their phone from a QR code on a noticeboard. It asks 37 questions built on the PHQ-9 and GAD-7 screening questionnaires, then either suggests self-help or recommends a visit to the society. It screens and never diagnoses, and any sign of suicidal thoughts skips the model and shows crisis help at once.</p>
-            <p>Done so far: the questionnaire with the evidence behind each question, and a benchmark of three models on a public student-depression dataset, trained on CPU and on GPU, at about 84% test accuracy. The app is not built and no student data has been collected. That waits for ethics approval and supervision by the society’s counsellors.</p>
+      <h2 id="research-title">Research</h2>
+
+      <article class="study">
+        <p class="study__kind">Final-year research project · Team of four · 2026</p>
+        <h3>Sentinel Flux Core</h3>
+        <p class="study__sub">Mapping floods from satellite radar</p>
+        <div class="prose">
+          <p>During Pakistan’s monsoon floods, cloud hides the ground from ordinary satellites. Radar sees through cloud. Our toolkit takes Sentinel-1 radar images from before and after a flood, maps the flooded area, and reports what the water is likely to reach.</p>
+          <p><strong>The research question:</strong> can the map be trusted on a flood the model was never shown? We tested it only on whole flood events held out of training, so the score reflects new floods and not ones it has already seen.</p>
+        </div>
+        <dl class="nums">
+          <div><dt>0.874</dt><dd>macro F1 on 14 held-out areas of the Pakistan 2022 floods</dd></div>
+          <div><dt>186</dt><dd>automated tests passing</dd></div>
+          <div><dt>81</dt><dd>pages of report, which I wrote</dd></div>
+        </dl>
+        <p class="role"><b>My role</b> Team coordinator and documentation lead. I wrote the report and designed the command-line tool that runs every stage.</p>
+        <details>
+          <summary>Method, results and limits</summary>
+          <div class="more">
+            <h4>Method</h4>
+            <ul>
+              <li>Open water looks dark to radar, so a flood shows up as land that went dark between two passes.</li>
+              <li>A classifier then refines the map using signal strength, change over time and terrain.</li>
+              <li>A person reviews every map in a dashboard before any message is approved.</li>
+            </ul>
+            <h4>Results</h4>
+            <div class="table__scroll">
+              <table>
+                <thead><tr><th scope="col">Evaluation set</th><th scope="col" class="num">Areas</th><th scope="col" class="num">Macro F1</th><th scope="col" class="num">Weakest event</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Clean held-out benchmark</th><td class="num">14</td><td class="num"><b>0.874</b></td><td class="num">0.803</td></tr>
+                  <tr><th scope="row">Harder audit set</th><td class="num">17</td><td class="num"><b>0.854</b></td><td class="num">0.674</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h4>Limits</h4>
+            <ul>
+              <li>One audit event scores 0.674. Finding out why is the next piece of work.</li>
+              <li>It maps floods that have happened. It does not predict them.</li>
+              <li>It supports a human decision. It is not an automatic warning system.</li>
+            </ul>
           </div>
-          <div class="row__aside">Python, scikit-learn, XGBoost, RAPIDS cuML</div>
+        </details>
+        <p class="actions"><a class="btn" href="sentinel-flux-core-report.pdf">Read the report</a><span>PDF, 81 pages, 4 MB</span></p>
+      </article>
+
+      <article class="study">
+        <p class="study__kind">Self-initiated study · 2026 · Design stage</p>
+        <h3>Digital Well-being</h3>
+        <p class="study__sub">A private mental-health check-in for students</p>
+        <div class="prose">
+          <p>After a student died in December 2025, my university set up a well-being society where students can talk to teachers and a psychiatrist. Almost nobody goes. Walking into that office is a public act, and for many students that is the hardest part.</p>
+          <p><strong>The research question:</strong> can the first step be taken in private? I led the design of a check-in that a student opens on their own phone. It asks questions built on two standard screening questionnaires, then suggests self-help or recommends a visit. It screens and never diagnoses.</p>
+        </div>
+        <dl class="nums">
+          <div><dt>37</dt><dd>questions, built on the PHQ-9 and GAD-7 questionnaires</dd></div>
+          <div><dt>84%</dt><dd>test accuracy, roughly, on a public student dataset</dd></div>
+          <div><dt>0</dt><dd>student records collected, until ethics approval</dd></div>
+        </dl>
+        <details>
+          <summary>Safeguards and what is not done yet</summary>
+          <div class="more">
+            <h4>Safeguards</h4>
+            <ul>
+              <li>Any sign of suicidal thoughts skips the model and shows crisis help at once.</li>
+              <li>No student data is collected before ethics approval.</li>
+              <li>A pilot would run under the society’s counsellors.</li>
+            </ul>
+            <h4>Not done yet</h4>
+            <ul>
+              <li>The app is not built.</li>
+              <li>The 84% figure comes from a public dataset. It says nothing yet about students at my university.</li>
+            </ul>
+          </div>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="work-title">
+    <div class="wrap">
+      <h2 id="work-title">Projects</h2>
+      <p class="intro">Four systems I built outside coursework. In each one, the interesting part was a question the system had to get right.</p>
+
+      <ul class="projects">
+        <li>
+          <a class="thumb" href="work/techzone/" tabindex="-1" aria-hidden="true"><img src="img/techzone/03-builder.webp" width="1600" height="2054" alt=""></a>
+          <div>
+            <h3>TechZone <small>A PC-parts marketplace</small></h3>
+            <p class="q">Can twelve people buy the last three units at the same moment?</p>
+            <p>I sent 12 checkouts at once for a product with 3 units. Exactly 3 orders went through and stock ended at 0.</p>
+            <p class="links"><a href="work/techzone/">Case study</a><a href="https://github.com/ghulamnabi-dev/TechZone">Code</a><span>PHP, MariaDB, JavaScript</span></p>
+          </div>
         </li>
-        <li class="row">
-          <div class="row__when">2026<br>Working on</div>
+        <li>
+          <a class="thumb" href="work/phonebook/" tabindex="-1" aria-hidden="true"><img src="img/phonebook/cover.webp" width="1600" height="1000" alt=""></a>
           <div>
-            <h3>Shotwise <small>a pipeline for AI story series</small></h3>
-            <p>A Python pipeline that takes a story from script to shot breakdown, keyframes, video, voice and a finished episode. Every model or service is a swappable provider with a fallback chain, and the last link in every chain is a manual step, so a missing model never stops the run.</p>
-            <p>The breakdown stage, the stage runner, the job queue and a local review page are written and tested. No episode has been rendered end to end yet. That is the next step.</p>
+            <h3>PhoneBook <small>A contacts system with accounts</small></h3>
+            <p class="q">What should happen to a file that is mostly right?</p>
+            <p>An import is all or nothing. A file with three bad cards imports nothing and names each problem, so nothing goes missing quietly.</p>
+            <p class="links"><a href="work/phonebook/">Case study</a><a href="https://github.com/ghulamnabi-dev/PhoneBook">Code</a><span>C#, ASP.NET Core, Angular</span></p>
           </div>
-          <div class="row__aside"><a href="https://github.com/ghulamnabi-dev/shotwise">View the code</a><br>Python, Typer, FastAPI, ComfyUI</div>
         </li>
-        <li class="row">
-          <div class="row__when">2026<br>Internship</div>
+        <li>
+          <a class="thumb" href="work/mohalla/" tabindex="-1" aria-hidden="true"><img src="img/mohalla/02-dashboard.webp" width="1440" height="900" alt=""></a>
           <div>
-            <h3>Detection rules and Linux security scripts <small>from a cyber-security internship</small></h3>
-            <p>From an eight-week cyber-security internship: Sigma rules mapped to MITRE ATT&amp;CK, YARA rules, hunting queries for Microsoft Sentinel and Splunk, and Bash scripts for a security audit and incident triage. All of it defensive.</p>
+            <h3>Mohalla <small>Finances for a housing society</small></h3>
+            <p class="q">Can shared accounts be kept so nobody has to trust the arithmetic?</p>
+            <p>The monthly ledger is generated, not typed. Each month opens with the last month’s closing balance, and every household gets a statement.</p>
+            <p class="links"><a href="work/mohalla/">Case study</a><a href="https://github.com/ghulamnabi-dev/mohalla">Code</a><span>C#, ASP.NET Core, Angular</span></p>
           </div>
-          <div class="row__aside"><a href="https://github.com/ghulamnabi-dev/Cyber_Security">View the code</a></div>
+        </li>
+        <li>
+          <div class="thumb thumb--plain" aria-hidden="true"><span>Model A</span><i>→</i><span>Model B</span><i>→</i><span class="on">A person</span></div>
+          <div>
+            <h3>Shotwise <small>A pipeline for AI story series, in progress</small></h3>
+            <p class="q">Can a long pipeline finish when a model in it is missing?</p>
+            <p>Every stage has a fallback chain that ends in a manual step. The runner and the chains are written and tested. No episode has been rendered end to end yet.</p>
+            <p class="links"><a href="https://github.com/ghulamnabi-dev/shotwise">Code</a><span>Python, FastAPI</span></p>
+          </div>
         </li>
       </ul>
     </div>
   </section>
 
-  <section id="experience" aria-labelledby="exp-title">
-    <div class="wrap head">
-      <h2 id="exp-title">Experience</h2>
-    </div>
+  <section id="offer" aria-labelledby="offer-title">
     <div class="wrap">
-      <ul class="rows">
-        <li class="row">
-          <div class="row__when">Sep 2025 to now</div>
-          <div>
-            <h3>Software engineer <small>Awatech Technology Solutions, Lahore</small></h3>
-            <p>ERP modules from end to end: ASP.NET Core endpoints, Angular forms and dashboards, and SQL Server migrations, used by more than 100 people. I also keep the front-end dependencies healthy. Kept on after my internship, alongside my final year.</p>
-          </div>
-          <div class="row__aside">.NET, Angular, SQL Server</div>
-        </li>
-        <li class="row">
-          <div class="row__when">Jul to Aug 2026</div>
-          <div>
-            <h3>Cyber security intern <small>Allied Software Engineers, remote</small></h3>
-            <p>Eight weeks of vulnerability assessment, security monitoring, secure configuration and incident response.</p>
-          </div>
-          <div class="row__aside">Completion certificate</div>
-        </li>
-        <li class="row">
-          <div class="row__when">Jul 2024 to Aug 2025</div>
-          <div>
-            <h3>Software development intern <small>Awatech Technology Solutions, Lahore</small></h3>
-            <p>CRUD applications in .NET and Angular: API endpoints, data-entry forms and validation on SQL Server, through pull requests and code review.</p>
-          </div>
-          <div class="row__aside">.NET, Angular</div>
-        </li>
-        <li class="row">
-          <div class="row__when">Sep to Dec 2022</div>
-          <div>
-            <h3>SEO intern <small>Petsaal Technologies, Lahore</small></h3>
-            <p>Technical and on-page SEO, Google Analytics and Search Console, WordPress performance.</p>
-          </div>
-          <div class="row__aside"></div>
-        </li>
+      <h2 id="offer-title">What I bring</h2>
+      <p class="intro">What a supervisor, a research group or a team can expect from me, with the evidence for each.</p>
+      <ul class="offer">
+        <li><h3>I finish what I start</h3><p>Three complete systems, each designed, built, tested and documented alone. Two years on business software used by more than 100 people.</p></li>
+        <li><h3>I write clearly</h3><p>I was documentation lead on my final-year project and wrote its 81-page report: requirements, design, method and evaluation.</p></li>
+        <li><h3>I test my own claims</h3><p>I do not say a thing works until I have tried to break it: held-out flood events, 12 checkouts at once, tests that sign in as two different people.</p></li>
+        <li><h3>I say what does not work</h3><p>Every project above lists its limits, including the flood event where our model scored worst.</p></li>
+        <li><h3>I work well in a team</h3><p>I coordinated a team of four through our final-year project, and at work my code goes through pull requests and review.</p></li>
+        <li><h3>I learn quickly</h3><p>Radar imagery and machine-learning evaluation for one project, defensive security in an eight-week internship, three different software stacks.</p></li>
       </ul>
     </div>
+  </section>
 
-    <div class="wrap two">
-      <div>
-        <h3>Education</h3>
-        <ul class="list">
-          <li><span>2023 to 2027</span><span><strong>BS Computer Science</strong>, The University of Lahore. CGPA 3.72 after seven of eight semesters. Dean’s Honour List, Fall 2023.</span></li>
-          <li><span>2020 to 2022</span><span><strong>FSc Pre-Medical</strong>, Aspire College, Okara.</span></li>
-          <li><span>2025</span><span><strong>Crash Course on Python</strong>, Google, on Coursera.</span></li>
-          <li><span>2024 to 2025</span><span><strong>Leadership Program</strong>, UOL Student Guild.</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Languages</h3>
-        <ul class="list">
-          <li><span>Urdu</span><span>Native.</span></li>
-          <li><span>English</span><span>Fluent. My language of study through school and university.</span></li>
-          <li><span>German</span><span>Beginner (A1), and learning.</span></li>
-        </ul>
-      </div>
+  <section id="record" aria-labelledby="record-title">
+    <div class="wrap">
+      <h2 id="record-title">Education and experience</h2>
+
+      <h3 class="sub">Education</h3>
+      <ul class="rows">
+        <li><span>2023 to 2027</span><span><strong>BS Computer Science</strong>, The University of Lahore. CGPA 3.72 of 4.00 after seven of eight semesters. Dean’s Honour List, Fall 2023.</span></li>
+        <li><span>2020 to 2022</span><span><strong>FSc Pre-Medical</strong>, Aspire College, Okara.</span></li>
+      </ul>
+
+      <h3 class="sub">Selected courses</h3>
+      <ul class="courses">
+        <li><span>Object Oriented Programming</span><b>A, 97 of 100</b></li>
+        <li><span>Artificial Intelligence</span><b>A</b></li>
+        <li><span>Computer Networks</span><b>A</b></li>
+        <li><span>Data Structures and Algorithms</span><b>A−</b></li>
+        <li><span>Database Systems</span><b>A−</b></li>
+        <li><span>Introduction to Machine Learning</span><b>A−</b></li>
+      </ul>
+
+      <h3 class="sub">Experience</h3>
+      <ul class="rows">
+        <li><span>2025 to now</span><span><strong>Software engineer</strong>, Awatech Technology Solutions, Lahore. Business software in .NET and Angular, used by more than 100 people.</span></li>
+        <li><span>2026</span><span><strong>Cyber security intern</strong>, Allied Software Engineers. Eight weeks of defensive security: detection rules, monitoring, and audit scripts for Linux. <a href="https://github.com/ghulamnabi-dev/Cyber_Security">Code</a>.</span></li>
+        <li><span>2024 to 2025</span><span><strong>Software development intern</strong>, Awatech Technology Solutions, Lahore.</span></li>
+      </ul>
+
+      <h3 class="sub">Languages</h3>
+      <ul class="rows">
+        <li><span>Urdu</span><span>Native.</span></li>
+        <li><span>English</span><span>Fluent. My language of study through school and university.</span></li>
+        <li><span>German</span><span>Beginner (A1), and learning.</span></li>
+      </ul>
     </div>
   </section>
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
-    <div class="wrap contact__grid">
-      <div>
-        <p class="contact__kind">Contact</p>
-        <h2 id="contact-title">Get in <em>touch.</em></h2>
-        <p>For a role, a project, or a question about any of this work, e-mail is the quickest way to reach me. I’m in Lahore, five hours ahead of UTC.</p>
-      </div>
+    <div class="wrap">
+      <h2 id="contact-title">Contact</h2>
+      <p class="intro">If my work is relevant to yours, I would be glad to hear from you. E-mail is the quickest way to reach me.</p>
       <ul class="ways">
-        <li style="--w:#d2a52a"><a href="mailto:ghulamnabi7885@gmail.com"><span>E-mail</span><b>ghulamnabi7885@gmail.com</b><i aria-hidden="true">↗</i></a><button type="button" data-copy="ghulamnabi7885@gmail.com">Copy</button></li>
-        <li style="--w:#7a73d6"><a href="https://github.com/ghulamnabi-dev"><span>GitHub</span><b>ghulamnabi-dev</b><i aria-hidden="true">↗</i></a></li>
-        <li style="--w:#3fb488"><a href="https://www.linkedin.com/in/ghulam-nabi-67b558374"><span>LinkedIn</span><b>ghulam-nabi</b><i aria-hidden="true">↗</i></a></li>
+        <li><span>E-mail</span><a href="mailto:ghulamnabi7885@gmail.com">ghulamnabi7885@gmail.com</a></li>
+        <li><span>GitHub</span><a href="https://github.com/ghulamnabi-dev">ghulamnabi-dev</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/ghulam-nabi-67b558374">ghulam-nabi</a></li>
       </ul>
+      <footer class="foot">
+        <span>© 2026 Ghulam Nabi</span>
+        <span>The fonts are hosted here and nothing tracks you.</span>
+      </footer>
     </div>
-    <footer class="wrap foot">
-      <span>© 2026 Ghulam Nabi</span>
-      <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
-    </footer>
   </section>
 </main>
-
-<script src="js/home.js" defer></script>
-<script src="js/fold.js" defer></script>
-<script src="js/build.js" defer></script>
-<script src="js/zoom.js" defer></script>
 </body>
 </html>
