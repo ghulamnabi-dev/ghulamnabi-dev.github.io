@@ -8,7 +8,7 @@ TECH = {'techzone': [('No framework, one shared core',
               ('AG Grid behind every admin table',
                'AG Grid Community 36, one wrapper',
                '<p>Ten admin screens (orders, products, inventory, customers, sellers, reviews, promotions, categories, messages and settings) run on AG Grid '
-               'Community through one wrapper I wrote, <code>createAdminGrid()</code>, about 590 lines. A screen passes its columns and gets the rest for '
+               'Community through one wrapper, <code>createAdminGrid()</code>, about 590 lines. A screen passes its columns and gets the rest for '
                'free.</p><p>The wrapper gives every table the same behaviour: quick search, column filters, paging, checkbox selection with bulk actions, CSV '
                'export, and row actions. Column order, width, sort, visibility and page size are remembered per screen in <code>localStorage</code>. A '
                'column’s <code>kind</code> picks a shared renderer for money, stock, dates and status pills, so they look the same everywhere.</p><p>The grid '
@@ -52,8 +52,8 @@ TECH = {'techzone': [('No framework, one shared core',
                 'so one operation that touches several repositories commits together or not at all. The vCard import stages contacts in batches of 50 inside '
                 'one explicit transaction.'),
                ('Sign-in tokens, standard library only',
-                'JWT, no ASP.NET Identity',
-                '<code>PasswordHasher&lt;User&gt;</code> for credentials and a signed HS256 token with <code>sub</code>, <code>name</code> and '
+                'JWT, without the Identity framework',
+                '<code>PasswordHasher&lt;User&gt;</code> for credentials and an HS256 token with <code>sub</code>, <code>name</code> and '
                 '<code>email</code> claims. Issuer, audience and lifetime are validated, and the API refuses to start with a missing or short secret.'),
                ('Each account sees only its own data',
                 'Isolation',

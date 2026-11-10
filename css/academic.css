@@ -106,6 +106,9 @@ blockquote { margin: 26px 0 !important; padding: 4px 0 4px 22px; border-left: 3p
 .check { margin-top: 18px; padding: 13px 16px; border-radius: 9px; background: var(--accent-soft); font-family: var(--sans); font-size: 15.5px; line-height: 1.5; color: var(--ink) !important; }
 .check b { display: block; font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 3px; }
 .proof .links { margin-top: 16px; }
+.check--open { background: none; border: 1px dashed var(--ink-3); }
+.check--open b { color: var(--ink-2); }
+.check.made { margin: -10px 0 30px; }
 .proof--plain { background: none; border-style: dashed; }
 .proof--plain h3 { font-size: 19px; font-weight: 700; letter-spacing: -.015em; }
 .proof--plain li::before { background: none; border: 1.5px solid var(--ink-3); }
