@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ghulam Nabi, computer science</title>
-<meta name="description" content="Ghulam Nabi is a final-year computer science student at The University of Lahore and a software engineer. Research on flood mapping from satellite radar, a mental-health screening study, and four software systems.">
+<title>Ghulam Nabi, secure software and computer science</title>
+<meta name="description" content="Ghulam Nabi is a final-year computer science student at The University of Lahore and a software engineer, with interests in software security, applied cryptography and trustworthy systems.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Ghulam Nabi, computer science">
-<meta property="og:description" content="Research on flood mapping from satellite radar, a mental-health screening study, and four software systems built end to end.">
+<meta property="og:title" content="Ghulam Nabi, secure software and computer science">
+<meta property="og:description" content="Security work, two research studies and four software systems, each with what was tested and what is still open.">
 <meta property="og:url" content="https://ghulamnabi-dev.github.io/">
 <link rel="canonical" href="https://ghulamnabi-dev.github.io/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -23,6 +23,7 @@
     <a class="mark" href="#top">Ghulam Nabi<i aria-hidden="true">.</i></a>
     <nav aria-label="Sections">
       <a href="#about">About</a>
+      <a href="#security">Security</a>
       <a href="#research">Research</a>
       <a href="#work">Projects</a>
       <a href="#offer">What I bring</a>
@@ -36,15 +37,15 @@
 
   <section class="lead" id="top">
     <div class="wrap">
-      <p class="kicker">Computer science · Lahore, Pakistan</p>
+      <p class="kicker">Computer science · Secure software · Lahore, Pakistan</p>
       <h1>Ghulam Nabi<i aria-hidden="true">.</i></h1>
-      <p class="thesis">I build software that people rely on, and I study how to tell whether it can be trusted. My final-year research maps floods from satellite radar and tests the result on floods the model has never seen.</p>
+      <p class="thesis">I build software that people rely on, and I work on making it safe to rely on. My interests are software security, applied cryptography, and systems whose results can be trusted.</p>
       <dl class="facts">
         <div><dt>Studying</dt><dd><strong>BS Computer Science</strong>, The University of Lahore, final year</dd></div>
         <div><dt>CGPA</dt><dd><strong>3.72</strong> of 4.00, Dean’s Honour List</dd></div>
         <div><dt>Working</dt><dd><strong>Software engineer</strong>, Awatech Technology Solutions, since 2025</dd></div>
       </dl>
-      <p class="actions"><a class="btn" href="#research">See my research</a><a class="btn btn--line" href="mailto:ghulamnabi7885@gmail.com">E-mail me</a></p>
+      <p class="actions"><a class="btn" href="#security">See my security work</a><a class="btn btn--line" href="mailto:ghulamnabi7885@gmail.com">E-mail me</a></p>
     </div>
   </section>
 
@@ -53,9 +54,10 @@
       <h2 id="about-title">About and motivation</h2>
       <div class="prose">
         <p>I came to computer science on purpose, not by default. I studied pre-medical at college, spent a few months working with technology before university, and found that building things suited me. I have not doubted the choice since.</p>
-        <p>Two events shaped what I care about. In 2022 monsoon floods devastated large parts of my country, and cloud hid the ground from satellites exactly when relief teams needed to see it. That became my final-year project. In 2025 a student at my university died, and I started asking why so few students use the help that exists. That became a study of its own.</p>
-        <p>Both taught me the same lesson. The algorithm is the smaller part of the work. What separates a demo from a tool is careful evaluation, honest reporting of where it fails, and a person who stays in charge of the decision.</p>
-        <blockquote>A model is only as good as the evaluation around it.</blockquote>
+        <p>Security is where my interest has settled. At work, part of my job is tracking and fixing vulnerable dependencies in a system that more than 100 people use. In my own projects I built sign-in, sessions and access control without a framework, so that I would understand what a framework hides. An eight-week internship then showed me the same software from the attacker’s side.</p>
+        <p>Cryptography is the part I most want to study properly. So far I have only used it: password hashing, signed tokens, random values compared in constant time. I know how to use these correctly. I do not yet know why they are secure, and that is what I want to learn.</p>
+        <p>Two other projects taught me about trust in a wider sense. One maps floods from satellite radar, and one is a mental-health check-in for students at my university. In both, the algorithm was the smaller part of the work. What mattered was careful testing, honest reporting of where it fails, and a person who stays in charge of the decision.</p>
+        <blockquote>A system is only as trustworthy as the attempts made to break it.</blockquote>
         <p>I can build and ship complete systems. What I want now is depth: to understand the methods behind them well enough to design them, not only to apply them.</p>
       </div>
     </div>
@@ -65,10 +67,61 @@
     <div class="wrap">
       <h2 id="interests-title">Research interests</h2>
       <ol class="three">
-        <li><h3>Trustworthy machine learning</h3><p>Testing models on data they have never seen, and measuring how sure they are, not only how often they are right.</p></li>
-        <li><h3>Decision-support systems</h3><p>Tools that help a person decide and show their evidence, with the person still in charge.</p></li>
-        <li><h3>Secure, reliable software</h3><p>Systems that keep people’s records correct and private, even when something goes wrong.</p></li>
+        <li><h3>Software and application security</h3><p>Sign-in, access control and the ordinary mistakes that leak data. Systems that stay correct while someone is trying to break them.</p></li>
+        <li><h3>Applied cryptography</h3><p>How hashing, signatures and key exchange protect real systems, and how they fail when used wrongly. I have used these tools and want to study the theory.</p></li>
+        <li><h3>Trustworthy systems</h3><p>Testing a system on what it has never seen, and keeping a person in charge of the decisions that matter.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section id="security" aria-labelledby="security-title">
+    <div class="wrap">
+      <h2 id="security-title">Security work</h2>
+      <p class="intro">What I have done in security so far, and where each claim can be checked.</p>
+
+      <article class="proof">
+        <h3>A web shop secured without a framework</h3>
+        <p>For TechZone I wrote sign-in, sessions, request-forgery protection and access control myself, to understand them. I used only standard, well-tested building blocks. Nothing cryptographic is invented.</p>
+        <ul>
+          <li>Passwords are hashed with bcrypt, and upgraded at sign-in when the settings change.</li>
+          <li>A failed sign-in takes the same time and gives the same message whether or not the account exists, so an attacker cannot learn which e-mails are registered.</li>
+          <li>Each session gets one random 256-bit anti-forgery token, compared in constant time.</li>
+          <li>The session ID is renewed at every sign-in, uploads are checked by their content, and every query uses prepared statements.</li>
+        </ul>
+        <p class="check"><b>Checked on every push</b> A forged cross-site request is rejected, the API never returns a password field, and a failed sign-in gives the same message for any account.</p>
+        <p class="links"><a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">Security notes, file by file</a><a href="work/techzone/">Case study</a></p>
+      </article>
+
+      <article class="proof">
+        <h3>Access control, tested the way an attacker would</h3>
+        <p>In PhoneBook the tests sign in as two different people and try to read each other’s data. Another account’s record returns “not found”, never “forbidden”, so the system does not even confirm that the record exists.</p>
+        <ul>
+          <li>Sign-in tokens are signed with HMAC-SHA256. The server accepts that algorithm only, and checks the issuer, the audience and the expiry.</li>
+          <li>The server refuses to start if the signing secret is missing or too short.</li>
+          <li>In Mohalla a viewer who tries to change the accounts is refused by the server, not only by a hidden button.</li>
+        </ul>
+        <p class="links"><a href="work/phonebook/">PhoneBook case study</a><a href="work/mohalla/">Mohalla case study</a></p>
+      </article>
+
+      <article class="proof">
+        <h3>Detection rules from a security internship</h3>
+        <p>Eight weeks on the defensive side at Allied Software Engineers. For an attack scenario supplied by the programme, I wrote the rules that find it in the logs.</p>
+        <ul>
+          <li>Five Sigma rules mapped to MITRE ATT&amp;CK: a phishing macro, credential dumping, persistence, shadow-copy deletion and log clearing.</li>
+          <li>Two YARA rules, and the same detections as queries for Microsoft Sentinel and Splunk.</li>
+          <li>Bash scripts for a Linux security audit and for incident triage.</li>
+        </ul>
+        <p class="links"><a href="https://github.com/ghulamnabi-dev/Cyber_Security">Code</a></p>
+      </article>
+
+      <article class="proof proof--plain">
+        <h3>What I have not done yet</h3>
+        <ul>
+          <li>I have not studied cryptography formally. My university course in Information Security is in progress this semester.</li>
+          <li>I have not found a vulnerability in someone else’s software, and I have no capture-the-flag record.</li>
+          <li>My own projects have known gaps. Each case study lists them.</li>
+        </ul>
+      </article>
     </div>
   </section>
 
@@ -77,7 +130,7 @@
       <h2 id="research-title">Research</h2>
 
       <article class="study">
-        <p class="study__kind">Final-year research project · Team of four · 2026</p>
+        <p class="study__kind">Final-year project · Team of four · 2026</p>
         <h3>Sentinel Flux Core</h3>
         <p class="study__sub">Mapping floods from satellite radar</p>
         <div class="prose">
@@ -87,9 +140,9 @@
         <dl class="nums">
           <div><dt>0.874</dt><dd>macro F1 on 14 held-out areas of the Pakistan 2022 floods</dd></div>
           <div><dt>186</dt><dd>automated tests passing</dd></div>
-          <div><dt>81</dt><dd>pages of report, which I wrote</dd></div>
+          <div><dt>81</dt><dd>pages of report; I wrote its core chapters</dd></div>
         </dl>
-        <p class="role"><b>My role</b> Team coordinator and documentation lead. I wrote the report and designed the command-line tool that runs every stage.</p>
+        <p class="role"><b>My role</b> Team coordinator and documentation lead. I wrote the requirements, design, method and evaluation chapters of the report, and designed the command-line tool that runs every stage. The detection and classification code is the team’s work.</p>
         <details>
           <summary>Method, results and limits</summary>
           <div class="more">
@@ -156,15 +209,15 @@
   <section id="work" aria-labelledby="work-title">
     <div class="wrap">
       <h2 id="work-title">Projects</h2>
-      <p class="intro">Four systems I built outside coursework. In each one, the interesting part was a question the system had to get right.</p>
+      <p class="intro">Four systems I built outside coursework, three of them complete. Each had a question it must not get wrong.</p>
 
       <ul class="projects">
         <li>
           <a class="thumb" href="work/techzone/" tabindex="-1" aria-hidden="true"><img src="img/techzone/03-builder.webp" width="1600" height="2054" alt=""></a>
           <div>
             <h3>TechZone <small>A PC-parts marketplace</small></h3>
-            <p class="q">Can twelve people buy the last three units at the same moment?</p>
-            <p>I sent 12 checkouts at once for a product with 3 units. Exactly 3 orders went through and stock ended at 0.</p>
+            <p class="q">Can one seller read another shop’s order?</p>
+            <p>No. Every query is limited to the seller’s own products and their own lines of a shared order, and another shop’s order returns “not found”. Checkout also survives a rush: in a manual test, 12 checkouts at once for 3 units produced exactly 3 orders.</p>
             <p class="links"><a href="work/techzone/">Case study</a><a href="https://github.com/ghulamnabi-dev/TechZone">Code</a><span>PHP, MariaDB, JavaScript</span></p>
           </div>
         </li>
@@ -172,8 +225,8 @@
           <a class="thumb" href="work/phonebook/" tabindex="-1" aria-hidden="true"><img src="img/phonebook/cover.webp" width="1600" height="1000" alt=""></a>
           <div>
             <h3>PhoneBook <small>A contacts system with accounts</small></h3>
-            <p class="q">What should happen to a file that is mostly right?</p>
-            <p>An import is all or nothing. A file with three bad cards imports nothing and names each problem, so nothing goes missing quietly.</p>
+            <p class="q">Can one account find out that another account’s contact exists?</p>
+            <p>No. Asking for someone else’s contact returns “not found”, and tests sign in as two people to prove it. Imports are all or nothing, so a bad file never leaves half its contents behind.</p>
             <p class="links"><a href="work/phonebook/">Case study</a><a href="https://github.com/ghulamnabi-dev/PhoneBook">Code</a><span>C#, ASP.NET Core, Angular</span></p>
           </div>
         </li>
@@ -181,8 +234,8 @@
           <a class="thumb" href="work/mohalla/" tabindex="-1" aria-hidden="true"><img src="img/mohalla/02-dashboard.webp" width="1440" height="900" alt=""></a>
           <div>
             <h3>Mohalla <small>Finances for a housing society</small></h3>
-            <p class="q">Can shared accounts be kept so nobody has to trust the arithmetic?</p>
-            <p>The monthly ledger is generated, not typed. Each month opens with the last month’s closing balance, and every household gets a statement.</p>
+            <p class="q">Who is allowed to change the accounts?</p>
+            <p>Only admins, and the server decides, not the screen. A viewer’s attempt to write is refused. The monthly ledger is generated, so nobody types a balance.</p>
             <p class="links"><a href="work/mohalla/">Case study</a><a href="https://github.com/ghulamnabi-dev/mohalla">Code</a><span>C#, ASP.NET Core, Angular</span></p>
           </div>
         </li>
@@ -206,8 +259,8 @@
       <ul class="offer">
         <li><h3>I finish what I start</h3><p>Three complete systems, each designed, built, tested and documented alone. Two years on business software used by more than 100 people.</p></li>
         <li><h3>I write clearly</h3><p>I was documentation lead on my final-year project and wrote its 81-page report: requirements, design, method and evaluation.</p></li>
-        <li><h3>I test my own claims</h3><p>I do not say a thing works until I have tried to break it: held-out flood events, 12 checkouts at once, tests that sign in as two different people.</p></li>
-        <li><h3>I say what does not work</h3><p>Every project above lists its limits, including the flood event where our model scored worst.</p></li>
+        <li><h3>I try to break my own work</h3><p>I do not say a thing works until I have attacked it: tests that sign in as two different people, a forged cross-site request on every push, flood events held out of training.</p></li>
+        <li><h3>I say what does not work</h3><p>Every project lists its known gaps, including the security ones and the flood event where our model scored worst.</p></li>
         <li><h3>I work well in a team</h3><p>I coordinated a team of four through our final-year project, and at work my code goes through pull requests and review.</p></li>
         <li><h3>I learn quickly</h3><p>Radar imagery and machine-learning evaluation for one project, defensive security in an eight-week internship, three different software stacks.</p></li>
       </ul>

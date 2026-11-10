@@ -25,7 +25,7 @@ TECH = {'techzone': [('No framework, one shared core',
                'Data model',
                'Stock only changes through <code>inventory_adjustments</code>. Every order step is an <code>order_events</code> row with the person who did '
                'it, and every admin write is an <code>audit_log</code> row with a before and after diff.'),
-              ('Security written by hand',
+              ('Security without a framework',
                'SQL injection, CSRF, sessions',
                'PDO prepared statements everywhere, with emulation turned off. One 256-bit CSRF token per session, compared with <code>hash_equals</code>. '
                'Sessions are <code>HttpOnly</code> and <code>SameSite=Lax</code>, and the id is regenerated after every login. Five failed logins in 15 '
@@ -51,7 +51,7 @@ TECH = {'techzone': [('No framework, one shared core',
                 'A repository only stages changes and never saves. Services depend on <code>IUnitOfWork</code> alone and never see the <code>DbContext</code>, '
                 'so one operation that touches several repositories commits together or not at all. The vCard import stages contacts in batches of 50 inside '
                 'one explicit transaction.'),
-               ('Sign-in tokens written by hand',
+               ('Sign-in tokens, standard library only',
                 'JWT, no ASP.NET Identity',
                 '<code>PasswordHasher&lt;User&gt;</code> for credentials and a signed HS256 token with <code>sub</code>, <code>name</code> and '
                 '<code>email</code> claims. Issuer, audience and lifetime are validated, and the API refuses to start with a missing or short secret.'),

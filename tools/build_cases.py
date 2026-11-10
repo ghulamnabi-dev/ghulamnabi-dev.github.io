@@ -59,14 +59,14 @@ PROJECTS['techzone'] = dict(
 ''' + loop('tz-loop-specs', 'Clearing a graphics card’s length on a live product is refused: the builder needs it to check the case.', 'TechZone admin: clearing a required specification shows an error under the field') + '''
 <h3>Checkout cannot sell what isn’t there</h3>
 <p>Placing an order runs in one transaction. The product rows are locked in a fixed order, every line is re-priced from the database rather than trusted from the cart, and stock is reduced with a guarded update that fails if there isn’t enough. Anything that goes wrong rolls the whole order back.</p>
-<p>To check it, I fired 12 checkouts at the same moment for a product with 3 units in stock. Exactly 3 orders went through and the stock ended at 0.</p>
+<p>To check it, I fired 12 checkouts at the same moment for a product with 3 units in stock. Exactly 3 orders went through and the stock ended at 0. I ran that test by hand. It is not yet a script in the repository.</p>
 <h3>Stock is a ledger, and orders have a timeline</h3>
 <p>Stock never changes by editing a number. Every change is an adjustment row with a reason (received, sold, returned, damaged, correction) and the person who made it, and the seed and the migration both check that the adjustments add up to the stock on hand. Every step of an order is an event, and every change in the admin is written to an activity log with the old and new values.</p>
 ''' + fig('techzone/21-admin-order.webp', 'An order page: items, payment, shipping with the courier and tracking number, and the timeline of every step.', 'TechZone admin order page with payment, shipping and a timeline') + '''
 <h3>Partner sellers are limited by the queries, not the menus</h3>
 <p>The admin has four roles: owner, manager, staff and seller. A seller signs in to the same back-office but every query is scoped to their own products and to their lines on shared orders. Another shop’s order is a 404, not a page with the buttons hidden.</p>
 ''' + fig('techzone/28-seller-portal.webp', 'A seller’s view of an order that also contains another shop’s items: only their own lines are shown.', 'TechZone seller portal showing only the seller’s own items on an order') + '''
-<h3>Security written by hand, and written down</h3>
+<h3>Security without a framework, and written down</h3>
 <p>Prepared statements everywhere with emulation switched off; one CSRF token per session compared in constant time; session IDs renewed at every sign-in; sign-in throttling per IP and per session; the same message for an unknown e-mail and a wrong password; uploads checked by their content, not their name. Each of these, and the known gaps, is listed file by file in the project’s <a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">security notes</a>.</p>
 '''),
         ('What I’d do differently', '''
@@ -132,6 +132,7 @@ Task RollbackAsync(CancellationToken ct = default);</code></pre>
 '''),
         ('What I’d do differently', '''
 <p>The client specs test components and services in isolation; the next step is a few browser tests that walk through sign-in, editing and import against the real API. I would also add contact photos, and put a demo online so it can be tried without cloning the code.</p>
+<p>One security gap I know about: the sign-in token is kept in the browser’s local storage for eight hours. A cross-site scripting bug could read it there. A cookie the page’s scripts cannot read would be safer, and that is the change I would make first.</p>
 '''),
     ],
     next='mohalla')
@@ -180,6 +181,7 @@ PROJECTS['mohalla'] = dict(
         ('What I’d do differently', '''
 <p>Mohalla records the current state of each payment but not who changed it and when. After building TechZone’s activity log, I would add the same audit trail here: in a society’s accounts, “who edited this?” matters as much as the number.</p>
 <p>SQL Server makes it harder to host a free demo, so I would make the database provider switchable for deployment as well as for tests, and add browser tests for the main flows.</p>
+<p>Two security gaps I know about. The first account to register becomes the admin, which is convenient for a demo and wrong for a real society, where the admin should be created when the system is installed. And the sign-in token is kept in the browser’s local storage, where a cross-site scripting bug could read it.</p>
 '''),
     ],
     next='techzone')
