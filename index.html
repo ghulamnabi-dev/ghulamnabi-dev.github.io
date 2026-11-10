@@ -51,7 +51,7 @@
       <h1 id="hero-title" class="it"><span>Ghulam</span> <span>Nabi<i aria-hidden="true">.</i></span></h1>
       <div class="hero__grid">
         <div>
-          <p class="lede it">I build complete web systems: the API, the interface, the tests, and the <em>unglamorous parts that keep records right</em> when real people use them. Mostly in .NET and Angular.</p>
+          <p class="lede it">I build complete web systems: the API, the interface, the tests, and the <em>unglamorous parts that keep records right</em> when real people use them. Mostly in .NET and Angular. The three projects below were rebuilt in November 2026 with an AI coding assistant, as their commit histories show.</p>
           <dl class="facts it">
             <div><dt>Now</dt><dd><strong>Software engineer at Awatech Technology Solutions</strong>, Lahore, building ERP modules used by more than 100 people.</dd></div>
             <div><dt>Studying</dt><dd><strong>BS Computer Science</strong>, University of Lahore. CGPA 3.72, finishing in January 2027.</dd></div>
@@ -134,7 +134,7 @@
               <li>Each account sees only its own data</li>
               <li>Tested at both ends</li>
             </ul>
-            <details class="hood"><summary>Under the hood</summary><ul><li><b>Generic Repository and Unit of Work</b> several repositories commit together or not at all</li><li><b>Hand-written JWT</b> HS256 tokens, no ASP.NET Identity</li><li><b>RFC 7807 errors</b> one exception handler for every failure path</li><li><b>WebApplicationFactory tests</b> the real API on in-memory SQLite</li><li><b>vCard 3.0 reader and writer</b> no library</li></ul></details>
+            <details class="hood"><summary>Under the hood</summary><ul><li><b>Generic Repository and Unit of Work</b> several repositories commit together or not at all</li><li><b>JWT with the standard library</b> HS256 tokens, no ASP.NET Identity</li><li><b>RFC 7807 errors</b> one exception handler for every failure path</li><li><b>WebApplicationFactory tests</b> the real API on in-memory SQLite</li><li><b>vCard 3.0 reader and writer</b> no library</li></ul></details>
             <p class="card__stack">C#, ASP.NET Core 9, EF Core, SQLite or SQL Server, Angular 19, Angular Material, xUnit, Docker</p>
             <div class="links">
               <a class="btn btn--go" href="work/phonebook/">Read the case study</a>
@@ -181,12 +181,11 @@
         <p class="flood__kind">Final-year project, with a team of four. 2026.</p>
         <h2 id="sf-title">Sentinel Flux Core</h2>
         <p class="flood__lede">A Python toolkit that maps floods from Sentinel-1 radar imagery, which sees through the monsoon clouds that blind optical satellites, and reports what the water is likely to reach.</p>
-        <p>Benchmarked on the Pakistan 2022 floods, holding out whole events rather than random tiles. I coordinated the team, wrote the 81-page report and designed the command-line tool that runs the pipeline from data checks to the review dashboard.</p>
+        <p>Benchmarked on the Pakistan 2022 floods, with each area held out of training in turn. I coordinated the team, led the documentation and designed the command-line tool that runs the pipeline from data checks to the review dashboard. The detection and classification code is the team’s work.</p>
         <div class="nums">
-          <div><b>0.874</b><span>macro F1 on held-out flood events</span></div>
-          <div><b>186</b><span>automated tests passing</span></div>
+          <div><b>0.874</b><span>macro F1 on 14 held-out areas; 0.743 on the 5 with official maps</span></div>
+          <div><b>186</b><span>automated tests passing, 125 more skipped</span></div>
         </div>
-        <div class="links"><a class="btn btn--go" href="sentinel-flux-core-report.pdf">Read the report</a><span class="flood__meta">PDF, 81 pages, 4 MB</span></div>
       </div>
       <figure class="radar" data-radar>
         <canvas width="640" height="420" role="img" aria-label="Illustration: a river in a radar image before a flood, after it, and the area that changed"></canvas>
@@ -210,9 +209,9 @@
           <div class="row__when">2026<br>Design stage</div>
           <div>
             <h3>Digital Well-being <small>a mental-health check-in for my university</small></h3>
-            <p>In December 2025 a student at my university died, in what was reported as a suicide. The university responded by setting up a well-being society where students can talk to teachers and a psychiatrist. I noticed that almost nobody goes. Walking into that office is a public act, and for many students that is the hardest part.</p>
+            <p>After two students died within a single month in late 2025, my university responded by setting up a well-being society where students can talk to teachers and a psychiatrist. I noticed that almost nobody goes. Walking into that office is a public act, and for many students that is the hardest part.</p>
             <p>So I led the design of a first step that needs no office: a private check-in a student opens on their phone from a QR code on a noticeboard. It asks 37 questions built on the PHQ-9 and GAD-7 screening questionnaires, then either suggests self-help or recommends a visit to the society. It screens and never diagnoses, and any sign of suicidal thoughts skips the model and shows crisis help at once.</p>
-            <p>Done so far: the questionnaire with the evidence behind each question, and a benchmark of three models on a public student-depression dataset, trained on CPU and on GPU, at about 84% test accuracy. The app is not built and no student data has been collected. That waits for ethics approval and supervision by the society’s counsellors.</p>
+            <p>Done so far: the questionnaire with the evidence behind each question, and a benchmark of three models on a public student-depression dataset, trained on CPU and on GPU. The app is not built and no student data has been collected. That waits for ethics approval and supervision by the society’s counsellors.</p>
           </div>
           <div class="row__aside">Python, scikit-learn, XGBoost, RAPIDS cuML</div>
         </li>
@@ -315,7 +314,7 @@
     </div>
     <footer class="wrap foot">
       <span>© 2026 Ghulam Nabi</span>
-      <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
+      <span>Made with the help of an AI coding assistant. The fonts are hosted here and nothing tracks you.</span>
     </footer>
   </section>
 </main>
