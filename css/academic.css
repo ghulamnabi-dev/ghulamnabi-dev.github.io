@@ -163,9 +163,6 @@ h2 + .sub { margin-top: 0; }
 .rows li > span:first-child { color: var(--ink-3); }
 .rows li > span:last-child { color: var(--ink-2); }
 .rows strong { color: var(--ink); }
-.courses { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 16px; }
-.courses li { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--rule); color: var(--ink-2); }
-.courses b { color: var(--ink); white-space: nowrap; }
 
 /* contact */
 .contact { padding-bottom: 0 !important; }
@@ -186,7 +183,7 @@ h2 + .sub { margin-top: 0; }
   .lead { padding: 52px 0 48px; }
   main > section { padding: 48px 0; }
   .facts > div { grid-template-columns: 1fr; gap: 2px; }
-  .three, .offer, .courses { grid-template-columns: 1fr; }
+  .three, .offer { grid-template-columns: 1fr; }
   .study { padding: 24px 18px 22px; margin-inline: -4px; }
   .study__sub { font-size: 20px; }
   .nums { grid-template-columns: 1fr; }
