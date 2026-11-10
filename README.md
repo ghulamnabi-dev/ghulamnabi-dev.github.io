@@ -14,6 +14,7 @@ Plain HTML and CSS, with a little JavaScript on the case studies, served by GitH
 - `work/<project>/index.html`: the case studies, generated from one template by `tools/build_cases.py` (run it from the repository root after editing a case study).
 - `css/academic.css`: the home page. It uses no JavaScript, and follows the reader's light or dark setting.
 - `css/site.css` + `css/case.css`, `js/site.js` + `js/case.js`: the case studies, with the contents rail and reading progress.
+- `css/case-academic.css`: loaded last on the case studies and the 404 page, so they share the home page's paper, ink and green accent in light and dark.
 - `js/zoom.js`: on the case studies, click a screenshot or recording to see it full size.
 - `tools/tech_notes.py`: the "Under the hood" notes that the generator adds to each case study.
 - `media/`: short silent loops (WebM and MP4, with poster images) recorded from the running apps.

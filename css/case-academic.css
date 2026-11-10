@@ -1,0 +1,61 @@
+/* Loaded last on the case studies and the 404 page. It brings them into line with the home page (css/academic.css):
+ * paper background, ink text, one green accent, light or dark by the reader's setting.
+ * The layout, the contents rail and the reading-progress line still come from site.css and case.css.
+ */
+:root {
+  color-scheme: light dark;
+  --paper: #f6f3ec; --surface: #fcfaf5; --ink: #1b1a17; --ink-2: #47453e; --ink-3: #68645b; --rule: #d8d2c3;
+  --accent: #0e5a4c; --accent-ink: #f6f3ec; --dot: #c9981f;
+  --focus: var(--accent); --hot: var(--accent); --tint: var(--accent);
+  /* the projects no longer bring their own colours: every band sits on the page's paper */
+  --tz-bg: var(--paper); --tz-ink: var(--ink); --tz-accent: var(--accent); --tz-sub: var(--ink-3); --tz-rule: var(--rule);
+  --pb-bg: var(--paper); --pb-ink: var(--ink); --pb-accent: var(--accent); --pb-sub: var(--ink-3); --pb-rule: var(--rule);
+  --mo-bg: var(--paper); --mo-ink: var(--ink); --mo-accent: var(--accent); --mo-sub: var(--ink-3); --mo-rule: var(--rule);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121311; --surface: #191a17; --ink: #ece9e1; --ink-2: #c0bcb1; --ink-3: #8f8b80; --rule: #2e2f2a;
+    --accent: #6fcdb6; --accent-ink: #0f1f1b; --dot: #d2a52a;
+  }
+}
+body[data-p="pb"], body[data-p="mo"] { --tint: var(--accent); }
+body { background-image: none; }
+body::before { content: none; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* header: plain, like the home page */
+.case-top { border-radius: 0; }
+.case-top .top { border-bottom: 1px solid var(--rule); }
+.case-top .top .wrap { height: 58px; }
+.mark__glyph { display: none; }
+.mark__name { font-weight: 800; font-size: 16.5px; }
+.mark__name::after { content: "."; color: var(--dot); }
+.case-top .top nav a { opacity: 1; color: var(--ink-2); font-weight: 400; }
+.case-top .top nav a:hover { color: var(--accent); }
+.case-top .top nav a[aria-current="page"] { color: var(--ink); font-weight: 600; text-decoration-color: var(--accent); }
+.case-back { color: var(--accent); }
+.case-back:hover { color: var(--accent); }
+.case-hero .wrap { padding-top: clamp(28px, 4vw, 52px); }
+.case-hero h1 { font-size: clamp(44px, 8vw, 84px); font-weight: 800; letter-spacing: -.04em; line-height: .98; margin-left: 0; }
+.case-hero .lede { font-size: clamp(21px, 2.3vw, 27px); line-height: 1.4; letter-spacing: -.006em; max-width: 30em; }
+.case-facts dt { font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; }
+.case-facts a { text-decoration-color: var(--accent); }
+
+/* the walkthrough */
+.watch__box { box-shadow: 0 0 0 1px var(--rule), 0 26px 50px -34px rgba(27, 26, 23, .55); }
+.watch .watch__icon, .watch.band--tz .watch__icon, .watch.band--pb .watch__icon { background: var(--accent); color: var(--accent-ink); }
+
+/* the article */
+.toc a.on { font-weight: 600; }
+.article section > h2 { font: 800 clamp(27px, 3.4vw, 36px)/1.08 var(--sans); letter-spacing: -.03em; }
+.prose h3 { font-weight: 700; letter-spacing: -.02em; }
+.prose a { text-decoration-thickness: 1px; }
+.prose code { background: var(--surface); border-color: var(--rule); }
+.prose pre { background: var(--surface); border-color: var(--rule); }
+.shot img, .shot video { border-color: var(--rule); box-shadow: 0 22px 44px -34px rgba(27, 26, 23, .5); }
+.tech summary::after { color: var(--accent); }
+
+/* the next project */
+.next { border-radius: 0; }
+.next strong::before, .next.band--mo strong::before, .next.band--pb strong::before { background: var(--accent); }
+.btn { background: var(--accent); color: var(--accent-ink); }

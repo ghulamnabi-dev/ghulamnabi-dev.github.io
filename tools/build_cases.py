@@ -193,7 +193,7 @@ TEMPLATE = '''<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{description}">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light dark">
 <meta property="og:title" content="{name}: case study">
 <meta property="og:description" content="{description}">
 <meta property="og:image" content="https://ghulamnabi-dev.github.io/img/og-{slug}.png">
@@ -203,6 +203,7 @@ TEMPLATE = '''<!doctype html>
 <link rel="preload" href="../../fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../css/site.css">
 <link rel="stylesheet" href="../../css/case.css">
+<link rel="stylesheet" href="../../css/case-academic.css">
 </head>
 <body>
 <a class="skip" href="#case">Skip to the case study</a>
@@ -251,7 +252,7 @@ TEMPLATE = '''<!doctype html>
 <footer class="foot">
   <div class="wrap">
     <span>© 2026 Ghulam Nabi. <a href="mailto:{email}">{email}</a></span>
-    <span>Hand-written HTML, CSS and a little JavaScript. The fonts are hosted here and nothing tracks you.</span>
+    <span>The fonts are hosted here and nothing tracks you.</span>
   </div>
 </footer>
 <script src="../../js/site.js" defer></script>
