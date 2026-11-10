@@ -26,7 +26,6 @@
       <a href="#security">Security</a>
       <a href="#research">Research</a>
       <a href="#work">Projects</a>
-      <a href="#offer">What I bring</a>
       <a href="#record">Education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -54,10 +53,9 @@
       <h2 id="about-title">About and motivation</h2>
       <div class="prose">
         <p>I came to computer science on purpose, not by default. I studied pre-medical at college, spent a few months working with technology before university, and found that building things suited me. I have not doubted the choice since.</p>
-        <p>Security is where my interest has settled. At work, part of my job is tracking and fixing vulnerable dependencies in a system that more than 100 people use. In my own projects I built sign-in, sessions and access control without a framework, so that I would understand what a framework hides. An eight-week internship then showed me the same software from the attacker’s side.</p>
-        <p>Cryptography is the part I most want to study properly. So far I have only used it: password hashing, signed tokens, random values compared in constant time. I know how to use these correctly. I do not yet know why they are secure, and that is what I want to learn.</p>
+        <p>Security is where my interest has settled. At work, part of my job is tracking and fixing vulnerable dependencies in a system that more than 100 people use. In my own projects, sign-in, sessions and access control are written out in plain code with no framework, so that I can see what a framework hides. An eight-week internship then showed me how attacks on such software are detected.</p>
+        <p>Cryptography is the part I most want to study properly. So far I have only used it: password hashing, tokens authenticated with HMAC, random values compared in constant time. I do not yet know why these are secure, and that is what I want to learn.</p>
         <p>Two other projects taught me about trust in a wider sense. One maps floods from satellite radar, and one is a mental-health check-in for students at my university. In both, the algorithm was the smaller part of the work. What mattered was careful testing, honest reporting of where it fails, and a person who stays in charge of the decision.</p>
-        <blockquote>A system is only as trustworthy as the attempts made to break it.</blockquote>
         <p>I can build and ship complete systems. What I want now is depth: to understand the methods behind them well enough to design them, not only to apply them.</p>
       </div>
     </div>
@@ -68,7 +66,7 @@
       <h2 id="interests-title">Research interests</h2>
       <ol class="three">
         <li><h3>Software and application security</h3><p>Sign-in, access control and the ordinary mistakes that leak data. Systems that stay correct while someone is trying to break them.</p></li>
-        <li><h3>Applied cryptography</h3><p>How hashing, signatures and key exchange protect real systems, and how they fail when used wrongly. I have used these tools and want to study the theory.</p></li>
+        <li><h3>Applied cryptography</h3><p>How hashing, signatures and key exchange protect real systems, and how they fail when used wrongly. I have used hashing and message authentication in my projects, and want to study the theory.</p></li>
         <li><h3>Trustworthy systems</h3><p>Testing a system on what it has never seen, and keeping a person in charge of the decisions that matter.</p></li>
       </ol>
     </div>
@@ -78,26 +76,28 @@
     <div class="wrap">
       <h2 id="security-title">Security work</h2>
       <p class="intro">What I have done in security so far, and where each claim can be checked.</p>
+      <p class="check made"><b>How this work was made</b> The first versions of these projects date from 2025 and early 2026. In November 2026 I rebuilt them with an AI coding assistant (Claude), and most of the security work described below dates from that rebuild. The commit history in each repository shows it.</p>
 
       <article class="proof">
         <h3>A web shop secured without a framework</h3>
-        <p>For TechZone I wrote sign-in, sessions, request-forgery protection and access control myself, to understand them. I used only standard, well-tested building blocks. Nothing cryptographic is invented.</p>
+        <p>TechZone has its own sign-in, sessions, request-forgery protection and access control, with no framework in between, so each part can be read. It uses only standard, well-tested building blocks. Nothing cryptographic is invented.</p>
         <ul>
           <li>Passwords are hashed with bcrypt, and upgraded at sign-in when the settings change.</li>
-          <li>A failed sign-in takes the same time and gives the same message whether or not the account exists, so an attacker cannot learn which e-mails are registered.</li>
+          <li>A failed sign-in gives the same message whether or not the account exists.</li>
           <li>Each session gets one random 256-bit anti-forgery token, compared in constant time.</li>
           <li>The session ID is renewed at every sign-in, uploads are checked by their content, and every query uses prepared statements.</li>
         </ul>
-        <p class="check"><b>Checked on every push</b> A forged cross-site request is rejected, the API never returns a password field, a failed sign-in gives the same message for any account, and 12 simultaneous checkouts for 3 units produce exactly 3 orders.</p>
+        <p class="check"><b>Checked on every push</b> A state-changing request from another origin is rejected, the API never returns a password field, a failed sign-in gives the same message for any account, and 12 simultaneous checkouts for 3 units produce exactly 3 orders.</p>
+        <p class="check check--open"><b>Found in review, not fixed yet</b> Sign-up still says when an e-mail is already registered. A sign-in for an unknown e-mail does more hashing work than one for a known e-mail, so the timing can differ. A successful sign-in clears the failed-attempt counter for that network address, so the lockout can be sidestepped.</p>
         <p class="links"><a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">Security notes, file by file</a><a href="work/techzone/">Case study</a></p>
       </article>
 
       <article class="proof">
-        <h3>Access control, tested the way an attacker would</h3>
+        <h3>Access control, tested from the other account</h3>
         <p>In PhoneBook the tests sign in as two different people and try to read each other’s data. Another account’s record returns “not found”, never “forbidden”, so the system does not even confirm that the record exists.</p>
         <ul>
-          <li>Sign-in tokens are signed with HMAC-SHA256. The server accepts that algorithm only, and checks the issuer, the audience and the expiry.</li>
-          <li>The server refuses to start if the signing secret is missing or too short.</li>
+          <li>Sign-in tokens are authenticated with HMAC-SHA256. The server accepts that algorithm only, and checks the issuer, the audience and the expiry.</li>
+          <li>The server refuses to start if the signing secret is missing or shorter than 32 characters.</li>
           <li>In Mohalla a viewer who tries to change the accounts is refused by the server, not only by a hidden button.</li>
         </ul>
         <p class="links"><a href="work/phonebook/">PhoneBook case study</a><a href="work/mohalla/">Mohalla case study</a></p>
@@ -105,7 +105,7 @@
 
       <article class="proof">
         <h3>Detection rules from a security internship</h3>
-        <p>Eight weeks on the defensive side at Allied Software Engineers. For a lab attack scenario, I wrote the rules that find it in the logs.</p>
+        <p>Eight weeks on the defensive side at Allied Software Engineers. I wrote detection rules for a written lab scenario. They have not been run against real logs or malware samples.</p>
         <ul>
           <li>Five Sigma rules mapped to MITRE ATT&amp;CK: a phishing macro, credential dumping, persistence, shadow-copy deletion and log clearing.</li>
           <li>Two YARA rules, and the same detections as queries for Microsoft Sentinel and Splunk.</li>
@@ -119,6 +119,7 @@
         <ul>
           <li>I have not studied cryptography formally. My university course in Information Security is in progress this semester.</li>
           <li>I have not found a vulnerability in someone else’s software, and I have no capture-the-flag record.</li>
+          <li>I have not run a security scanner or a penetration test against my own projects.</li>
           <li>My own projects have known gaps. Each case study lists them.</li>
         </ul>
       </article>
@@ -135,14 +136,14 @@
         <p class="study__sub">Mapping floods from satellite radar</p>
         <div class="prose">
           <p>During Pakistan’s monsoon floods, cloud hides the ground from ordinary satellites. Radar sees through cloud. Our toolkit takes Sentinel-1 radar images from before and after a flood, maps the flooded area, and reports what the water is likely to reach.</p>
-          <p><strong>The research question:</strong> can the map be trusted on a flood the model was never shown? We tested it only on whole flood events held out of training, so the score reflects new floods and not ones it has already seen.</p>
+          <p><strong>The research question:</strong> can the map be trusted on ground the model was never shown? Each area was scored with that area held out of training. Twelve of the fourteen areas are parts of the same 2022 flood, so the score says more about new areas than about new floods.</p>
         </div>
         <dl class="nums">
-          <div><dt>0.874</dt><dd>macro F1 on 14 held-out areas of the Pakistan 2022 floods</dd></div>
-          <div><dt>186</dt><dd>automated tests passing</dd></div>
-          <div><dt>81</dt><dd>pages of report; I wrote its core chapters</dd></div>
+          <div><dt>0.874</dt><dd>macro F1 on 14 held-out areas of the Pakistan 2022 floods, most of them scored against an automated flood map</dd></div>
+          <div><dt>0.743</dt><dd>macro F1 on the 5 areas that have official emergency maps</dd></div>
+          <div><dt>186</dt><dd>automated tests passing; 125 more are skipped, for modules that are not finished</dd></div>
         </dl>
-        <p class="role"><b>My role</b> Team coordinator and documentation lead. I wrote the requirements, design, method and evaluation chapters of the report, and designed the command-line tool that runs every stage. The detection and classification code is the team’s work.</p>
+        <p class="role"><b>My role</b> Team coordinator and documentation lead. I was responsible for the requirements, design, method and evaluation chapters of the report, and designed the command-line tool that runs every stage. The detection and classification code is the team’s work.</p>
         <details>
           <summary>Method, results and limits</summary>
           <div class="more">
@@ -159,18 +160,20 @@
                 <tbody>
                   <tr><th scope="row">Clean held-out benchmark</th><td class="num">14</td><td class="num"><b>0.874</b></td><td class="num">0.803</td></tr>
                   <tr><th scope="row">Harder audit set</th><td class="num">17</td><td class="num"><b>0.854</b></td><td class="num">0.674</td></tr>
+                  <tr><th scope="row">Official emergency maps only</th><td class="num">5</td><td class="num"><b>0.743</b></td><td class="num">not listed</td></tr>
                 </tbody>
               </table>
             </div>
             <h4>Limits</h4>
             <ul>
+              <li>Twelve of the fourteen clean areas are scored against the Global Flood Monitoring product, which is itself an automated map, and the classifier also takes that product as one of its inputs. Against official emergency maps alone the score falls to 0.743.</li>
               <li>One audit event scores 0.674. Finding out why is the next piece of work.</li>
               <li>It maps floods that have happened. It does not predict them.</li>
               <li>It supports a human decision. It is not an automatic warning system.</li>
             </ul>
           </div>
         </details>
-        <p class="actions"><a class="btn" href="sentinel-flux-core-report.pdf">Read the report</a><span>PDF, 81 pages, 4 MB</span></p>
+        <p class="role"><b>Report</b> The project report is not linked here at present. One results table in the current copy is empty and has to be regenerated first.</p>
       </article>
 
       <article class="study">
@@ -182,8 +185,8 @@
           <p><strong>The research question:</strong> can the first step be taken in private? I led the design of a check-in that a student opens on their own phone. It asks questions built on two standard screening questionnaires, then suggests self-help or recommends a visit. It screens and never diagnoses.</p>
         </div>
         <dl class="nums">
-          <div><dt>37</dt><dd>questions, built on the PHQ-9 and GAD-7 questionnaires</dd></div>
-          <div><dt>84%</dt><dd>test accuracy, roughly, on a public student dataset</dd></div>
+          <div><dt>37</dt><dd>questions in the draft check-in</dd></div>
+          <div><dt>2</dt><dd>standard screening questionnaires it builds on, PHQ-9 and GAD-7</dd></div>
           <div><dt>0</dt><dd>student records collected, until ethics approval</dd></div>
         </dl>
         <details>
@@ -191,14 +194,14 @@
           <div class="more">
             <h4>Safeguards</h4>
             <ul>
-              <li>Any sign of suicidal thoughts skips the model and shows crisis help at once.</li>
+              <li>In the design, any sign of suicidal thoughts skips the model and shows crisis help at once.</li>
               <li>No student data is collected before ethics approval.</li>
               <li>A pilot would run under the society’s counsellors.</li>
             </ul>
             <h4>Not done yet</h4>
             <ul>
               <li>The app is not built.</li>
-              <li>The 84% figure comes from a public dataset. It says nothing yet about students at my university.</li>
+              <li>Nothing has been tested with students at my university.</li>
             </ul>
           </div>
         </details>
@@ -209,7 +212,7 @@
   <section id="work" aria-labelledby="work-title">
     <div class="wrap">
       <h2 id="work-title">Projects</h2>
-      <p class="intro">Four systems I built outside coursework, three of them complete. Each had a question it must not get wrong.</p>
+      <p class="intro">Four systems outside coursework, three of them complete. Each had a question it must not get wrong. The three complete ones were rebuilt in November 2026 with an AI coding assistant, as their commit histories show.</p>
 
       <ul class="projects">
         <li>
@@ -217,7 +220,7 @@
           <div>
             <h3>TechZone <small>A PC-parts marketplace</small></h3>
             <p class="q">Can one seller read another shop’s order?</p>
-            <p>No. Every query is limited to the seller’s own products and their own lines of a shared order, and another shop’s order returns “not found”. Checkout also survives a rush: on every push, a test sends 12 checkouts at once for 3 units and requires exactly 3 orders.</p>
+            <p>It should not. Every query is limited to the seller’s own products and their own lines of a shared order, and another shop’s order returns “not found”. There is no automated test for this yet. Checkout does have one: on every push, a test sends 12 checkouts at once for 3 units and requires exactly 3 orders.</p>
             <p class="links"><a href="work/techzone/">Case study</a><a href="https://github.com/ghulamnabi-dev/TechZone">Code</a><span>PHP, MariaDB, JavaScript</span></p>
           </div>
         </li>
@@ -252,21 +255,6 @@
     </div>
   </section>
 
-  <section id="offer" aria-labelledby="offer-title">
-    <div class="wrap">
-      <h2 id="offer-title">What I bring</h2>
-      <p class="intro">What a supervisor, a research group or a team can expect from me, with the evidence for each.</p>
-      <ul class="offer">
-        <li><h3>I finish what I start</h3><p>Three complete systems, each designed, built, tested and documented alone. Two years on business software used by more than 100 people.</p></li>
-        <li><h3>I write clearly</h3><p>I was documentation lead on my final-year project and wrote its 81-page report: requirements, design, method and evaluation.</p></li>
-        <li><h3>I try to break my own work</h3><p>I do not say a thing works until I have attacked it: tests that sign in as two different people, a forged cross-site request on every push, flood events held out of training.</p></li>
-        <li><h3>I say what does not work</h3><p>Every project lists its known gaps, including the security ones and the flood event where our model scored worst.</p></li>
-        <li><h3>I work well in a team</h3><p>I coordinated a team of four through our final-year project, and at work my code goes through pull requests and review.</p></li>
-        <li><h3>I learn quickly</h3><p>Radar imagery and machine-learning evaluation for one project, defensive security in an eight-week internship, three different software stacks.</p></li>
-      </ul>
-    </div>
-  </section>
-
   <section id="record" aria-labelledby="record-title">
     <div class="wrap">
       <h2 id="record-title">Education and experience</h2>
@@ -297,7 +285,7 @@
       </ul>
       <footer class="foot">
         <span>© 2026 Ghulam Nabi</span>
-        <span>The fonts are hosted here and nothing tracks you.</span>
+        <span>Made with the help of an AI coding assistant. The fonts are hosted here and nothing tracks you.</span>
       </footer>
     </div>
   </section>

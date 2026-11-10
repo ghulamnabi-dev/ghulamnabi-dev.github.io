@@ -34,13 +34,13 @@ PROJECTS['techzone'] = dict(
     title='TechZone, a PC-parts marketplace: case study by Ghulam Nabi',
     description='How TechZone works: a storefront built around today’s rates, a PC builder that checks compatibility on the server, and a back-office with order timelines, a stock ledger and scoped partner sellers. PHP 8 and MariaDB, no framework.',
     lede='A PC-parts marketplace for Lahore: a storefront built around today’s rates, a PC builder that only offers parts that fit, and a back-office a real shop could run.',
-    facts=[('My part', 'Everything: design, database, code and tests'), ('Built', '2025 to 2026'),
+    facts=[('How it was made', 'Solo project, rebuilt with an AI coding assistant'), ('Built', 'March 2026, rebuilt November 2026'),
            ('Stack', 'PHP 8, MariaDB, plain JavaScript, AG Grid'), ('Code', '<a href="https://github.com/ghulamnabi-dev/TechZone">ghulamnabi-dev/TechZone</a>')],
     sections=[
         ('The brief', '''
 <p>In Lahore, PC parts are bought in markets like Hafeez Centre and Hall Road, where prices move every week and the first question is always “aaj ka rate kya hai?”, what does it cost today. Building a PC adds a second problem: a processor, board, memory, case and power supply have to fit each other, and the mistakes are expensive.</p>
 <p>TechZone is my answer to both, built as if a real shop were going to use it: the day’s rate is the headline, the builder will not let you pair parts that don’t fit, and the back-office covers what staff actually do all day, from confirming an order to explaining why the stock count is what it is.</p>
-<p>I wrote it without a framework on purpose. I wanted to understand the parts a framework normally hides: sessions, CSRF protection, transactions, permissions. Everything security-related lives in one shared <code>core/</code> library that both the storefront and the admin use, so a fix lands once.</p>
+<p>It has no framework, on purpose. I wanted to see the parts a framework normally hides: sessions, CSRF protection, transactions, permissions. The first version is from March 2026. In November 2026 I rebuilt it with an AI coding assistant (Claude), and the security library described below dates from that rebuild, as the commit history shows. Everything security-related lives in one shared <code>core/</code> library that both the storefront and the admin use, so a fix lands once.</p>
 '''),
         ('What it does', fig('techzone/07-catalogue.webp', 'The processor catalogue, with filters for socket and core count and the week’s price drops marked.', 'TechZone processor catalogue with product photos and filters') + '''
 <ul>
@@ -68,10 +68,11 @@ PROJECTS['techzone'] = dict(
 ''' + fig('techzone/28-seller-portal.webp', 'A seller’s view of an order that also contains another shop’s items: only their own lines are shown.', 'TechZone seller portal showing only the seller’s own items on an order') + '''
 <h3>Security without a framework, and written down</h3>
 <p>Prepared statements everywhere with emulation switched off; one CSRF token per session compared in constant time; session IDs renewed at every sign-in; sign-in throttling per IP and per session; the same message for an unknown e-mail and a wrong password; uploads checked by their content, not their name. Each of these, and the known gaps, is listed file by file in the project’s <a href="https://github.com/ghulamnabi-dev/TechZone/blob/main/docs/SECURITY.md">security notes</a>.</p>
+<p>A review in November 2026 found three gaps that are not fixed yet. Sign-up still says when an e-mail is already registered. A sign-in for an unknown e-mail does more hashing work than one for a known e-mail, so the timing can differ. And a successful sign-in clears the failed-attempt counter for that network address, so the lockout can be sidestepped. There is also no automated test yet for the rule that one seller cannot read another shop’s order.</p>
 '''),
         ('What I’d do differently', '''
 <p>The automated checks are end to end: on every push, a CI job boots the real stack, seeds it and calls the real endpoints, including the security checks. There are no unit tests for the PHP functions themselves, and the builder rules are exactly the kind of code that should have them. That is the first thing I would add, followed by browser tests for checkout and the order flow.</p>
-<p>For a real shop I would build on a framework such as Laravel. Writing sessions, CSRF and routing myself taught me what a framework does and why, which was the point, but I would not ask a client to maintain my versions of them.</p>
+<p>For a real shop I would build on a framework such as Laravel. Having sessions, CSRF and routing in plain code showed me what a framework does and why, which was the point, but I would not ask a client to maintain these versions of them.</p>
 <p>Payments are a placeholder, the prices are demo data, and the content security policy is still in report-only mode until the last inline scripts move into files.</p>
 '''),
     ],
@@ -83,11 +84,12 @@ PROJECTS['phonebook'] = dict(
     title='PhoneBook, ASP.NET Core and Angular: case study by Ghulam Nabi',
     description='How PhoneBook works: a repository and unit of work with explicit transactions, all-or-nothing vCard import, per-user data isolation and tests that boot the real API. ASP.NET Core 9 and Angular 19.',
     lede='A contacts app used as a small, honest test of the patterns a business system needs: transactions, data that belongs to one user, a real file format, and tests that boot the real API.',
-    facts=[('My part', 'Everything: API, client, tests and CI'), ('Built', '2026'),
+    facts=[('How it was made', 'Solo project, rebuilt with an AI coding assistant'), ('Built', 'February 2025, rebuilt November 2026'),
            ('Stack', 'ASP.NET Core 9, EF Core, Angular 19'), ('Code', '<a href="https://github.com/ghulamnabi-dev/PhoneBook">ghulamnabi-dev/PhoneBook</a>')],
     sections=[
         ('The brief', '''
 <p>A phone book is usually a beginner’s exercise. I rebuilt mine to practise what business software needs and small projects usually skip: one operation that touches several tables and either fully happens or doesn’t, data that must never leak between accounts, a standard file format that arrives full of mistakes, and tests that prove all of it over real HTTP.</p>
+<p>The first version is from February 2025. The rebuild described here was done in November 2026 with an AI coding assistant (Claude), as the commit history shows.</p>
 '''),
         ('What it does', fig('phonebook/cover.webp', 'Contacts on the left, the selected person on the right, with groups and the record beside the details.', 'PhoneBook with a contact list and a contact’s details') + '''
 <ul>
@@ -143,12 +145,13 @@ PROJECTS['mohalla'] = dict(
     title='Mohalla, housing-society finances: case study by Ghulam Nabi',
     description='How Mohalla works: a monthly ledger generated by a scheduled job, admin and viewer roles enforced in the API and the interface, and resident statements. ASP.NET Core 9, Angular 19, SQL Server.',
     lede='The books of a housing society: residents, monthly contributions, expenses, and a ledger that closes each month by itself and carries the balance forward.',
-    facts=[('My part', 'Everything: API, client, tests and CI'), ('Built', '2025 to 2026'),
+    facts=[('How it was made', 'Solo project, rebuilt with an AI coding assistant'), ('Built', 'April 2025, rebuilt November 2026'),
            ('Stack', 'ASP.NET Core 9, SQL Server, Hangfire, Angular 19'), ('Code', '<a href="https://github.com/ghulamnabi-dev/mohalla">ghulamnabi-dev/mohalla</a>')],
     sections=[
         ('The brief', '''
 <p>A <em>mohalla</em> is a neighbourhood. In many of them in Pakistan, each house pays a monthly amount for the guard, the cleaner and the street lights, and a volunteer treasurer keeps the accounts in a notebook or a spreadsheet. The two questions that cause arguments are always the same: who is short this month, and how much is left?</p>
 <p>Mohalla answers both without anyone doing arithmetic. The treasurer records payments and expenses, and everything else, totals, statements and the month’s closing balance, is calculated.</p>
+<p>The first version is from April 2025. Roles, tests and the redesign described here were added in November 2026 with an AI coding assistant (Claude), as the commit history shows.</p>
 '''),
         ('What it does', fig('mohalla/02-dashboard.webp', 'The dashboard: this month’s collection against what is expected, spending, the balance, and who hasn’t paid yet.', 'Mohalla dashboard with totals, a chart and the households yet to pay') + '''
 <ul>
@@ -254,7 +257,7 @@ TEMPLATE = '''<!doctype html>
 <footer class="foot">
   <div class="wrap">
     <span>© 2026 Ghulam Nabi. <a href="mailto:{email}">{email}</a></span>
-    <span>The fonts are hosted here and nothing tracks you.</span>
+    <span>Made with the help of an AI coding assistant. The fonts are hosted here and nothing tracks you.</span>
   </div>
 </footer>
 <script src="../../js/site.js" defer></script>
