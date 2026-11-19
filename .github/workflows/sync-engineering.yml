@@ -1,7 +1,8 @@
 name: Sync engineering version
 
-# Copies the "engineering" branch into the engineering/ folder on main,
-# so it is live at https://ghulamnabi-dev.github.io/engineering/
+# Copies the "engineering" branch into the engineering/ folder and opens a
+# pull request to main (main is protected). After merging, it is live at
+# https://ghulamnabi-dev.github.io/engineering/
 on:
   workflow_dispatch:
   push:
@@ -9,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -28,11 +30,18 @@ jobs:
           cd engineering
           rm -rf .gitignore .nojekyll README.md robots.txt 404.html tools .github
           grep -rlI --include='*.html' --include='*.xml' --include='*.js' --include='*.css' 'https://ghulamnabi-dev.github.io/' . | xargs -r sed -i 's#https://ghulamnabi-dev.github.io/#https://ghulamnabi-dev.github.io/engineering/#g'
-      - name: Commit to main
+      - name: Push to sync branch and open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A engineering
-          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          if git diff --cached --quiet; then echo "engineering/ is already up to date"; exit 0; fi
+          git checkout -b engineering-sync
           git commit -m "Update engineering/ from the engineering branch"
-          git push origin main
+          git push -f origin engineering-sync
+          gh pr create --base main --head engineering-sync \
+            --title "Update the live engineering version" \
+            --body "Copies the engineering branch into engineering/ (live at https://ghulamnabi-dev.github.io/engineering/)." \
+            || echo "Pull request already open, or Actions may not create PRs here; open one from engineering-sync to main."
