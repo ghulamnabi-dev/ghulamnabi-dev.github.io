@@ -1,0 +1,38 @@
+name: Sync engineering version
+
+# Copies the "engineering" branch into the engineering/ folder on main,
+# so it is live at https://ghulamnabi-dev.github.io/engineering/
+on:
+  workflow_dispatch:
+  push:
+    branches: [engineering]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Copy engineering branch into engineering/
+        run: |
+          set -e
+          git fetch origin engineering
+          rm -rf engineering
+          mkdir engineering
+          git archive origin/engineering | tar -x -C engineering
+          cd engineering
+          rm -rf .gitignore .nojekyll README.md robots.txt 404.html tools .github
+          grep -rlI --include='*.html' --include='*.xml' --include='*.js' --include='*.css' 'https://ghulamnabi-dev.github.io/' . | xargs -r sed -i 's#https://ghulamnabi-dev.github.io/#https://ghulamnabi-dev.github.io/engineering/#g'
+      - name: Commit to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A engineering
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Update engineering/ from the engineering branch"
+          git push origin main
